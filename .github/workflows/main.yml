@@ -53,6 +53,15 @@ jobs:
           channel: html5
           api-key: ${{ secrets.ITCHIO_API_KEY }}
 
+      # Upload to itch.io
+      - name: Upload to itch.io project
+        uses: robpc/itchio-upload-action@v1
+        with:
+          path: build/WebGL/WebGL
+          project: buckb1ck/ghostly-paws
+          channel: html5
+          api-key: ${{ secrets.ITCHIO_API_KEY_MARTIN }}
+
       # Output
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
