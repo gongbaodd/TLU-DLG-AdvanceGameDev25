@@ -62,6 +62,6 @@ jobs:
 
       # Send Notification
       - name: Send WhatsApp Notification
-        uses: KnosTx/whatsapp-notification-action@v1
+        uses: AzliRynz/whatsapp-notification-action@v1.0.1
         with:
           whatsapp_invite_link: "https://chat.whatsapp.com/${{ secrets.WHATSAPP_INVITE_CODE }}"
