@@ -1,3 +1,3 @@
-#GHOSTLY PAWS
+# GHOSTLY PAWS
 
-#Web GL Build: https://buckb1ck.itch.io/ghostly-paws
+# Web GL Build: https://buckb1ck.itch.io/ghostly-paws
