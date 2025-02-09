@@ -49,7 +49,7 @@ jobs:
         uses: robpc/itchio-upload-action@v1
         with:
           path: build/WebGL/WebGL
-          project: ghostly-paws
+          project: gongbaodd/ghostly-paws
           channel: html5
           api-key: ${{ secrets.ITCHIO_API_KEY }}
 
