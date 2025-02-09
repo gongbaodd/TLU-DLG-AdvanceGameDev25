@@ -61,7 +61,9 @@ jobs:
           path: build
 
       # Send Notification
-      - name: Send WhatsApp Notification
-        uses: AzliRynz/whatsapp-notification-action@v1.0.1
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.3.2
         with:
-          whatsapp_invite_link: "https://chat.whatsapp.com/${{ secrets.WHATSAPP_INVITE_CODE }}"
+          args: '✅ The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
