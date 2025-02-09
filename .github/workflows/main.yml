@@ -42,6 +42,7 @@ jobs:
         with:
           targetPlatform: WebGL
           projectPath: Cat
+          allowDirtyBuild: true
 
       # Upload to itch.io
       - name: Upload to itch.io project
