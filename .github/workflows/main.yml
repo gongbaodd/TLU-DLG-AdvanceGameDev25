@@ -75,4 +75,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@0.3.2
         with:
-          args: '✅ The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
+          args: "✅ The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.\n Commit message: ${{ github.event.head_commit.message }}\n repository URL: ${{ github.event.repository.url }}\n website URL: https://buckb1ck.itch.io/ghostly-paws"
