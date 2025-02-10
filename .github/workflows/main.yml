@@ -1,6 +1,12 @@
 name: Actions 😎
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+    paths: 
+      - 'Cat/**'
+      - '.github/workflows/main.yml'
 
 jobs:
   build:
