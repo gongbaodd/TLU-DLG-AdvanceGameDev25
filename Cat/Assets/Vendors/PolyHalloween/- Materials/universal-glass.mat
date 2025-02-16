@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _EMISSION
-  - _METALLICSPECGLOSSMAP
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords:
   - _BLENDMODE_ALPHA
@@ -36,6 +35,7 @@ Material:
   - TransparentDepthPostpass
   - TransparentBackface
   - DepthOnly
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
