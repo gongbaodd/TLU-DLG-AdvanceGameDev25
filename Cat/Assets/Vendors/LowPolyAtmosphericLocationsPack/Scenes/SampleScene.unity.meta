@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b3a756b7d89dff42a36f9a501651aaf
+guid: 7b613fef887779541a298ef8a5d6d563
 DefaultImporter:
   externalObjects: {}
   userData: 
@@ -10,5 +10,5 @@ AssetOrigin:
   productId: 278928
   packageName: Low Poly Atmospheric Locations Pack
   packageVersion: 1.0.0
-  assetPath: Assets/Palmov Island/Low Poly Atmospheric Locations Pack/Scenes/SampleScene.unity
+  assetPath: Assets/Vendors/LowPolyAtmosphericLocationsPack/Scenes/SampleScene.unity
   uploadId: 663950

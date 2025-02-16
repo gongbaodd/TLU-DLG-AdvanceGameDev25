@@ -11,6 +11,5 @@ AssetOrigin:
   productId: 278928
   packageName: Low Poly Atmospheric Locations Pack
   packageVersion: 1.0.0
-  assetPath: Assets/Palmov Island/Low Poly Atmospheric Locations Pack/Materials/mat
-    main.mat
+  assetPath: Assets/Vendors/LowPolyAtmosphericLocationsPack/Materials/mat main.mat
   uploadId: 663950

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: cef6bbe178e7da8409e65d5be4cfa7c3
+guid: 564dad649c6ef7f4b8d09bf439acb87b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -16,6 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -76,7 +78,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -105,3 +107,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 262897
+  packageName: Mini Simple Characters | Skeleton | Free Demo
+  packageVersion: 1.0
+  assetPath: Assets/Vendors/MiniSimpleCharactersSkeletonDemo/Models/shield_wood.fbx
+  uploadId: 606480

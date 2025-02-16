@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-guid: c9d9126a3076c1a48aae92d444532757
+guid: e4438c2cf8bb02b498ab1c7e8e51f5c9
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 35346
-  packageName: House Pack
-  packageVersion: 1.0
-  assetPath: Assets/HousePack/Models/House4/Materials/map4.mat
-  uploadId: 60630
