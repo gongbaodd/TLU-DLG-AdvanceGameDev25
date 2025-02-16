@@ -11,5 +11,6 @@ AssetOrigin:
   productId: 257122
   packageName: Interior House Assets | URP
   packageVersion: 1.0
-  assetPath: Assets/UnityTechnologies/Settings/Universal Render Pipeline Asset_Renderer.asset
+  assetPath: Assets/Vendors/UnityTechnologies/Settings/Universal Render Pipeline
+    Asset_Renderer.asset
   uploadId: 615370

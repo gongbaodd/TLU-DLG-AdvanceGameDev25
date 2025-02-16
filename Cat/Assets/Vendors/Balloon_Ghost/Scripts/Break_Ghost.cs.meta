@@ -14,5 +14,5 @@ AssetOrigin:
   productId: 209499
   packageName: Balloon Ghost(with Breakable parts)
   packageVersion: 1.0
-  assetPath: Assets/Balloon_Ghost/Scripts/Break_Ghost.cs
+  assetPath: Assets/Vendors/Balloon_Ghost/Scripts/Break_Ghost.cs
   uploadId: 470502
