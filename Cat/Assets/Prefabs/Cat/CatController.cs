@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class CatController : MonoBehaviour
 {
+    private Animator animator;
+    private Rigidbody rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 }
