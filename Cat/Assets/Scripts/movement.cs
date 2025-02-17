@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,10 +10,17 @@ public class movement : MonoBehaviour
 
     public LayerMask interactMask;
     public GameObject cat;
-    public float movementSpeed = 1f;
+    public float movementSpeed = 2f;
+    //public float stoppingDistance = 0.1f;
 
+    //private NavMeshAgent catAgent;
     private Vector3 targetPosition;
     private bool isMoving = false;
+
+    void Start()
+    {
+        //catAgent = cat.GetComponent<NavMeshAgent>();
+    }
 
     void Update()
     {
@@ -20,6 +28,12 @@ public class movement : MonoBehaviour
         {
             OnMouseClicked();
         }
+
+        // Check if the cat has reached its destination
+        // if (!catAgent.pathPending && catAgent.remainingDistance <= stoppingDistance)
+        // {
+        //     catAnim.SetBool("isMoving", false);
+        // }
 
         if (isMoving)
         {
@@ -52,6 +66,7 @@ public class movement : MonoBehaviour
             print("Something clicked");
 
             // Do other logic with the object we clicked on
+            //catAgent.SetDestination(hit.point);
             targetPosition = hit.point;
             isMoving = true;
             catAnim.SetBool("isMoving", true);
