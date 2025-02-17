@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class OwnerController : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody rb;
