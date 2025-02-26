@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class GameController : MonoBehaviour
+public class FruitNinjaController : MonoBehaviour
 {
     [Header("Fruits")]
     [SerializeField] private List<GameObject> fruits;
