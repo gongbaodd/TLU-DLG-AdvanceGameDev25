@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af18fe91a2a2d044ca9b7e94a6587874
+    m_Address: Assets/Scenes/Diablo/Diablo.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e07d84aa68f1b014782fd29ed1b93218
     m_Address: Assets/Scenes/FruitNinja/FruitNinja.unity
     m_ReadOnly: 0
