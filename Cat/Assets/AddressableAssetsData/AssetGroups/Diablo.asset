@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Diablo
   m_GUID: 0cf9813aa10144245874c1c0a44966f3
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: af18fe91a2a2d044ca9b7e94a6587874
+    m_Address: Assets/Scenes/Diablo/Diablo.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
   m_SchemaSet:
