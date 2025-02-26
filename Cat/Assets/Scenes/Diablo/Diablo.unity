@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216406f43afab6e40b22d12bb03c829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1334211130}
 --- !u!4 &417958232
 Transform:
   m_ObjectHideFlags: 0
@@ -486,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 9048970333054714454, guid: 56627f26f8d4ab044bff4930592a994e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.667
       objectReference: {fileID: 0}
     - target: {fileID: 9048970333054714454, guid: 56627f26f8d4ab044bff4930592a994e,
         type: 3}
@@ -533,6 +534,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56627f26f8d4ab044bff4930592a994e, type: 3}
+--- !u!1 &1334211130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9048970333054448578, guid: 56627f26f8d4ab044bff4930592a994e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1334211129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
