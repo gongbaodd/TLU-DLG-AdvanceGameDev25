@@ -4,7 +4,7 @@ public class FruitController : MonoBehaviour
 {
     private Rigidbody rb;
 
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 15f;
     [SerializeField] private float torque = 0.1f;
     void Start()
     {
