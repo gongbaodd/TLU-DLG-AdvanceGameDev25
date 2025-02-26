@@ -7,14 +7,13 @@ using UnityEngine.SceneManagement;
 public class StarterSceneController : MonoBehaviour
 {
     [SerializeField] string gardenSceneAddress = "Assets/Scenes/Garden/Garden.unity";
-    private AsyncOperationHandle<SceneInstance> loadHandle;
+    [SerializeField] string fruitNinjaSceneAddress = "Assets/Scenes/FruitNinja/FruitNinja.unity";
     public void LoadCardenScene()
     {
-        loadHandle = Addressables.LoadSceneAsync(gardenSceneAddress, LoadSceneMode.Additive);
+        Addressables.LoadSceneAsync(gardenSceneAddress, LoadSceneMode.Single);
     }
 
-    void OnDestroy()
-    {
-        Addressables.UnloadSceneAsync(loadHandle);
+    public void LoadFruitNinjaScene() {
+        Addressables.LoadSceneAsync(fruitNinjaSceneAddress, LoadSceneMode.Single);
     }
 }
