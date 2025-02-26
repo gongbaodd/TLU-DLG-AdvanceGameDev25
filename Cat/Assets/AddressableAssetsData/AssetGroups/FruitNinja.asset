@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: FruitNinja
   m_GUID: e7d14c521c7769c4da0f17f07c5d1ec8
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: e07d84aa68f1b014782fd29ed1b93218
+    m_Address: Assets/Scenes/FruitNinja/FruitNinja.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
   m_SchemaSet:

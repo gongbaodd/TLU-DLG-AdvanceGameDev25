@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestStarter/TestStarter.unity
-    guid: 9cc1bfbac30d4cc448f92f418bc8a1e1
+    path: Assets/Vendors/3DBeginnerComplete/Scenes/MainScene.unity
+    guid: 139fe7247bf905647981ad2d31d0f39e
   m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: cad1091de91a2c54b9a0bf0b0345f6b1, type: 2}
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.addressableassets: {fileID: 11400000, guid: cad1091de91a2c54b9a0bf0b0345f6b1,
+      type: 2}
   m_UseUCBPForAssetBundles: 0
