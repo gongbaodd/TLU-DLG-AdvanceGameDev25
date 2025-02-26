@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 144508, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
       propertyPath: m_Name
-      value: CatStanding Variant
+      value: Cat
       objectReference: {fileID: 0}
     - target: {fileID: 411112, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
       propertyPath: m_LocalScale.x
@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 411112, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 411112, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.098
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 411112, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 411112, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68,20 +68,27 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9594758, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 144508, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 144508, guid: ee17055767e994b4ea293e8cd28b0d3b,
+        type: 3}
       insertIndex: -1
       addedObject: {fileID: 5613796845052500121}
-    - targetCorrespondingSourceObject: {fileID: 144508, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 144508, guid: ee17055767e994b4ea293e8cd28b0d3b,
+        type: 3}
       insertIndex: -1
       addedObject: {fileID: 6034459398253602645}
   m_SourcePrefab: {fileID: 100100000, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
 --- !u!1 &9048970333054448578 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 144508, guid: ee17055767e994b4ea293e8cd28b0d3b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 144508, guid: ee17055767e994b4ea293e8cd28b0d3b,
+    type: 3}
   m_PrefabInstance: {fileID: 9048970333054306238}
   m_PrefabAsset: {fileID: 0}
 --- !u!54 &5613796845052500121
