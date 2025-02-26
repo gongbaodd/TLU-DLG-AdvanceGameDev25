@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class GameController : MonoBehaviour
 {
     [Header("Fruits")]
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour
     }
     
     [Header("Mouse")]
+    [SerializeField] GameObject CatPaw;
     [SerializeField] float mousePosZ = 10f;
     [SerializeField] float minPointDistance = 0.1f;
     private LineRenderer lineRenderer;
@@ -72,15 +74,33 @@ public class GameController : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
 
+    private void LockMouse() {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        CatPaw.SetActive(true);
+    }
+
+    private void UnlockMouse() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void UpdateCatPawPos() {
+        CatPaw.transform.position = GetMouseWorldPosition();
+    }
+
     /** LifeCycle **/
     void Start()
     {
-        lineRenderer = GetComponent<LineRenderer>();
         StartCoroutine(SpawnFruitRoutine());
+
+        lineRenderer = GetComponent<LineRenderer>();
+        LockMouse();
     }
 
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0)){
             StartDrawing();
         }
@@ -94,5 +114,12 @@ public class GameController : MonoBehaviour
         {
             StopDrawing();
         }
+
+        UpdateCatPawPos();
+    }
+
+    void OnDestroy()
+    {
+        UnlockMouse();
     }
 }
