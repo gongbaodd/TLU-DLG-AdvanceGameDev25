@@ -37,15 +37,45 @@ public class DiabloController : MonoBehaviour
         mainCamera.transform.LookAt(player.transform);
     }
 
+    [Header("Mouse")]
+    private Vector3 mousePos;
+    [SerializeField] private GameObject plane;
+    private void InitCursor()
+    {
+        if (plane == null)
+        {
+            Debug.LogError("Plane not found");
+        }
+    }
+
     /** LifeCycle **/
     void Start()
     {
         InitPlayer();
         InitCamera();
+        InitCursor();
     }
 
     void LateUpdate()
     {
         UpdateCamera();
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                // player.GetComponent<CatController>().Move(hit.point);
+
+                Vector3 rotation = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);                    
+
+                player.transform.position = hit.point + new Vector3(0, 1f, 0);
+            }
+        }
+        
     }
 }
