@@ -32,7 +32,8 @@ public class DiabloController : MonoBehaviour
 
         if (Vector3.Distance(player.transform.position, targetPos) > movementThreshold)
         {
-            player.transform.position = Vector3.MoveTowards(player.transform.position, targetPos, Time.deltaTime * speed);
+            var agent = player.GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.SetDestination(targetPos);
             player.GetComponent<CatController>().Walk();
         }
         else
