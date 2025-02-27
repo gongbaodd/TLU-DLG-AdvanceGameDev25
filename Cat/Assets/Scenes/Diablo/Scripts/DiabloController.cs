@@ -7,6 +7,7 @@ public class DiabloController : MonoBehaviour
     private Vector3 targetPos;
 
     [SerializeField] private float speed = 0.8f;
+    [SerializeField] private float movementThreshold = 0.01f;
 
     private void InitPlayer()
     {
@@ -28,9 +29,11 @@ public class DiabloController : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (player.transform.position != targetPos)
+
+        if (Vector3.Distance(player.transform.position, targetPos) > movementThreshold)
         {
-            player.transform.position = Vector3.MoveTowards(player.transform.position, targetPos, Time.deltaTime * speed);
+            var agent = player.GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.SetDestination(targetPos);
             player.GetComponent<CatController>().Walk();
         }
         else
@@ -42,7 +45,7 @@ public class DiabloController : MonoBehaviour
 
     [Header("Camera")]
     private GameObject mainCamera;
-    [SerializeField] private Vector3 cameraRelativePos = new Vector3(0, 3, -2);
+    [SerializeField] private Vector3 cameraRelativePos = new Vector3(0, 3, -1);
     private void InitCamera()
     {
         mainCamera = GameObject.Find("Main Camera");
