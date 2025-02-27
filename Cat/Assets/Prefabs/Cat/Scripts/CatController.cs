@@ -17,6 +17,12 @@ public class CatController : MonoBehaviour
     public void Stand()
     {
         animator.SetTrigger("stand");
+        animator.SetFloat("speed", 0.0f);
+    }
+
+    public void Walk()
+    {
+        animator.SetFloat("speed", 0.1f);
     }
 
     /** LifeCycle **/

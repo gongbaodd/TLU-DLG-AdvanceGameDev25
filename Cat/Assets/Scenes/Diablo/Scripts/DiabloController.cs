@@ -4,6 +4,9 @@ public class DiabloController : MonoBehaviour
 {
     [Header("Player")]
     private GameObject player;
+    private Vector3 targetPos;
+
+    [SerializeField] private float speed = 0.8f;
 
     private void InitPlayer()
     {
@@ -15,12 +18,31 @@ public class DiabloController : MonoBehaviour
         }
 
         player.GetComponent<CatController>().Stand();
+        targetPos = player.transform.position;
     }
+    private void RotatePlayer(Vector3 position)
+    {
+        targetPos = new Vector3(position.x, player.transform.position.y, position.z);
+        player.transform.LookAt(targetPos);
+    }
+
+    private void MovePlayer()
+    {
+        if (player.transform.position != targetPos)
+        {
+            player.transform.position = Vector3.MoveTowards(player.transform.position, targetPos, Time.deltaTime * speed);
+            player.GetComponent<CatController>().Walk();
+        }
+        else
+        {
+            player.GetComponent<CatController>().Stand();
+        }
+    }
+
 
     [Header("Camera")]
     private GameObject mainCamera;
     [SerializeField] private Vector3 cameraRelativePos = new Vector3(0, 3, -2);
-
     private void InitCamera()
     {
         mainCamera = GameObject.Find("Main Camera");
@@ -38,7 +60,6 @@ public class DiabloController : MonoBehaviour
     }
 
     [Header("Mouse")]
-    private Vector3 mousePos;
     [SerializeField] private GameObject plane;
     private void InitCursor()
     {
@@ -69,13 +90,10 @@ public class DiabloController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                // player.GetComponent<CatController>().Move(hit.point);
-
-                Vector3 rotation = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);                    
-
-                player.transform.position = hit.point + new Vector3(0, 1f, 0);
+                RotatePlayer(hit.point);
             }
         }
-        
+
+        MovePlayer();
     }
 }

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216406f43afab6e40b22d12bb03c829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.8
   cameraRelativePos: {x: 0, y: 3, z: -2}
   plane: {fileID: 19010154}
 --- !u!4 &417958232
