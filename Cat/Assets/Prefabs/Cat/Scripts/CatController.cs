@@ -20,10 +20,6 @@ public class CatController : MonoBehaviour
         animator.SetFloat("speed", 0.0f);
     }
 
-    public void InstantStand() {
-        animator.CrossFade("standing", 0f);
-    }
-
     public void Walk()
     {
         animator.SetFloat("speed", 0.1f);
