@@ -3,37 +3,35 @@ using UnityEngine;
 public class DiabloController : MonoBehaviour
 {
     [Header("Player")]
-    private GameObject player;
-    private Vector3 targetPos;
+    [SerializeField] private GameObject player;
+    private Vector3? targetPos;
 
     [SerializeField] private float speed = 0.8f;
     [SerializeField] private float movementThreshold = 0.01f;
 
     private void InitPlayer()
     {
-        player = GameObject.Find("Player");
-
         if (player == null)
         {
             Debug.LogError("Player not found");
         }
 
-        player.GetComponent<CatController>().Stand();
-        targetPos = player.transform.position;
+        player.GetComponent<Animator>().CrossFade("standing", 0f);
     }
     private void RotatePlayer(Vector3 position)
     {
         targetPos = new Vector3(position.x, player.transform.position.y, position.z);
-        player.transform.LookAt(targetPos);
+        player.transform.LookAt(targetPos ?? Vector3.zero);
     }
 
     private void MovePlayer()
     {
+        if (targetPos == null) return;
 
-        if (Vector3.Distance(player.transform.position, targetPos) > movementThreshold)
+        if (Vector3.Distance(player.transform.position, targetPos ?? Vector3.zero) > movementThreshold)
         {
             var agent = player.GetComponent<UnityEngine.AI.NavMeshAgent>();
-            agent.SetDestination(targetPos);
+            agent.SetDestination(targetPos ?? Vector3.zero);
             player.GetComponent<CatController>().Walk();
         }
         else
@@ -44,12 +42,10 @@ public class DiabloController : MonoBehaviour
 
 
     [Header("Camera")]
-    private GameObject mainCamera;
+    [SerializeField] private GameObject mainCamera;
     [SerializeField] private Vector3 cameraRelativePos = new Vector3(0, 3, -1);
     private void InitCamera()
     {
-        mainCamera = GameObject.Find("Main Camera");
-
         if (mainCamera == null)
         {
             Debug.LogError("Main Camera not found");
@@ -58,6 +54,20 @@ public class DiabloController : MonoBehaviour
 
     private void UpdateCamera()
     {
+
+        if (player == null )
+        {
+            Debug.LogError("WebGL: Player is NULL!");
+            return;
+        }
+
+        if (mainCamera == null)
+        {
+            Debug.LogError("WebGL: Camera is NULL!");
+            return;
+        }
+
+        Debug.Log("WebGL: Updating Camera...");
         mainCamera.transform.position = player.transform.position + cameraRelativePos;
         mainCamera.transform.LookAt(player.transform);
     }
@@ -79,12 +89,6 @@ public class DiabloController : MonoBehaviour
         InitCamera();
         InitCursor();
     }
-
-    void LateUpdate()
-    {
-        UpdateCamera();
-    }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -98,5 +102,10 @@ public class DiabloController : MonoBehaviour
         }
 
         MovePlayer();
+    }
+
+    void LateUpdate()
+    {
+        UpdateCamera();
     }
 }
