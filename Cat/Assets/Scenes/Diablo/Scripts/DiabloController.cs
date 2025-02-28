@@ -4,7 +4,7 @@ public class DiabloController : MonoBehaviour
 {
     [Header("Player")]
     private GameObject player;
-    private Vector3 targetPos;
+    private Vector3? targetPos;
 
     [SerializeField] private float speed = 0.8f;
     [SerializeField] private float movementThreshold = 0.01f;
@@ -18,22 +18,22 @@ public class DiabloController : MonoBehaviour
             Debug.LogError("Player not found");
         }
 
-        player.GetComponent<CatController>().Stand();
-        targetPos = player.transform.position;
+        player.GetComponent<CatController>().InstantStand();
     }
     private void RotatePlayer(Vector3 position)
     {
         targetPos = new Vector3(position.x, player.transform.position.y, position.z);
-        player.transform.LookAt(targetPos);
+        player.transform.LookAt(targetPos ?? Vector3.zero);
     }
 
     private void MovePlayer()
     {
+        if (targetPos == null) return;
 
-        if (Vector3.Distance(player.transform.position, targetPos) > movementThreshold)
+        if (Vector3.Distance(player.transform.position, targetPos ?? Vector3.zero) > movementThreshold)
         {
             var agent = player.GetComponent<UnityEngine.AI.NavMeshAgent>();
-            agent.SetDestination(targetPos);
+            agent.SetDestination(targetPos ?? Vector3.zero);
             player.GetComponent<CatController>().Walk();
         }
         else
@@ -79,12 +79,6 @@ public class DiabloController : MonoBehaviour
         InitCamera();
         InitCursor();
     }
-
-    void LateUpdate()
-    {
-        UpdateCamera();
-    }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -98,5 +92,8 @@ public class DiabloController : MonoBehaviour
         }
 
         MovePlayer();
+
+        UpdateCamera();
+
     }
 }
