@@ -701,6 +701,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1703314332}
   - component: {fileID: 1703314334}
+  - component: {fileID: 1703314336}
+  - component: {fileID: 1703314335}
   - component: {fileID: 1703314333}
   m_Layer: 0
   m_Name: GameManger
@@ -852,6 +854,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34afdeb284c46c459dabcfd036acba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CatPaw: {fileID: 719111144}
+  mousePosZ: 10
+  minPointDistance: 0.1
+--- !u!114 &1703314335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703314330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198a46b79d2d36542bc404ce875d0582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CatPaw: {fileID: 719111144}
+  mousePosZ: 10
+  minPointDistance: 0.1
+--- !u!114 &1703314336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703314330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73844c89d76a2d748bdfa8eb05581dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   fruits:
   - {fileID: 9202213669791461189, guid: 37819b9d328ca354c8b7df27f4e4a313, type: 3}
   - {fileID: 2408897254962647575, guid: c3090a9f2a99a3845982ef29c883fb78, type: 3}
@@ -868,9 +900,6 @@ MonoBehaviour:
   spawnWidth: 10
   spawnDelay: 1
   keepSpawning: 1
-  CatPaw: {fileID: 719111144}
-  mousePosZ: 10
-  minPointDistance: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

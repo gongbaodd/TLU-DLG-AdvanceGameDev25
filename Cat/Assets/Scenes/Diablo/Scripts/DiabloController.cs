@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DiabloScene
+namespace Assets.Scenes.Diablo.Scripts
 {
     [RequireComponent(
         typeof(PlayerController),

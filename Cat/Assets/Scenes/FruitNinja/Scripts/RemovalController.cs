@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class RemovalController : MonoBehaviour
+namespace Assets.Scenes.FruitNinja.Scripts
 {
-    private void OnTriggerEnter(Collider other)
+    public class RemovalController : MonoBehaviour
     {
-        Destroy(other.gameObject);
+        private void OnTriggerEnter(Collider other)
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
