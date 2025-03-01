@@ -1,111 +1,37 @@
 using UnityEngine;
 
-public class DiabloController : MonoBehaviour
+namespace DiabloScene
 {
-    [Header("Player")]
-    [SerializeField] private GameObject player;
-    private Vector3? targetPos;
-
-    [SerializeField] private float speed = 0.8f;
-    [SerializeField] private float movementThreshold = 0.01f;
-
-    private void InitPlayer()
+    [RequireComponent(
+        typeof(PlayerController),
+        typeof(CameraController),
+        typeof(CursorController)
+    )]
+    public class DiabloController : MonoBehaviour
     {
-        if (player == null)
+        void Update()
         {
-            Debug.LogError("Player not found");
-        }
-
-        player.GetComponent<Animator>().CrossFade("standing", 0f);
-    }
-    private void RotatePlayer(Vector3 position)
-    {
-        targetPos = new Vector3(position.x, player.transform.position.y, position.z);
-        player.transform.LookAt(targetPos ?? Vector3.zero);
-    }
-
-    private void MovePlayer()
-    {
-        if (targetPos == null) return;
-
-        if (Vector3.Distance(player.transform.position, targetPos ?? Vector3.zero) > movementThreshold)
-        {
-            var agent = player.GetComponent<UnityEngine.AI.NavMeshAgent>();
-            agent.SetDestination(targetPos ?? Vector3.zero);
-            player.GetComponent<CatController>().Walk();
-        }
-        else
-        {
-            player.GetComponent<CatController>().Stand();
-        }
-    }
-
-
-    [Header("Camera")]
-    [SerializeField] private GameObject mainCamera;
-    [SerializeField] private Vector3 cameraRelativePos = new Vector3(0, 3, -1);
-    private void InitCamera()
-    {
-        if (mainCamera == null)
-        {
-            Debug.LogError("Main Camera not found");
-        }
-    }
-
-    private void UpdateCamera()
-    {
-
-        if (player == null )
-        {
-            Debug.LogError("WebGL: Player is NULL!");
-            return;
-        }
-
-        if (mainCamera == null)
-        {
-            Debug.LogError("WebGL: Camera is NULL!");
-            return;
-        }
-
-        Debug.Log("WebGL: Updating Camera...");
-        mainCamera.transform.position = player.transform.position + cameraRelativePos;
-        mainCamera.transform.LookAt(player.transform);
-    }
-
-    [Header("Mouse")]
-    [SerializeField] private GameObject plane;
-    private void InitCursor()
-    {
-        if (plane == null)
-        {
-            Debug.LogError("Plane not found");
-        }
-    }
-
-    /** LifeCycle **/
-    void Start()
-    {
-        InitPlayer();
-        InitCamera();
-        InitCursor();
-    }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
+            var playerController = GetComponent<PlayerController>();
+            var cursorController = GetComponent<CursorController>();
+            if (Input.GetMouseButtonDown(0))
             {
-                RotatePlayer(hit.point);
+                var hitPoint = cursorController.HitTest();
+
+                if (hitPoint.HasValue)
+                {
+                    playerController.Rotate(hitPoint.Value);
+                }
             }
+
+            playerController.Move();
         }
 
-        MovePlayer();
+        void LateUpdate()
+        {
+            var cameraController = GetComponent<CameraController>();
+            var playerController = GetComponent<PlayerController>();
+            cameraController.UpdateCameraPos(playerController.player);
+        }
     }
 
-    void LateUpdate()
-    {
-        UpdateCamera();
-    }
 }
