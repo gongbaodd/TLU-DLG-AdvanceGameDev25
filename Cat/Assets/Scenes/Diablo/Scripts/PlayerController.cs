@@ -1,3 +1,4 @@
+using Assets.Prefabs.Cat.Scripts;
 using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
@@ -40,7 +41,7 @@ namespace Assets.Scenes.Diablo.Scripts
                 Debug.LogError("Player not found");
             }
 
-            _player.GetComponent<Animator>().CrossFade("standing", 0f);
+            _player.GetComponent<CatController>().ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
         }
     }
 

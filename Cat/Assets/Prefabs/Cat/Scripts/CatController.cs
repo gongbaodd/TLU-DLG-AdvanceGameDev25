@@ -1,33 +1,48 @@
 using UnityEngine;
 
-public class CatController : MonoBehaviour
+namespace Assets.Prefabs.Cat.Scripts
 {
-    private Animator animator;
-
-    private void InitCat()
+    public class CatController : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
+        public enum AnimationLayer {
+            BASE = 0,
+            FIGHT = 1
+        }
+        private Animator animator;
 
-        if (animator == null)
+        public void ChooseAnimationLayer(AnimationLayer layer)
         {
-            Debug.LogError("Cat Animator not found");
+            animator.SetLayerWeight((int)AnimationLayer.BASE, 0);
+            animator.SetLayerWeight((int)AnimationLayer.FIGHT, 0);
+            animator.SetLayerWeight((int)layer, 1);
+        }
+
+        private void InitCat()
+        {
+            animator = GetComponent<Animator>();
+
+            if (animator == null)
+            {
+                Debug.LogError("Cat Animator not found");
+            }
+        }
+
+        public void Stand()
+        {
+            animator.SetTrigger("stand");
+            animator.SetFloat("speed", 0.0f);
+        }
+
+        public void Walk()
+        {
+            animator.SetFloat("speed", 0.1f);
+        }
+
+        /** LifeCycle **/
+        void Start()
+        {
+            InitCat();
         }
     }
-
-    public void Stand()
-    {
-        animator.SetTrigger("stand");
-        animator.SetFloat("speed", 0.0f);
-    }
-
-    public void Walk()
-    {
-        animator.SetFloat("speed", 0.1f);
-    }
-
-    /** LifeCycle **/
-    void Start()
-    {
-        InitCat();
-    }
 }
+
