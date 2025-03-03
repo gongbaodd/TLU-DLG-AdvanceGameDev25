@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Garden
   m_GUID: 2dd6284328caa1344becb17f817457ed
   m_SerializeEntries:
+  - m_GUID: 4d909b5421c9cd34bb21ef3f64b7c956
+    m_Address: Assets/Scenes/Garden/Garden-design.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99483ed8f244aab40a5cb2fcdf81a984
     m_Address: Assets/Scenes/Garden/Garden.unity
     m_ReadOnly: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target; // Reference to the cat
-    public Vector3 offset = new Vector3(0f, 5f, -5f); // Adjust for better view
+    public Vector3 offset = new Vector3(0f, 5f, -10f); // Adjust for better view
     public float smoothSpeed = 2f; // Controls how smoothly the camera follows
 
     void LateUpdate()
