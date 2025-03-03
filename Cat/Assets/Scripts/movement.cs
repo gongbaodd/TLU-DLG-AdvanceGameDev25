@@ -6,20 +6,22 @@ using System.Collections.Generic;
 public class movement : MonoBehaviour
 {
     public Camera mainCamera;
-    public Animator catAnim;
+    //public Animator catAnim;
 
-    public LayerMask interactMask;
-    public GameObject cat;
+    public LayerMask groundMask;
+    //public GameObject cat;
     public float movementSpeed = 2f;
     //public float stoppingDistance = 0.1f;
 
     //private NavMeshAgent catAgent;
     private Vector3 targetPosition;
     private bool isMoving = false;
+    private Rigidbody rb;
 
     void Start()
     {
         //catAgent = cat.GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -38,12 +40,15 @@ public class movement : MonoBehaviour
         if (isMoving)
         {
 
-            cat.transform.position = Vector3.Lerp(cat.transform.position, targetPosition, movementSpeed * Time.deltaTime);
+            Vector3 moveDirection = (targetPosition - transform.position).normalized;
+            rb.MovePosition(transform.position + moveDirection * movementSpeed * Time.fixedDeltaTime);
 
-            if (Vector3.Distance(cat.transform.position, targetPosition) < 0.1f)
+            //cat.transform.position = Vector3.Lerp(cat.transform.position, targetPosition, movementSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isMoving = false;
-                catAnim.SetBool("isMoving", false);
+                //catAnim.SetBool("isMoving", false);
             }
         }
     }
@@ -61,7 +66,7 @@ public class movement : MonoBehaviour
 
         // Physics.Raycast returns a bool (true/false) whether it hit a collider or not
         // Interaction mask allows us to filter what objects the ray should register
-        if (Physics.Raycast(clickRay, out hit, 100f, interactMask))
+        if (Physics.Raycast(clickRay, out hit, 100f, groundMask))
         {
             print("Something clicked");
 
@@ -69,7 +74,7 @@ public class movement : MonoBehaviour
             //catAgent.SetDestination(hit.point);
             targetPosition = hit.point;
             isMoving = true;
-            catAnim.SetBool("isMoving", true);
+            //catAnim.SetBool("isMoving", true);
 
         }
         else
