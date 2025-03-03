@@ -36,12 +36,8 @@ namespace Assets.Scenes.Diablo.Scripts
         }
         void Start()
         {
-            if (_player == null)
-            {
-                Debug.LogError("Player not found");
-            }
-
-            _player.GetComponent<CatController>().ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
+            var catController = _player.GetComponent<CatController>();
+            catController.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
         }
     }
 
