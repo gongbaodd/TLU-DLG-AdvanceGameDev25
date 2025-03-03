@@ -17,16 +17,6 @@ namespace Assets.Prefabs.Cat.Scripts
             animator.SetLayerWeight((int)layer, 1);
         }
 
-        private void InitCat()
-        {
-            animator = GetComponent<Animator>();
-
-            if (animator == null)
-            {
-                Debug.LogError("Cat Animator not found");
-            }
-        }
-
         public void Stand()
         {
             animator.SetTrigger("stand");
@@ -39,9 +29,14 @@ namespace Assets.Prefabs.Cat.Scripts
         }
 
         /** LifeCycle **/
-        void Start()
+        void Awake()
         {
-            InitCat();
+            animator = GetComponent<Animator>();
+
+            if (animator == null)
+            {
+                Debug.LogError("Cat Animator not found");
+            }
         }
     }
 }
