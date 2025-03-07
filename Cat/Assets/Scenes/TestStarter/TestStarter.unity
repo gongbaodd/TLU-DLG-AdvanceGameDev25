@@ -380,7 +380,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1720765102}
         m_TargetAssemblyTypeName: StarterSceneController, Assembly-CSharp
-        m_MethodName: LoadDiabloScene
+        m_MethodName: LoadInventoryScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1418,6 +1418,7 @@ MonoBehaviour:
   gardenSceneAddress: Assets/Scenes/Garden/Garden-design.unity
   fruitNinjaSceneAddress: Assets/Scenes/FruitNinja/FruitNinja.unity
   diabloSceneAddress: Assets/Scenes/Diablo/Diablo.unity
+  inventorySceneAddress: Assets/Scenes/Inventory/Inventory.unity
 --- !u!4 &1720765103
 Transform:
   m_ObjectHideFlags: 0
