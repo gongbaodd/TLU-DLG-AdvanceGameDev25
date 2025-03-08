@@ -10,7 +10,6 @@ namespace Assets.Scenes.Diablo.Scripts
         public GameObject player => _player;
         private Vector3? targetPos;
 
-        [SerializeField] private float speed = 0.8f;
         [SerializeField] private float movementThreshold = 0.01f;
 
         public void Rotate(Vector3 position)
