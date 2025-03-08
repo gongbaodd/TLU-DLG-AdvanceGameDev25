@@ -1,8 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scenes.Inventory.Scripts
 {
+    [RequireComponent(typeof(UIViewModel))]
     public class ManagerController : MonoBehaviour
     {
         #region Singleton
@@ -17,18 +17,7 @@ namespace Assets.Scenes.Inventory.Scripts
             }
         }
         #endregion
-
-        public MemoryPieces memoryPieces;
-
-        public void GotFruitNinjaMemory()
-        {
-            memoryPieces.hasFruitNinjaMemory = true;
-        }
-
-        public void GotDiabloMemory()
-        {
-            memoryPieces.hasDiabloMemory = true;
-        }
+        
     }
 
 }
