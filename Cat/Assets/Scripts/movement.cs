@@ -13,14 +13,14 @@ public class movement : MonoBehaviour
     public float movementSpeed = 2f;
     //public float stoppingDistance = 0.1f;
 
-    //private NavMeshAgent catAgent;
+    private NavMeshAgent catAgent;
     private Vector3 targetPosition;
     private bool isMoving = false;
     private Rigidbody rb;
 
     void Start()
     {
-        //catAgent = cat.GetComponent<NavMeshAgent>();
+        catAgent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -28,7 +28,8 @@ public class movement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            OnMouseClicked();
+            MoveToClickPoint();
+            //OnMouseClicked();
         }
 
         // Check if the cat has reached its destination
@@ -37,20 +38,20 @@ public class movement : MonoBehaviour
         //     catAnim.SetBool("isMoving", false);
         // }
 
-        if (isMoving)
-        {
+        // if (isMoving)
+        // {
 
-            Vector3 moveDirection = (targetPosition - transform.position).normalized;
-            rb.MovePosition(transform.position + moveDirection * movementSpeed * Time.fixedDeltaTime);
+        //     Vector3 moveDirection = (targetPosition - transform.position).normalized;
+        //     rb.MovePosition(transform.position + moveDirection * movementSpeed * Time.fixedDeltaTime);
 
-            //cat.transform.position = Vector3.Lerp(cat.transform.position, targetPosition, movementSpeed * Time.deltaTime);
+        //     //cat.transform.position = Vector3.Lerp(cat.transform.position, targetPosition, movementSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
-            {
-                isMoving = false;
-                //catAnim.SetBool("isMoving", false);
-            }
-        }
+        //     if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        //     {
+        //         isMoving = false;
+        //         //catAnim.SetBool("isMoving", false);
+        //     }
+        // }
     }
 
     void OnMouseClicked()
@@ -83,10 +84,20 @@ public class movement : MonoBehaviour
         }
 
 
-        // Project the click screen position to in-game world position
-        Vector3 clickOrigin = mainCamera.ScreenToWorldPoint(new Vector3(clickPosition.x, clickPosition.y, 0f));
 
-        // Draw editor debugger to see ray in action
-        Debug.DrawRay(clickOrigin, clickRay.direction * 100f, Color.yellow, 0.5f);
+
     }
+
+    void MoveToClickPoint()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        // Only move if we click on the ground
+        if (Physics.Raycast(ray, out hit, 100f, groundMask))
+        {
+            catAgent.SetDestination(hit.point); // Move to clicked position
+        }
+    }
+
 }
