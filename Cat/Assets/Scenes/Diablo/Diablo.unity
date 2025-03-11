@@ -257,6 +257,11 @@ PrefabInstance:
       propertyPath: prefabs.Array.data[11].m_AssetGUID
       value: 14c93ea6869f7aa44b2c780f496f56e1
       objectReference: {fileID: 0}
+    - target: {fileID: 195238762355966547, guid: deb64bf332ff4b74ebd5385da9ef4726,
+        type: 3}
+      propertyPath: prefabs.Array.data[12].m_AssetGUID
+      value: 14c93ea6869f7aa44b2c780f496f56e1
+      objectReference: {fileID: 0}
     - target: {fileID: 9012967999676556610, guid: deb64bf332ff4b74ebd5385da9ef4726,
         type: 3}
       propertyPath: m_Name
