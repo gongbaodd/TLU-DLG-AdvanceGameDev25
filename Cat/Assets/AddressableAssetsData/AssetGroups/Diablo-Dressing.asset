@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Diablo-Dressing
+  m_EditorClassIdentifier: 
+  m_GroupName: Diablo-Dressing
+  m_GUID: 1cf6afb9c910e8f40a6ee4fe7878409f
+  m_SerializeEntries:
+  - m_GUID: 14c93ea6869f7aa44b2c780f496f56e1
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Wardrobe Single.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 290933ffc5cb7c344a05821648434544, type: 2}
+    - {fileID: 11400000, guid: 4c130640fef32674fb59bdb7a7d3f88a, type: 2}

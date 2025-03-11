@@ -1,43 +1,56 @@
 using Assets.Prefabs.Cat.Scripts;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private GameObject _player;
+        [SerializeField] AssetReference playerAsset;
+        [SerializeField] GameObject startPosition;
 
-        public GameObject player => _player;
+        public GameObject PlayerPos => player == null ? startPosition : player;
+
+        private GameObject player;
         private Vector3? targetPos;
 
         [SerializeField] private float movementThreshold = 0.01f;
 
         public void Rotate(Vector3 position)
         {
-            targetPos = new Vector3(position.x, _player.transform.position.y, position.z);
-            _player.transform.LookAt(targetPos ?? Vector3.zero);
+            if (player == null) return;
+
+            targetPos = new Vector3(position.x, player.transform.position.y, position.z);
+            player.transform.LookAt(targetPos ?? Vector3.zero);
         }
 
         public void Move()
         {
             if (targetPos == null) return;
+            if (player == null) return;
 
-            if (Vector3.Distance(_player.transform.position, targetPos ?? Vector3.zero) > movementThreshold)
+            if (Vector3.Distance(player.transform.position, targetPos ?? Vector3.zero) > movementThreshold)
             {
-                var agent = _player.GetComponent<UnityEngine.AI.NavMeshAgent>();
+                var agent = player.GetComponent<UnityEngine.AI.NavMeshAgent>();
                 agent.SetDestination(targetPos ?? Vector3.zero);
-                _player.GetComponent<CatController>().Walk();
+                player.GetComponent<CatController>().Walk();
             }
             else
             {
-                _player.GetComponent<CatController>().Stand();
+                player.GetComponent<CatController>().Stand();
             }
         }
-        void Start()
+
+        void Awake()
         {
-            var catController = _player.GetComponent<CatController>();
-            catController.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
+            playerAsset.InstantiateAsync(startPosition.transform.position, Quaternion.identity).Completed += handle =>
+            {
+                player = handle.Result;
+                var catController = player.GetComponent<CatController>();
+                catController.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
+            };
         }
+
     }
 
 }
