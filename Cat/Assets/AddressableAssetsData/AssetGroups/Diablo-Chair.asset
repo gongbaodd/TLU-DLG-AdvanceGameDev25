@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Diablo-Chair
+  m_EditorClassIdentifier: 
+  m_GroupName: Diablo-Chair
+  m_GUID: ea7a9902d85401b46b7b43c0d7187213
+  m_SerializeEntries:
+  - m_GUID: 808cd1e68c330c04db3bdbc368b03d04
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Chair.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5136a717ff13eb4468f6d07e40615ec5, type: 2}
+    - {fileID: 11400000, guid: 9ba47ce2431d4b142be5632c10427f8d, type: 2}
