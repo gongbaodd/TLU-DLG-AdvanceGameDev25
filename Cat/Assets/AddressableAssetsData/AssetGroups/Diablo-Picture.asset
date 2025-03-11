@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Diablo-Pictures
+  m_Name: Diablo-Picture
   m_EditorClassIdentifier: 
-  m_GroupName: Diablo-Pictures
-  m_GUID: 36a05c7616ee639408f466b840fa8f5f
-  m_SerializeEntries: []
+  m_GroupName: Diablo-Picture
+  m_GUID: 99d9ec84d284f424aa15ec788d12c166
+  m_SerializeEntries:
+  - m_GUID: 063aa35abbce67847b0aa89e4be1e7b7
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Pictures.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 76badd3779629df46873487b7aec5946, type: 2}
-    - {fileID: 11400000, guid: 39f48807957d91740bd8f7a1dabbfc26, type: 2}
+    - {fileID: 11400000, guid: 3bf94d88dbf692e438db7abae5efddee, type: 2}
+    - {fileID: 11400000, guid: d822abd5387038347a7a2a4951792df5, type: 2}

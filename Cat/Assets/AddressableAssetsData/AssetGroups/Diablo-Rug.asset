@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Diablo-Pictures
+  m_Name: Diablo-Rug
   m_EditorClassIdentifier: 
-  m_GroupName: Diablo-Pictures
-  m_GUID: 36a05c7616ee639408f466b840fa8f5f
-  m_SerializeEntries: []
+  m_GroupName: Diablo-Rug
+  m_GUID: b5de4789e61085b4b957b6b35ed8acf2
+  m_SerializeEntries:
+  - m_GUID: 4ce4c969865f99a44aca2895f4a834de
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Rugs.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 76badd3779629df46873487b7aec5946, type: 2}
-    - {fileID: 11400000, guid: 39f48807957d91740bd8f7a1dabbfc26, type: 2}
+    - {fileID: 11400000, guid: 013526df0a34e1245a22ca2407799429, type: 2}
+    - {fileID: 11400000, guid: 866c34065a3109d43928ddd3f04a9be8, type: 2}

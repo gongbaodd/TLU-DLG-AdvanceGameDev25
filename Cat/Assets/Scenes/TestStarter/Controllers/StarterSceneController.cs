@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class StarterSceneController : MonoBehaviour
 {
-    [SerializeField] AssetReferenceT<SceneAsset> gardenScene;    
-    [SerializeField] AssetReferenceT<SceneAsset> fruitNinjaScene;
-    [SerializeField] AssetReferenceT<SceneAsset> diabloScene;
-    [SerializeField] AssetReferenceT<SceneAsset> inventoryScene;
+    [SerializeField] AssetReference gardenScene;    
+    [SerializeField] AssetReference fruitNinjaScene;
+    [SerializeField] AssetReference diabloScene;
+    [SerializeField] AssetReference inventoryScene;
     public void LoadGardenScene()
     {
         gardenScene.LoadSceneAsync(LoadSceneMode.Single);
