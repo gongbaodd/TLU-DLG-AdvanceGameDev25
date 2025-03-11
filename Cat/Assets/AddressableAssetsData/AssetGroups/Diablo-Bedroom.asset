@@ -18,22 +18,26 @@ MonoBehaviour:
   - m_GUID: 45e522110de7da941a5c7651f8441ee2
     m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom04.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Diablo
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50e69b74a6fdc2548a26ae64273fb08b
     m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom01.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Diablo
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 641aec1586bee494ba2d7648c302cb72
     m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom02.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Diablo
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bb3906f32244b374cb7d88b149c9c430
     m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom03.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Diablo
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}

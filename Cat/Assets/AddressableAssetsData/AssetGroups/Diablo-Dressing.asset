@@ -18,7 +18,8 @@ MonoBehaviour:
   - m_GUID: 14c93ea6869f7aa44b2c780f496f56e1
     m_Address: Assets/Scenes/Diablo/Prefabs/Level/Wardrobe Single.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Diablo
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}

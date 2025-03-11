@@ -18,7 +18,8 @@ MonoBehaviour:
   - m_GUID: 8b9cf57e71bb3a74b8e73586b543beb1
     m_Address: Assets/Scenes/Diablo/Prefabs/Level/Lights.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Diablo
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}

@@ -1725,6 +1725,12 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  PreloadAssetLabels:
+  - m_LabelString: default
+  - m_LabelString: Garden
+  - m_LabelString: FruitNinja
+  - m_LabelString: Diablo
+  - m_LabelString: Inventory
 --- !u!4 &1720765103
 Transform:
   m_ObjectHideFlags: 0

@@ -18,7 +18,8 @@ MonoBehaviour:
   - m_GUID: ec4606f41c39a654398cafefd95e7080
     m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bathroom.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Diablo
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
