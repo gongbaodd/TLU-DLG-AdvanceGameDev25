@@ -30,7 +30,7 @@ namespace Assets.Scenes.Diablo.Scripts
         {
             var cameraController = GetComponent<CameraController>();
             var playerController = GetComponent<PlayerController>();
-            cameraController.UpdateCameraPos(playerController.player);
+            cameraController.UpdateCameraPos(playerController.PlayerPos);
         }
     }
 
