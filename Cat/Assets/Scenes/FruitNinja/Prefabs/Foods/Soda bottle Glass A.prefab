@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   torque: 0.1
+  destroyDelay: 2
+  destroyForce: 50
 --- !u!33 &8103784028596693233
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -119,7 +121,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
