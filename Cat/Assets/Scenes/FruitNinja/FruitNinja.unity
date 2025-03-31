@@ -119,74 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &92217679
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.03199005
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.6273985
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050284234265892826, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202213669791461189, guid: 37819b9d328ca354c8b7df27f4e4a313,
-        type: 3}
-      propertyPath: m_Name
-      value: Bundt Cake
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 37819b9d328ca354c8b7df27f4e4a313, type: 3}
 --- !u!1 &315340059
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,8 +688,17 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
+        time: 0.48752844
+        value: 0
+        inSlope: 0.27580026
+        outSlope: 0.27580026
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
-        value: 0.12245178
+        value: 0.17749766
         inSlope: -0.038080037
         outSlope: -0.038080037
         tangentMode: 0
@@ -1015,4 +956,3 @@ SceneRoots:
   - {fileID: 315340063}
   - {fileID: 213316806591396420}
   - {fileID: 2032606762}
-  - {fileID: 92217679}
