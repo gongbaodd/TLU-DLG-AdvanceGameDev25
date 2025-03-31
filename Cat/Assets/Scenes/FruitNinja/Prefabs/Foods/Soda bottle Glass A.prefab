@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3595504891777233312}
   - component: {fileID: 947158754832132883}
   - component: {fileID: 3128995560135192396}
+  - component: {fileID: 2181744257989003762}
   m_Layer: 0
   m_Name: Soda bottle Glass A
   m_TagString: Untagged
@@ -119,14 +120,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.114272684
-  m_Height: 0.7825538
+  m_Radius: 0.26500928
+  m_Height: 1.102611
   m_Direction: 1
-  m_Center: {x: -0.0000034458935, y: 0.39127702, z: 0.00000040978193}
+  m_Center: {x: -0.024782062, y: 0.35927135, z: 0.0000004172325}
 --- !u!54 &3128995560135192396
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,3 +155,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &2181744257989003762
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7447396999577317829}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.114272684
+  m_Height: 0.7825538
+  m_Direction: 1
+  m_Center: {x: -0.0000034458935, y: 0.39127702, z: 0.00000040978193}

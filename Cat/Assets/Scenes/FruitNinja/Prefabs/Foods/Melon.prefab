@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2093857969047217901}
   - component: {fileID: 7231667479299483584}
   - component: {fileID: 461357185287728973}
+  - component: {fileID: 8650616898388068326}
   m_Layer: 0
   m_Name: Melon
   m_TagString: Untagged
@@ -131,6 +132,29 @@ Rigidbody:
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &461357185287728973
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4428620387052604318}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.57150763
+  m_Height: 1.7818515
+  m_Direction: 2
+  m_Center: {x: -0.19103086, y: 0.37588668, z: -0.010723352}
+--- !u!136 &8650616898388068326
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

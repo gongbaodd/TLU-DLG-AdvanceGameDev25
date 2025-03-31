@@ -20,5 +20,13 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             return new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
         }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

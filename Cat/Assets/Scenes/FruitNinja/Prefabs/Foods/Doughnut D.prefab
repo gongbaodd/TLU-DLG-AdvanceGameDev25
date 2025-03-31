@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5200732621178371409}
   - component: {fileID: 5150590556100271011}
   - component: {fileID: 4506741455454636257}
+  - component: {fileID: 5614369103084732211}
   m_Layer: 0
   m_Name: Doughnut D
   m_TagString: Untagged
@@ -131,6 +132,27 @@ Rigidbody:
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &4506741455454636257
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863868127380036775}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.2749908
+  m_Center: {x: -0.0006399354, y: 0.051770587, z: -0.0040148096}
+--- !u!135 &5614369103084732211
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
