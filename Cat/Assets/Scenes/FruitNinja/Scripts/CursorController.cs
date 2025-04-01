@@ -15,6 +15,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
         private List<Vector3> points = new();
         private bool isDrawing = false;
 
+        public bool IsDrawing => isDrawing;
+
         private void StartDrawing()
         {
             lineRenderer.enabled = true;
