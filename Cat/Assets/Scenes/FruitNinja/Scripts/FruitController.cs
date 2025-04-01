@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scenes.FruitNinja.Scripts
@@ -7,12 +8,25 @@ namespace Assets.Scenes.FruitNinja.Scripts
     {
         private Rigidbody rb;
 
+        private GameObject gameManager;
+
         [SerializeField] private float speed = 15f;
         [SerializeField] private float torque = 0.1f;
+
+        public event System.Action<Vector2> OnFruitDestroyed;
         void Start()
         {
+            gameManager = GameObject.FindWithTag("GameController");
+
+            if (gameManager == null)
+            {
+                throw new System.Exception("GameManager not found in the scene. Please add a GameManager object with the 'GameController' tag.");
+            }
+
+            var spawnContoller = gameManager.GetComponent<SpawnFruitController>();
+
             rb = GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * speed, ForceMode.Impulse);
+            rb.AddForce(spawnContoller.CalculateForceDirection(transform.position) * speed, ForceMode.Impulse);
             rb.AddTorque(RandomTorque() * torque, ForceMode.Impulse);
         }
 
@@ -25,8 +39,17 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             if (other.CompareTag("Player"))
             {
-                Destroy(gameObject);
+                var cursorController = gameManager.GetComponent<CursorController>();
+
+                if (cursorController.IsDrawing)
+                {
+                    Vector2 fruitPos = transform.position;
+                    OnFruitDestroyed?.Invoke(fruitPos);
+
+                    Destroy(gameObject);
+                }
             }
         }
+
     }
 }

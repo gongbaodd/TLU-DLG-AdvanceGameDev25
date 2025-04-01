@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   torque: 0.1
+  destroyDelay: 2
+  destroyForce: 50
 --- !u!33 &5323237039613802138
 MeshFilter:
   m_ObjectHideFlags: 0
