@@ -271,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 920142410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.87, z: 0}
+  m_LocalPosition: {x: 0, y: 4.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,6 +832,8 @@ MonoBehaviour:
   - {fileID: 6146967297397465718, guid: 6917ec6f88f3ee04892b5af54af7cd97, type: 3}
   - {fileID: 7447396999577317829, guid: ecf629e73c15808408948496fc48676c, type: 3}
   target: {fileID: 920142410}
+  poofPrefab: {fileID: 1059396251222821467, guid: 6f40d476b685ff04cab7f26744984544,
+    type: 3}
   spawnHeight: -5
   spawnWidth: 10
   spawnDelay: 1

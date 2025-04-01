@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scenes.FruitNinja.Scripts
@@ -11,6 +12,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         [SerializeField] private float speed = 15f;
         [SerializeField] private float torque = 0.1f;
+
+        public event System.Action<Vector2> OnFruitDestroyed;
         void Start()
         {
             gameManager = GameObject.FindWithTag("GameController");
@@ -37,11 +40,16 @@ namespace Assets.Scenes.FruitNinja.Scripts
             if (other.CompareTag("Player"))
             {
                 var cursorController = gameManager.GetComponent<CursorController>();
+
                 if (cursorController.IsDrawing)
                 {
+                    Vector2 fruitPos = transform.position;
+                    OnFruitDestroyed?.Invoke(fruitPos);
+
                     Destroy(gameObject);
                 }
             }
         }
+
     }
 }
