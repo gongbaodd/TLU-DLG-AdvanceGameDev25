@@ -20,8 +20,10 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 throw new System.Exception("GameManager not found in the scene. Please add a GameManager object with the 'GameController' tag.");
             }
 
+            var spawnContoller = gameManager.GetComponent<SpawnFruitController>();
+
             rb = GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * speed, ForceMode.Impulse);
+            rb.AddForce(spawnContoller.CalculateForceDirection(transform.position) * speed, ForceMode.Impulse);
             rb.AddTorque(RandomTorque() * torque, ForceMode.Impulse);
         }
 

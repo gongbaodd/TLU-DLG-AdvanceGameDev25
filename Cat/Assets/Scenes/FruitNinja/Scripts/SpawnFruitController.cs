@@ -7,12 +7,20 @@ namespace Assets.Scenes.FruitNinja.Scripts
     public class SpawnFruitController : MonoBehaviour
     {
         [SerializeField] private List<GameObject> fruits;
+
+        [SerializeField] private GameObject target;
         [SerializeField] private float spawnHeight = -5f;
         [SerializeField] private float spawnWidth = 10f;
 
         [SerializeField] private float spawnDelay = 1f;
 
         [SerializeField] private bool keepSpawning = true;
+
+        public Vector2 CalculateForceDirection(Vector2 fruitPos) {
+            Vector2 targetPos = target.transform.position;
+            Vector2 direction = (targetPos - fruitPos).normalized;
+            return direction;
+        }
 
         private IEnumerator SpawnFruitRoutine()
         {
