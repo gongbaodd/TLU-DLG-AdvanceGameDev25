@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9039135661541206626}
   - component: {fileID: 4662638761432831463}
   - component: {fileID: 7386146564535615790}
+  - component: {fileID: 4588530112441592484}
   m_Layer: 0
   m_Name: Coffee Cup C
   m_TagString: Untagged
@@ -124,10 +125,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.17037392
-  m_Height: 0.48998272
+  m_Radius: 0.23195474
+  m_Height: 0.7030532
   m_Direction: 1
-  m_Center: {x: 0.000049829483, y: 0.24499115, z: -0.00010155141}
+  m_Center: {x: -0.0061082444, y: 0.24807057, z: -0.00010154645}
 --- !u!54 &7386146564535615790
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,3 +156,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &4588530112441592484
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408897254962647575}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17037392
+  m_Height: 0.48998272
+  m_Direction: 1
+  m_Center: {x: 0.000049829483, y: 0.24499115, z: -0.00010155141}

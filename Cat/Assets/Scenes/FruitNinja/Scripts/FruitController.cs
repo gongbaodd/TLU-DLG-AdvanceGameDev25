@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scenes.FruitNinja.Scripts
@@ -7,24 +8,26 @@ namespace Assets.Scenes.FruitNinja.Scripts
     {
         private Rigidbody rb;
 
-        private GameObject explosionFX;
+        private GameObject gameManager;
+
         [SerializeField] private float speed = 15f;
         [SerializeField] private float torque = 0.1f;
-        [SerializeField] private float destroyDelay = 2f;
-        [SerializeField] private float destroyForce = 50f;
 
+        public event System.Action<Vector2> OnFruitDestroyed;
         void Start()
         {
-            rb = GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * speed, ForceMode.Impulse);
-            rb.AddTorque(RandomTorque() * torque, ForceMode.Impulse);
+            gameManager = GameObject.FindWithTag("GameController");
 
-            explosionFX = GameObject.FindGameObjectWithTag("ExplosionFX");
-
-            if (explosionFX == null)
+            if (gameManager == null)
             {
-                Debug.LogError("ExplosionFX not found!");
+                throw new System.Exception("GameManager not found in the scene. Please add a GameManager object with the 'GameController' tag.");
             }
+
+            var spawnContoller = gameManager.GetComponent<SpawnFruitController>();
+
+            rb = GetComponent<Rigidbody>();
+            rb.AddForce(spawnContoller.CalculateForceDirection(transform.position) * speed, ForceMode.Impulse);
+            rb.AddTorque(RandomTorque() * torque, ForceMode.Impulse);
         }
 
         private Vector3 RandomTorque()
@@ -32,21 +35,21 @@ namespace Assets.Scenes.FruitNinja.Scripts
             return new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
         }
 
-        private void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("CatPaw"))
+            if (other.CompareTag("Player"))
             {
+                var cursorController = gameManager.GetComponent<CursorController>();
 
-                Vector3 forceDirection = (transform.position - other.transform.position).normalized;
-                rb.AddForce(forceDirection * destroyForce, ForceMode.Impulse);
+                if (cursorController.IsDrawing)
+                {
+                    Vector2 fruitPos = transform.position;
+                    OnFruitDestroyed?.Invoke(fruitPos);
 
-                explosionFX.GetComponent<ParticleSystem>().Play();
-
-                rb.isKinematic = true;
-                rb.useGravity = false;
-                rb.detectCollisions = false;
-                Destroy(gameObject, destroyDelay);
+                    Destroy(gameObject);
+                }
             }
         }
+
     }
 }

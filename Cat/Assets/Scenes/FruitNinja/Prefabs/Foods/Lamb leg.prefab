@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7714509754724768328}
   - component: {fileID: -3227975311907393665}
   - component: {fileID: 3474252926211830105}
+  - component: {fileID: 2633274847780232249}
   m_Layer: 0
   m_Name: Lamb leg
   m_TagString: Untagged
@@ -148,6 +149,29 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.47477672
+  m_Height: 1.2709637
+  m_Direction: 2
+  m_Center: {x: 0.008857846, y: 0.24119571, z: 0.026118219}
+--- !u!136 &2633274847780232249
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346995494261882188}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
