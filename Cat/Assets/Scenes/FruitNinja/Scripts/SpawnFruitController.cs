@@ -6,16 +6,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
 {
     public class SpawnFruitController : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> fruits;
-
         [SerializeField] private GameObject target;
-        [SerializeField] private GameObject poofPrefab;
-        [SerializeField] private float spawnHeight = -5f;
-        [SerializeField] private float spawnWidth = 10f;
 
-        [SerializeField] private float spawnDelay = 1f;
+        [SerializeField] private GameConfig config;
 
-        [SerializeField] private bool keepSpawning = true;
+        private bool keepSpawning = true;
 
         public Vector2 CalculateForceDirection(Vector2 fruitPos) {
             Vector2 targetPos = target.transform.position;
@@ -27,13 +22,17 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             while (keepSpawning)
             {
-                yield return new WaitForSeconds(spawnDelay);
+                yield return new WaitForSeconds(config.spawnDelay);
                 SpawnFruit();
             }
         }
 
         private void SpawnFruit()
         {
+            var fruits = config.fruits;
+            var spawnWidth = config.spawnWidth;
+            var spawnHeight = config.spawnHeight;
+
             int index = Random.Range(0, fruits.Count);
             float width = spawnWidth - 1;
             var fruit = Instantiate(fruits[index], new Vector3(Random.Range(-width, width), spawnHeight, 0), Quaternion.identity);
@@ -43,6 +42,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         private void Poof(Vector2 fruitPos)
         {
+            var poofPrefab = config.poofPrefab;
             var poof = Instantiate(poofPrefab, new Vector3(fruitPos.x, fruitPos.y, 0), Quaternion.identity);
 
             poof.GetComponent<ParticleSystem>().Play();
