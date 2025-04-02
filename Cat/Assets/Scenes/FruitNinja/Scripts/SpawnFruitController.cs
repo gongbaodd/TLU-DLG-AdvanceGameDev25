@@ -41,7 +41,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
             bool isSpawnBomb = Random.Range(0, bombWeight + fruitWeight) < bombWeight ? true : false;
 
-            if (isSpawnBomb && bombs.Count > 0)
+            if (isSpawnBomb)
             {
                 int index = Random.Range(0, bombs.Count);
                 var spawnable = Instantiate(bombs[index], new Vector3(Random.Range(-spawnWidth, spawnWidth), spawnHeight, 0), Quaternion.identity);
