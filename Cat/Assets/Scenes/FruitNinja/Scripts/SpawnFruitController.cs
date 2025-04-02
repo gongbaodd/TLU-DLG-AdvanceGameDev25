@@ -12,7 +12,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         private bool keepSpawning = true;
 
-        public Vector2 CalculateForceDirection(Vector2 fruitPos) {
+        public Vector2 CalculateForceDirection(Vector2 fruitPos)
+        {
             Vector2 targetPos = target.transform.position;
             Vector2 direction = (targetPos - fruitPos).normalized;
             return direction;
@@ -32,18 +33,28 @@ namespace Assets.Scenes.FruitNinja.Scripts
             var fruits = config.fruits;
             var bombs = config.bombs;
 
-            var spawnables = new List<GameObject>();
-            spawnables.AddRange(fruits);
-            spawnables.AddRange(bombs);
+            var bombWeight = config.bombWeight;
+            var fruitWeight = config.fruitWeight;
 
             var spawnWidth = config.spawnWidth;
             var spawnHeight = config.spawnHeight;
 
-            int index = Random.Range(0, spawnables.Count);
-            float width = spawnWidth - 1;
-            var spawnable = Instantiate(spawnables[index], new Vector3(Random.Range(-width, width), spawnHeight, 0), Quaternion.identity);
+            bool isSpawnBomb = Random.Range(0, bombWeight + fruitWeight) < bombWeight ? true : false;
 
-            spawnable.GetComponent<FruitController>().OnFruitDestroyed += Poof;
+            if (isSpawnBomb && bombs.Count > 0)
+            {
+                int index = Random.Range(0, bombs.Count);
+                var spawnable = Instantiate(bombs[index], new Vector3(Random.Range(-spawnWidth, spawnWidth), spawnHeight, 0), Quaternion.identity);
+
+                spawnable.GetComponent<FruitController>().OnFruitDestroyed += Boom;
+            }
+            else
+            {
+                int index = Random.Range(0, fruits.Count);
+                var spawnable = Instantiate(fruits[index], new Vector3(Random.Range(-spawnWidth, spawnWidth), spawnHeight, 0), Quaternion.identity);
+
+                spawnable.GetComponent<FruitController>().OnFruitDestroyed += Poof;
+            }
         }
 
         private void Poof(Vector2 fruitPos)
@@ -54,6 +65,14 @@ namespace Assets.Scenes.FruitNinja.Scripts
             poof.GetComponent<ParticleSystem>().Play();
 
             Destroy(poof, 1f);
+        }
+
+        private void Boom(Vector2 boomPos) {
+            var boomPrefab = config.boomPrefab;
+            var boom = Instantiate(boomPrefab, new Vector3(boomPos.x, boomPos.y, 0), Quaternion.identity);
+
+            boom.GetComponent<ParticleSystem>().Play();
+            Destroy(boom, 1f);
         }
 
         void Start()
