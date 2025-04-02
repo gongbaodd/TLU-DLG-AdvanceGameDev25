@@ -831,7 +831,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1803975591}
   - component: {fileID: 1803975590}
-  - component: {fileID: 1803975589}
   - component: {fileID: 1803975588}
   m_Layer: 0
   m_Name: bgCam
@@ -884,14 +883,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1803975589
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803975587}
-  m_Enabled: 1
 --- !u!20 &1803975590
 Camera:
   m_ObjectHideFlags: 0
