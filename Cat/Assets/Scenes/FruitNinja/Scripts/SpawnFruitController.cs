@@ -30,14 +30,20 @@ namespace Assets.Scenes.FruitNinja.Scripts
         private void SpawnFruit()
         {
             var fruits = config.fruits;
+            var bombs = config.bombs;
+
+            var spawnables = new List<GameObject>();
+            spawnables.AddRange(fruits);
+            spawnables.AddRange(bombs);
+
             var spawnWidth = config.spawnWidth;
             var spawnHeight = config.spawnHeight;
 
-            int index = Random.Range(0, fruits.Count);
+            int index = Random.Range(0, spawnables.Count);
             float width = spawnWidth - 1;
-            var fruit = Instantiate(fruits[index], new Vector3(Random.Range(-width, width), spawnHeight, 0), Quaternion.identity);
+            var spawnable = Instantiate(spawnables[index], new Vector3(Random.Range(-width, width), spawnHeight, 0), Quaternion.identity);
 
-            fruit.GetComponent<FruitController>().OnFruitDestroyed += Poof;
+            spawnable.GetComponent<FruitController>().OnFruitDestroyed += Poof;
         }
 
         private void Poof(Vector2 fruitPos)

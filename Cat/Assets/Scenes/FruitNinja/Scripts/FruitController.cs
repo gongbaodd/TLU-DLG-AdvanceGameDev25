@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Assets.Scenes.FruitNinja.Scripts
 {
 
+    [RequireComponent(typeof(Rigidbody))]
     public class FruitController : MonoBehaviour
     {
         private Rigidbody rb;

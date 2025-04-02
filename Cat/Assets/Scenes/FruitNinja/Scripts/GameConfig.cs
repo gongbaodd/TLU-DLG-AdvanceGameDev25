@@ -7,7 +7,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
     public class GameConfig : ScriptableObject
     {
         public List<GameObject> fruits;
-        public List<GameObject> Booms;
+        public List<GameObject> bombs;
         public GameObject poofPrefab;
         public float spawnHeight = -5f;
         public float spawnWidth = 10f;
