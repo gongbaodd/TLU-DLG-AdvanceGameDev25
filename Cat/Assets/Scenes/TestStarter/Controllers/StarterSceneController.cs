@@ -37,6 +37,7 @@ public class StarterSceneController : MonoBehaviour
 
     void OnDestroy()
     {
-        handle.Release();
+        // TODO: destory logic
+        print("Destroying StarterSceneController");
     }
 }
