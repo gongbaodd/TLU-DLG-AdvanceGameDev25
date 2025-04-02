@@ -49,10 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fff9210b96b0748a51e55726b5381d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  torque: 0.1
-  destroyDelay: 2
-  destroyForce: 50
+  config: {fileID: 11400000, guid: 617d81a744a04e9418199a484ab05051, type: 2}
 --- !u!33 &1465380538471423394
 MeshFilter:
   m_ObjectHideFlags: 0

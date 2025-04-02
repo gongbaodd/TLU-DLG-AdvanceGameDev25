@@ -27,3 +27,5 @@ Supercyan Character Pack Free Sample // Character
 Violet Theme Ui
 ```
 [Catastroffee - Cat Paws - VR Hands](https://sketchfab.com/3d-models/catastroffee-cat-paws-vr-hands-ec409d777de446d2b3df5948c619f0f0)
+
+[bomb](https://sketchfab.com/3d-models/bomb-1a9395dac5bc4742bdd780b3cce93416)
