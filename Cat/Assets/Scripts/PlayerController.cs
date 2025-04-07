@@ -36,45 +36,12 @@ public class PlayerController : MonoBehaviour
         // Handle movement and interaction
         if (Input.GetMouseButtonDown(0))
         {
-            //MoveToClickPoint();
             HandleMouseClick(); // Call the method to handle mouse click
-
         }
 
 
     }
 
-    void OnMouseClicked()
-    {
-        // Get the click position on screen
-        Vector3 clickPosition = Input.mousePosition;
-
-        // Create a ray starting at click point on screen and moves along the camera perspective
-        Ray clickRay = mainCamera.ScreenPointToRay(clickPosition);
-
-        // Declare a variable to store the Raycast hit information
-        RaycastHit hit;
-
-        // Physics.Raycast returns a bool (true/false) whether it hit a collider or not
-        // Interaction mask allows us to filter what objects the ray should register
-        if (Physics.Raycast(clickRay, out hit, 100f, groundMask))
-        {
-            print("Something clicked");
-
-            // Do other logic with the object we clicked on
-            //catAgent.SetDestination(hit.point);
-            targetPosition = hit.point;
-            isMoving = true;
-            //catAnim.SetBool("isMoving", true);
-
-        }
-        else
-        {
-            print("Nothing clicked!");
-        }
-
-
-    }
 
     void HandleMouseClick()
     {
@@ -124,16 +91,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void MoveToClickPoint()
-    {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        // Only move if we click on the ground
-        if (Physics.Raycast(ray, out hit, 100f, groundMask))
-        {
-            catAgent.SetDestination(hit.point); // Move to clicked position
-        }
-    }
 
 }
