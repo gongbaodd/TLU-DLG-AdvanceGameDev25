@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Scenes/Inventory/UI/InventoryUI.uss?fileID=7433441132597879392&amp;guid=8b90273106840b549b6f0a177d661a9a&amp;type=3#InventoryUI" />
-    <engine:VisualElement name="root" class="bag-button" style="flex-grow: 1; align-items: flex-start;">
+    <engine:VisualElement name="root" style="flex-grow: 1; align-items: flex-start;">
         <engine:VisualElement name="panel" class="bag-panel">
             <engine:Label text="Memories" />
             <engine:Toggle label="Fruit Ninja&#10;" data-source="project://database/Assets/Scenes/Inventory/Datas/MemoryPieces.asset?fileID=11400000&amp;guid=3023b3537b127ac468b6e07b1d4b926b&amp;type=2#MemoryPieces" name="FruitNinja" data-source-path="hasFruitNinjaMemory" toggle-on-label-click="true" class="memory">
@@ -13,6 +13,9 @@
                     <engine:DataBinding property="value" binding-mode="ToTarget" />
                 </Bindings>
             </engine:Toggle>
+            <Bindings>
+                <engine:DataBinding property="style.display" data-source-path="inventoryDisplayState" data-source="project://database/Assets/Scenes/Inventory/Configs/InventoryConfig.asset?fileID=11400000&amp;guid=4dc2f97e746da434c94180114f21441f&amp;type=2#InventoryConfig" binding-mode="ToTarget" />
+            </Bindings>
         </engine:VisualElement>
         <engine:Button text="Bag" name="bag" class="bag-button" style="flex-direction: row-reverse;" />
     </engine:VisualElement>

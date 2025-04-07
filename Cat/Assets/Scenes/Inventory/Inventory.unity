@@ -416,6 +416,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 8326559028903747357, guid: 9c323413361f8824580ad3d28fa0b564,
+        type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dc2f97e746da434c94180114f21441f,
+        type: 2}
+    - target: {fileID: 8326559028903747357, guid: 9c323413361f8824580ad3d28fa0b564,
+        type: 3}
+      propertyPath: memoryPieces
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dc2f97e746da434c94180114f21441f,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

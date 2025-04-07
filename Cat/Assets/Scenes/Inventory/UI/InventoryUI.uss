@@ -4,6 +4,9 @@
     right: 10px;
     width: 50px;
     height: 50px;
+    background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Colored%20Icons/Bag.png?fileID=-6009198046271197863&guid=416d7ad4879a2ec4c99603e9260521e1&type=3#Bag_0");
+    color: rgba(27, 27, 27, 0);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .bag-panel {
@@ -15,8 +18,14 @@
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 10px;
+}
 
+.bag-panel.close {
     display: none;
+}
+
+.bag-panel.open {
+    display: flex;
 }
 
 .memory {

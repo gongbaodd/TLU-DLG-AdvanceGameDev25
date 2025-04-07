@@ -5,18 +5,27 @@ namespace Assets.Scenes.Inventory.Scripts
 {
     public class UIViewModel : MonoBehaviour
     {
-        public MemoryPieces memoryPieces;
+        public InventoryConfig config;
         public UIDocument UI;
-
-        private VisualElement panel;
         private Button bagButton;
 
-        private bool isBagOpen = false;
+        private bool IsBagOpen { 
+            get { 
+                return config.inventoryDisplayState != DisplayStyle.None; 
+            }
+
+            set {
+                if (value) {
+                    config.inventoryDisplayState = DisplayStyle.Flex;
+                } else {
+                    config.inventoryDisplayState = DisplayStyle.None;
+                }
+            }
+        }
 
         void OnEnable()
         {
             var root = UI.rootVisualElement;
-            panel = root.Q<VisualElement>("panel");
             bagButton = root.Q<Button>("bag");
 
             bagButton.clicked += ToggleBag;
@@ -24,8 +33,14 @@ namespace Assets.Scenes.Inventory.Scripts
 
         void ToggleBag()
         {
-            isBagOpen = !isBagOpen;
-            panel.style.display = isBagOpen ? DisplayStyle.Flex : DisplayStyle.None;
+            IsBagOpen = !IsBagOpen;
+        }
+
+        void Start()
+        {
+            if (config == null) {
+                throw new System.Exception("Inventory config not assigned. Please assign a InventoryConfig object in the inspector.");
+            }
         }
 
     }
