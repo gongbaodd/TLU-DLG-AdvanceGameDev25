@@ -1,22 +1,22 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
-using System.Collections.Generic;
 
-public class movement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public Camera mainCamera;
-    //public Animator catAnim;
 
+    public float interactRange = 100f; // Range for interaction
     public LayerMask groundMask;
-    //public GameObject cat;
+    public LayerMask interactableMask; // Mask for interactable objects
+
     public float movementSpeed = 2f;
-    //public float stoppingDistance = 0.1f;
 
     private NavMeshAgent catAgent;
     private Vector3 targetPosition;
     private bool isMoving = false;
     private Rigidbody rb;
+
+    private Interactable currentFocus; // Current interactable object
 
     void Start()
     {
@@ -28,30 +28,12 @@ public class movement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            MoveToClickPoint();
-            //OnMouseClicked();
+            //MoveToClickPoint();
+            HandleMouseClick(); // Call the method to handle mouse click
+
         }
 
-        // Check if the cat has reached its destination
-        // if (!catAgent.pathPending && catAgent.remainingDistance <= stoppingDistance)
-        // {
-        //     catAnim.SetBool("isMoving", false);
-        // }
 
-        // if (isMoving)
-        // {
-
-        //     Vector3 moveDirection = (targetPosition - transform.position).normalized;
-        //     rb.MovePosition(transform.position + moveDirection * movementSpeed * Time.fixedDeltaTime);
-
-        //     //cat.transform.position = Vector3.Lerp(cat.transform.position, targetPosition, movementSpeed * Time.deltaTime);
-
-        //     if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
-        //     {
-        //         isMoving = false;
-        //         //catAnim.SetBool("isMoving", false);
-        //     }
-        // }
     }
 
     void OnMouseClicked()
@@ -84,8 +66,54 @@ public class movement : MonoBehaviour
         }
 
 
+    }
 
+    void HandleMouseClick()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
+        // 1. Try hitting an interactable first
+        if (Physics.Raycast(ray, out hit, interactRange, interactableMask))
+        {
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                SetFocus(interactable);
+                catAgent.SetDestination(interactable.interactionTransform != null
+                    ? interactable.interactionTransform.position
+                    : interactable.transform.position);
+                return;
+            }
+        }
+
+        // 2. Otherwise, move to the ground
+        if (Physics.Raycast(ray, out hit, interactRange, groundMask))
+        {
+            RemoveFocus();
+            catAgent.SetDestination(hit.point);
+        }
+    }
+
+    void SetFocus(Interactable newFocus)
+    {
+        if (newFocus != currentFocus)
+        {
+            if (currentFocus != null)
+                currentFocus.OnDefocused();
+
+            currentFocus = newFocus;
+            currentFocus.OnFocused(transform);
+        }
+    }
+
+    void RemoveFocus()
+    {
+        if (currentFocus != null)
+        {
+            currentFocus.OnDefocused();
+            currentFocus = null;
+        }
     }
 
     void MoveToClickPoint()
