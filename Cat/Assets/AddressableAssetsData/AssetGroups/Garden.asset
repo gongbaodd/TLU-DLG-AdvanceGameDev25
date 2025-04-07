@@ -21,11 +21,21 @@ MonoBehaviour:
     m_SerializedLabels:
     - Garden
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50d3f29569fbeff42991922464ff37bf
+    m_Address: Assets/Items/PlayerInventoryData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99483ed8f244aab40a5cb2fcdf81a984
     m_Address: Assets/Scenes/Garden/Garden.unity
     m_ReadOnly: 0
     m_SerializedLabels:
     - Garden
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a924029ba7a6a774385077b482178466
+    m_Address: Assets/Scenes/MainScene/MainScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
