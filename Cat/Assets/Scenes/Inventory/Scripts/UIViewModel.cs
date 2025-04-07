@@ -8,32 +8,42 @@ namespace Assets.Scenes.Inventory.Scripts
         public InventoryConfig config;
         public UIDocument UI;
         private Button bagButton;
+        private VisualElement panel;
 
-        private bool IsBagOpen { 
-            get { 
-                return config.inventoryDisplayState != DisplayStyle.None; 
-            }
-
-            set {
-                if (value) {
-                    config.inventoryDisplayState = DisplayStyle.Flex;
-                } else {
-                    config.inventoryDisplayState = DisplayStyle.None;
-                }
-            }
-        }
+        private bool isOpen = false;
 
         void OnEnable()
         {
+            
             var root = UI.rootVisualElement;
             bagButton = root.Q<Button>("bag");
+
+            if (bagButton == null) {
+                throw new System.Exception("Bag button not found. Please add a button with the 'bag' name.");
+            }
+
+            panel = root.Q<VisualElement>("panel");
+            panel.RemoveFromClassList("open");
+
+            if (panel == null) {
+                throw new System.Exception("Panel not found. Please add a panel with the 'panel' name.");
+            }
+
 
             bagButton.clicked += ToggleBag;
         }
 
         void ToggleBag()
         {
-            IsBagOpen = !IsBagOpen;
+            isOpen = !isOpen;
+
+            if (isOpen) {
+                panel.AddToClassList("open");
+                bagButton.AddToClassList("open");
+            } else {
+                panel.RemoveFromClassList("open");
+                bagButton.RemoveFromClassList("open");
+            }
         }
 
         void Start()

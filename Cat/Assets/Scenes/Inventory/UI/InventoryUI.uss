@@ -7,6 +7,14 @@
     background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Colored%20Icons/Bag.png?fileID=-6009198046271197863&guid=416d7ad4879a2ec4c99603e9260521e1&type=3#Bag_0");
     color: rgba(27, 27, 27, 0);
     background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.bag-button.open {
+    -unity-background-image-tint-color: rgb(101, 101, 101);
 }
 
 .bag-panel {
@@ -15,13 +23,17 @@
     right: 10px;
     width: 200px;
     height: 120px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0);
     color: white;
     padding: 10px;
-}
-
-.bag-panel.close {
+    background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Panels/Dark%20Panels%20Style%202%20Orange.png?fileID=-3595877653700127741&guid=5af159fe7617e0d49bac227578248a75&type=3#Dark Panels Style 2 Orange_0");
     display: none;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    justify-content: space-between;
 }
 
 .bag-panel.open {
@@ -29,4 +41,26 @@
 }
 
 .memory {
+}
+
+.item {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(27, 27, 27, 0);
+    width: 60px;
+}
+
+.item.empty {
+    -unity-background-image-tint-color: rgb(101, 101, 101);
+}
+
+.item.ninja {
+    background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Colored%20Icons/Potion%20Green.png?fileID=1799121946817344791&guid=fb249afeb0ff95a438e6aec12fdf762c&type=3#Potion Green_0");
+}
+
+.item.diablo {
+    background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Colored%20Icons/Potion%20Red.png?fileID=-1401110133662507876&guid=9035a2602b4b6774fb8c30b4f5872fca&type=3#Potion Red_0");
 }

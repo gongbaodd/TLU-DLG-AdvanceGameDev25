@@ -10,8 +10,6 @@ namespace Assets.Scenes.Inventory.Scripts
     {
         public bool hasFruitNinjaMemory = false;
         public bool hasDiabloMemory = false;
-
-        public StyleEnum<DisplayStyle> inventoryDisplayState = new(DisplayStyle.None);
     }
 }
 
