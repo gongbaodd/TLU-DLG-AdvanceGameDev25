@@ -11,6 +11,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
         float timeLeft;
         Label label;
 
+        public static event System.Action OnTimerEnd;
+
         IEnumerator TimerCoroutine()
         {
             while (timeLeft > 0)
@@ -19,6 +21,12 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
                 if (timeLeft < 6) {
                     label.text = timeLeft.ToString("0");
+                }
+
+                if (timeLeft == 1)
+                {
+                    label.text = "0";
+                    OnTimerEnd?.Invoke();
                 }
 
                 yield return new WaitForSeconds(1f);
