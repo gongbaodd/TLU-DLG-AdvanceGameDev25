@@ -10,6 +10,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         [SerializeField] private GameConfig config;
 
+        public GameConfig Config => config;
+
         private bool keepSpawning = true;
 
         public Vector2 CalculateForceDirection(Vector2 fruitPos)
