@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems; // For event system handling
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,6 +28,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return; // Ignore clicks if over UI elements
+        }
+
+        // Handle movement and interaction
         if (Input.GetMouseButtonDown(0))
         {
             //MoveToClickPoint();
