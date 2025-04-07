@@ -38,10 +38,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
         void Start()
         {
             manager = GetComponent<GetManager>().GameManager;
-            if (manager == null)
-            {
-                throw new System.Exception("GameManager not found in the scene.");
-            }
 
             var config = manager.GetComponent<SpawnFruitController>().Config;
             var ui = GetComponent<UIDocument>();

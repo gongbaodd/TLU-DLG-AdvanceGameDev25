@@ -8,12 +8,12 @@ namespace Assets.Scenes.FruitNinja.Scripts
     public class FruitController : MonoBehaviour
     {
         private Rigidbody rb;
-        private GameObject gameManager;
+        protected GameObject gameManager;
 
         [SerializeField] private Spawnables config;
 
         public event System.Action<Vector2> OnFruitDestroyed;
-        void Start()
+        protected virtual void Start()
         {
             gameManager = GetComponent<GetManager>().GameManager;
 
@@ -36,7 +36,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             return new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
         }
 
-        void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {

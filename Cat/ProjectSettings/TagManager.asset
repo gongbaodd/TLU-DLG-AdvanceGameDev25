@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - CinemachineTarget
   - Static
+  - FruitNinjaTarget
   layers:
   - Default
   - TransparentFX
