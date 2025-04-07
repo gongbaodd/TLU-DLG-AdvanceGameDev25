@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 namespace Assets.Scenes.FruitNinja.Scripts
 {
-    [RequireComponent(typeof(UIDocument))]
+    [RequireComponent(typeof(UIDocument), typeof(GetManager))]
     public class TimerController : MonoBehaviour
     {
         GameObject manager;
@@ -37,11 +37,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Start()
         {
-            manager = GameObject.FindWithTag("GameController");
-            if (manager == null)
-            {
-                throw new System.Exception("GameManager not found in the scene.");
-            }
+            manager = GetComponent<GetManager>().GameManager;
 
             var config = manager.GetComponent<SpawnFruitController>().Config;
             var ui = GetComponent<UIDocument>();

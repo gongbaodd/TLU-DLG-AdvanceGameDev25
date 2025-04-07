@@ -9,12 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7065493117651527815}
+  - component: {fileID: 2916820225807747703}
   - component: {fileID: 5248150581271728118}
   - component: {fileID: 4409421567835642728}
   - component: {fileID: 5200732621178371409}
   - component: {fileID: 5150590556100271011}
   - component: {fileID: 4506741455454636257}
   - component: {fileID: 5614369103084732211}
+  - component: {fileID: 303469811023401379}
   m_Layer: 0
   m_Name: Doughnut D
   m_TagString: Untagged
@@ -37,6 +39,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &2916820225807747703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863868127380036775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5248150581271728118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,3 +186,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.20265146
   m_Center: {x: -0.00063993037, y: 0.051770594, z: -0.0059020384}
+--- !u!114 &303469811023401379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863868127380036775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

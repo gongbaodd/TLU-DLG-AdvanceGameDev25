@@ -9,12 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7625543323606360179}
+  - component: {fileID: 280403749208434418}
   - component: {fileID: -8423468133279843908}
   - component: {fileID: 1788301188605739274}
   - component: {fileID: 4115004033508026933}
   - component: {fileID: 7286179764660028445}
   - component: {fileID: 8152528588839104605}
   - component: {fileID: 7302659848929312500}
+  - component: {fileID: 4928990074141983091}
   m_Layer: 0
   m_Name: Salmon
   m_TagString: Untagged
@@ -37,6 +39,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 90}
+--- !u!114 &280403749208434418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6146967297397465718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-8423468133279843908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +190,15 @@ CapsuleCollider:
   m_Height: 0.9387276
   m_Direction: 0
   m_Center: {x: 0.00064098835, y: 0.08260065, z: 0.008720547}
+--- !u!114 &4928990074141983091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6146967297397465718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
