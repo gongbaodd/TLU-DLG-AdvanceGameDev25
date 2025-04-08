@@ -4,21 +4,18 @@ namespace Assets.Scenes.Diablo.Scripts
 {
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private GameObject mainCamera;
-        [SerializeField] private Vector3 cameraRelativePos = new Vector3(0, 3, -1);
-
+        [SerializeField] private Vector3 cameraRelativePos = new(0, 3, -1);
 
         public void UpdateCameraPos(GameObject player)
         {
-            mainCamera.transform.position = player.transform.position + cameraRelativePos;
-            mainCamera.transform.LookAt(player.transform);
+            transform.position = player.transform.position + cameraRelativePos;
+            transform.LookAt(player.transform);
         }
 
-        void Start()
+        void LateUpdate()
         {
-            if (mainCamera == null)
-            {
-                Debug.LogError("Main Camera not found");
+            if (DiabloController.player) {
+                UpdateCameraPos(DiabloController.player);
             }
         }
     }

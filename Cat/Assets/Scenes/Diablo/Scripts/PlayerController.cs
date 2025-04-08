@@ -1,56 +1,81 @@
-using Assets.Prefabs.Cat.Scripts;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Assets.Prefabs.Cat.Scripts;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] AssetReference playerAsset;
-        [SerializeField] GameObject startPosition;
-
-        public GameObject PlayerPos => player == null ? startPosition : player;
-
-        private GameObject player;
+        private GameObject loadedPlayer;
         private Vector3? targetPos;
 
-        [SerializeField] private float movementThreshold = 0.01f;
-
-        public void Rotate(Vector3 position)
+        private void LoadAsset()
         {
-            if (player == null) return;
-
-            targetPos = new Vector3(position.x, player.transform.position.y, position.z);
-            player.transform.LookAt(targetPos ?? Vector3.zero);
-        }
-
-        public void Move()
-        {
-            if (targetPos == null) return;
-            if (player == null) return;
-
-            if (Vector3.Distance(player.transform.position, targetPos ?? Vector3.zero) > movementThreshold)
+            playerAsset.InstantiateAsync(transform.position, Quaternion.identity, transform).Completed += handle =>
             {
-                var agent = player.GetComponent<UnityEngine.AI.NavMeshAgent>();
-                agent.SetDestination(targetPos ?? Vector3.zero);
-                player.GetComponent<CatController>().Walk();
-            }
-            else
-            {
-                player.GetComponent<CatController>().Stand();
-            }
-        }
-
-        void Awake()
-        {
-            playerAsset.InstantiateAsync(startPosition.transform.position, Quaternion.identity).Completed += handle =>
-            {
-                player = handle.Result;
-                var catController = player.GetComponent<CatController>();
+                loadedPlayer = handle.Result;
+                var catController = loadedPlayer.GetComponent<CatController>();
                 catController.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
             };
         }
 
-    }
+        private void SetTarget(Vector3 position)
+        {
+            if (loadedPlayer == null) return;
 
+            targetPos = new Vector3(position.x, transform.position.y, position.z);
+        }
+
+        private void Move()
+        {
+            if (targetPos == null) return;
+            if (loadedPlayer == null) return;
+
+            var agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+            if (!agent.pathPending) {
+                agent.SetDestination(targetPos ?? Vector3.zero);
+
+                if (agent.remainingDistance > agent.stoppingDistance) {
+                    loadedPlayer.GetComponent<CatController>().Walk();
+                } else {
+                    loadedPlayer.GetComponent<CatController>().Stand();
+                }
+            }
+        }
+
+        private void UpdateMovement()
+        {
+            var gameManager = DiabloController.gameManager;
+            if (gameManager)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    var cursorController = gameManager.GetComponent<CursorController>();
+                    var hitPoint = cursorController.HitTest();
+
+                    if (hitPoint.HasValue)
+                    {
+                        SetTarget(hitPoint.Value);
+                    }
+                }
+            }
+
+            Move();
+        }
+
+
+        void Awake()
+        {
+            LoadAsset();
+        }
+
+        void Update()
+        {
+            UpdateMovement();
+        }
+    }
 }
+
+

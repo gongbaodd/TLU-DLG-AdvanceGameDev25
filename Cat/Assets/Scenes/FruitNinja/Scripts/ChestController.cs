@@ -2,14 +2,16 @@ using UnityEngine;
 
 namespace Assets.Scenes.FruitNinja.Scripts
 {
-    [RequireComponent(typeof(GetManager))]
+    [RequireComponent(typeof(GetManager), typeof(BoxCollider))]
     public class ChestController : MonoBehaviour
     {
         Vector3 targetPos;
+        Collider chestCollider;
         bool isMoving = false;
 
         void OnTimerEnd() {
             isMoving = true;
+            chestCollider.enabled = true;
         }
 
         void MoveToCenter() {
@@ -18,6 +20,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Start()
         {
+            chestCollider = GetComponent<BoxCollider>();
+            chestCollider.enabled = false;
+
             Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane);
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenCenter);
             targetPos = new Vector3(worldPos.x, worldPos.y, transform.position.z);
@@ -42,7 +47,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
             if(other.CompareTag("Player")) {
                 var cursorController = GetComponent<GetManager>().GameManager.GetComponent<CursorController>();
                 if (cursorController.IsDrawing) {
-                    print("Win");
+                    var manager = GetComponent<GetManager>().GameManager;
+                    var controller = manager.GetComponent<FruitNinjaController>();
+                    controller.Win();
                 }
             }
         }

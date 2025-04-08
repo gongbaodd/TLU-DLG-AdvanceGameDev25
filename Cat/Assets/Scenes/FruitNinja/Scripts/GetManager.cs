@@ -8,7 +8,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         public GameObject GameManager => manager;
 
-        void OnEnable()
+        void Awake()
         {
             manager = GameObject.FindWithTag("GameController");
 

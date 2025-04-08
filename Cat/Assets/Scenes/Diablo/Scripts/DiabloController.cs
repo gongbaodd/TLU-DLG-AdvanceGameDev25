@@ -3,34 +3,28 @@ using UnityEngine;
 namespace Assets.Scenes.Diablo.Scripts
 {
     [RequireComponent(
-        typeof(PlayerController),
-        typeof(CameraController),
         typeof(CursorController)
     )]
     public class DiabloController : MonoBehaviour
     {
-        void Update()
+        public static GameObject gameManager;
+        public static GameObject player;
+
+        public void Win()
         {
-            var playerController = GetComponent<PlayerController>();
-            var cursorController = GetComponent<CursorController>();
-            if (Input.GetMouseButtonDown(0))
-            {
-                var hitPoint = cursorController.HitTest();
-
-                if (hitPoint.HasValue)
-                {
-                    playerController.Rotate(hitPoint.Value);
-                }
-            }
-
-            playerController.Move();
+            throw new System.NotImplementedException("Need to addItem to Inventory! Wait the Inventory to be implemented!");
         }
 
-        void LateUpdate()
+        void Awake()
         {
-            var cameraController = GetComponent<CameraController>();
-            var playerController = GetComponent<PlayerController>();
-            cameraController.UpdateCameraPos(playerController.PlayerPos);
+            gameManager = gameObject;
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        void OnDestroy()
+        {
+            gameManager = null;
+            player = null;
         }
     }
 
