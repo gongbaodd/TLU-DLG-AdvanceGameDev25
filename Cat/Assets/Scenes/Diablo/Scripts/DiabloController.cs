@@ -4,12 +4,12 @@ namespace Assets.Scenes.Diablo.Scripts
 {
     [RequireComponent(
         typeof(PlayerController),
-        typeof(CameraController),
         typeof(CursorController)
     )]
     public class DiabloController : MonoBehaviour
     {
         public static GameObject gameManager;
+        public static GameObject player;
 
         void Awake()
         {
@@ -37,12 +37,12 @@ namespace Assets.Scenes.Diablo.Scripts
             playerController.Move();
         }
 
-        void LateUpdate()
-        {
-            var cameraController = GetComponent<CameraController>();
-            var playerController = GetComponent<PlayerController>();
-            cameraController.UpdateCameraPos(playerController.PlayerPos);
-        }
+        // void LateUpdate()
+        // {
+        //     var cameraController = GetComponent<CameraController>();
+        //     var playerController = GetComponent<PlayerController>();
+        //     cameraController.UpdateCameraPos(playerController.PlayerPos);
+        // }
     }
 
 }
