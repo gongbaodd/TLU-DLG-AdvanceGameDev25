@@ -9,6 +9,17 @@ namespace Assets.Scenes.Diablo.Scripts
     )]
     public class DiabloController : MonoBehaviour
     {
+        public static GameObject gameManager;
+
+        void Awake()
+        {
+            gameManager = gameObject;
+        }
+
+        void OnDestroy()
+        {
+            gameManager = null;
+        }
         void Update()
         {
             var playerController = GetComponent<PlayerController>();
