@@ -21,22 +21,6 @@ namespace Assets.Scenes.Diablo.Scripts
             gameManager = null;
             player = null;
         }
-        void Update()
-        {
-            // var playerController = GetComponent<PlayerController>();
-            // var cursorController = GetComponent<CursorController>();
-            // if (Input.GetMouseButtonDown(0))
-            // {
-            //     var hitPoint = cursorController.HitTest();
-
-            //     if (hitPoint.HasValue)
-            //     {
-            //         playerController.Rotate(hitPoint.Value);
-            //     }
-            // }
-
-            // playerController.Move();
-        }
     }
 
 }
