@@ -3,7 +3,6 @@ using UnityEngine;
 namespace Assets.Scenes.Diablo.Scripts
 {
     [RequireComponent(
-        typeof(PlayerController),
         typeof(CursorController)
     )]
     public class DiabloController : MonoBehaviour
@@ -24,19 +23,19 @@ namespace Assets.Scenes.Diablo.Scripts
         }
         void Update()
         {
-            var playerController = GetComponent<PlayerController>();
-            var cursorController = GetComponent<CursorController>();
-            if (Input.GetMouseButtonDown(0))
-            {
-                var hitPoint = cursorController.HitTest();
+            // var playerController = GetComponent<PlayerController>();
+            // var cursorController = GetComponent<CursorController>();
+            // if (Input.GetMouseButtonDown(0))
+            // {
+            //     var hitPoint = cursorController.HitTest();
 
-                if (hitPoint.HasValue)
-                {
-                    playerController.Rotate(hitPoint.Value);
-                }
-            }
+            //     if (hitPoint.HasValue)
+            //     {
+            //         playerController.Rotate(hitPoint.Value);
+            //     }
+            // }
 
-            playerController.Move();
+            // playerController.Move();
         }
     }
 

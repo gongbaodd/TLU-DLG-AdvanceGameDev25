@@ -4,7 +4,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerControllerOld : MonoBehaviour
     {
         [SerializeField] AssetReference playerAsset;
         [SerializeField] GameObject startPosition;

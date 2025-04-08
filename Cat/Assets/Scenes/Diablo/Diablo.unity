@@ -119,12 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &19010154 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9012968000855415419, guid: deb64bf332ff4b74ebd5385da9ef4726,
-    type: 3}
-  m_PrefabInstance: {fileID: 589302875}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &177948012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -227,7 +221,6 @@ GameObject:
   - component: {fileID: 417958236}
   - component: {fileID: 417958235}
   - component: {fileID: 417958234}
-  - component: {fileID: 417958233}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -250,26 +243,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &417958233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417958230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e194e8245cb92498370c042436886a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAsset:
-    m_AssetGUID: 56627f26f8d4ab044bff4930592a994e
-    m_SubObjectName: 
-    m_SubObjectGUID: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  startPosition: {fileID: 1061350275}
-  movementThreshold: 0.01
 --- !u!114 &417958234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982c27d758c75e649b96e393be387f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plane: {fileID: 19010154}
 --- !u!114 &417958236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,10 +1129,10 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 417958232}
   - {fileID: 1080226312}
   - {fileID: 1009065495}
   - {fileID: 1061350276}
-  - {fileID: 417958232}
   - {fileID: 821584872}
   - {fileID: 589302875}
   - {fileID: 648123654274142367}
