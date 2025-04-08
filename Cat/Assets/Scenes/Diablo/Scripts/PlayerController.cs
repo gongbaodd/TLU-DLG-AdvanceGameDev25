@@ -21,12 +21,11 @@ namespace Assets.Scenes.Diablo.Scripts
             };
         }
 
-        private void Rotate(Vector3 position)
+        private void SetTarget(Vector3 position)
         {
             if (loadedPlayer == null) return;
 
             targetPos = new Vector3(position.x, transform.position.y, position.z);
-            transform.LookAt(targetPos ?? Vector3.zero);
         }
 
         private void Move()
@@ -34,16 +33,16 @@ namespace Assets.Scenes.Diablo.Scripts
             if (targetPos == null) return;
             if (loadedPlayer == null) return;
 
-            if (Vector3.Distance(transform.position, targetPos ?? Vector3.zero) > movementThreshold)
-            {
-                var agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            var agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+            if (!agent.pathPending) {
                 agent.SetDestination(targetPos ?? Vector3.zero);
-                loadedPlayer.GetComponent<CatController>().Walk();
-            }
-            else
-            {
-                loadedPlayer.GetComponent<CatController>().Stand();
-                loadedPlayer.transform.localPosition = Vector3.zero;
+
+                if (agent.remainingDistance > agent.stoppingDistance) {
+                    loadedPlayer.GetComponent<CatController>().Walk();
+                } else {
+                    loadedPlayer.GetComponent<CatController>().Stand();
+                }
             }
         }
 
@@ -59,7 +58,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
                     if (hitPoint.HasValue)
                     {
-                        Rotate(hitPoint.Value);
+                        SetTarget(hitPoint.Value);
                     }
                 }
             }
