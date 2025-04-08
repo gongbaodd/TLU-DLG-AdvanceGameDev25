@@ -4,8 +4,7 @@ namespace Assets.Scenes.Diablo.Scripts
 {
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private Vector3 cameraRelativePos = new Vector3(0, 3, -1);
-        private GameObject player;
+        [SerializeField] private Vector3 cameraRelativePos = new(0, 3, -1);
 
         public void UpdateCameraPos(GameObject player)
         {
@@ -13,15 +12,10 @@ namespace Assets.Scenes.Diablo.Scripts
             transform.LookAt(player.transform);
         }
 
-        void Start()
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-
         void LateUpdate()
         {
-            if (player) {
-                UpdateCameraPos(player);
+            if (DiabloController.player) {
+                UpdateCameraPos(DiabloController.player);
             }
         }
     }

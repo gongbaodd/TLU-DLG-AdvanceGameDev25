@@ -14,11 +14,13 @@ namespace Assets.Scenes.Diablo.Scripts
         void Awake()
         {
             gameManager = gameObject;
+            player = GameObject.FindGameObjectWithTag("Player");
         }
 
         void OnDestroy()
         {
             gameManager = null;
+            player = null;
         }
         void Update()
         {
@@ -36,13 +38,6 @@ namespace Assets.Scenes.Diablo.Scripts
 
             playerController.Move();
         }
-
-        // void LateUpdate()
-        // {
-        //     var cameraController = GetComponent<CameraController>();
-        //     var playerController = GetComponent<PlayerController>();
-        //     cameraController.UpdateCameraPos(playerController.PlayerPos);
-        // }
     }
 
 }
