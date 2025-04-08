@@ -9,7 +9,6 @@ namespace Assets.Scenes.Diablo.Scripts
         [SerializeField] AssetReference playerAsset;
         private GameObject loadedPlayer;
         private Vector3? targetPos;
-        [SerializeField] private float movementThreshold = 0.01f;
 
         private void LoadAsset()
         {

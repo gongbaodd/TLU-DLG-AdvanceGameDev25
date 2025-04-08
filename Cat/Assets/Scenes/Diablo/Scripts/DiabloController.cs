@@ -10,6 +10,11 @@ namespace Assets.Scenes.Diablo.Scripts
         public static GameObject gameManager;
         public static GameObject player;
 
+        public void Win()
+        {
+            throw new System.NotImplementedException("Need to addItem to Inventory! Wait the Inventory to be implemented!");
+        }
+
         void Awake()
         {
             gameManager = gameObject;
