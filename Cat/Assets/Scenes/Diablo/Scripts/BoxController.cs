@@ -2,23 +2,25 @@ using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
-
-    [CreateAssetMenu(menuName = "Diablo/BoxConfig")]
-    public class BoxConfig : ScriptableObject
-    {
-        public bool isMemoryStored = false;
-
-    }
+    [RequireComponent(typeof(BoxCollider))]
     public class BoxController : MonoBehaviour
     {
         [SerializeField] BoxConfig boxConfig;
+        void Awake()
+        {
+            
+        }
+
         void OnTriggerEnter(Collider other)
         {
-            if(other.CompareTag("Player")) {
-                if (boxConfig.isMemoryStored) {
+            if (other.CompareTag("Player"))
+            {
+                if (boxConfig.isMemoryStored)
+                {
                     var manager = DiabloController.gameManager;
 
-                    if (manager) {
+                    if (manager)
+                    {
                         manager.GetComponent<DiabloController>().Win();
                     }
                 }
