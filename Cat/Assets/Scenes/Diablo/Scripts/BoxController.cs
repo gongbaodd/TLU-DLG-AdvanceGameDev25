@@ -5,6 +5,7 @@ namespace Assets.Scenes.Diablo.Scripts
     [RequireComponent(typeof(BoxCollider))]
     public class BoxController : MonoBehaviour
     {
+         public static readonly string BOXTAG = "DiabloBox";
         [SerializeField] BoxConfig boxConfig;
         void Awake()
         {
