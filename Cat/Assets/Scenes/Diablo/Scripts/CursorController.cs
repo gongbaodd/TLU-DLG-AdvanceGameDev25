@@ -41,6 +41,8 @@ namespace Assets.Scenes.Diablo.Scripts
                     interactableCanvas.SetActive(true);
                     interactableCanvas.transform.LookAt(Camera.main.transform.position);
                 }
+            } else {
+                interactableCanvas.SetActive(false);
             }
         }
     }
