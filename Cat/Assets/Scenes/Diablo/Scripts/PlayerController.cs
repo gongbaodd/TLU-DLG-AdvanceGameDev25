@@ -53,7 +53,7 @@ namespace Assets.Scenes.Diablo.Scripts
                 if (Input.GetMouseButtonDown(0))
                 {
                     var cursorController = gameManager.GetComponent<CursorController>();
-                    var hitPoint = cursorController.HitTest();
+                    var hitPoint = cursorController.HitPoint();
 
                     if (hitPoint.HasValue)
                     {
