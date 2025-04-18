@@ -4,6 +4,7 @@ namespace Assets.Scenes.Diablo.Scripts
 {
     public class CursorController : MonoBehaviour
     {
+        [SerializeField] GameObject interactableCanvas;
         public RaycastHit? HitInteractables() {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -24,14 +25,21 @@ namespace Assets.Scenes.Diablo.Scripts
             return null;
         }
 
-        public void Update()
+        void Awake()
+        {
+            interactableCanvas.SetActive(false);
+        }
+
+        void Update()
         {
             var interactables = HitInteractables();
 
             if (interactables != null) {
                 var transform = interactables.Value.transform;
-                if (transform.tag == BoxController.BOXTAG) {
-                    print(transform);
+                if (transform.CompareTag(BoxController.BOXTAG)) {
+                    interactableCanvas.transform.position = transform.position + Vector3.up;
+                    interactableCanvas.SetActive(true);
+                    interactableCanvas.transform.LookAt(Camera.main.transform.position);
                 }
             }
         }
