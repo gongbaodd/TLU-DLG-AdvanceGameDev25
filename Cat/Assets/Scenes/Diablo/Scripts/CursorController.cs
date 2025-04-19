@@ -40,6 +40,7 @@ namespace Assets.Scenes.Diablo.Scripts
                     interactableCanvas.transform.position = transform.position + Vector3.up;
                     interactableCanvas.SetActive(true);
                     interactableCanvas.transform.LookAt(Camera.main.transform.position);
+                    interactableCanvas.transform.Rotate(0, 180f, 0);
                 }
             } else {
                 interactableCanvas.SetActive(false);
