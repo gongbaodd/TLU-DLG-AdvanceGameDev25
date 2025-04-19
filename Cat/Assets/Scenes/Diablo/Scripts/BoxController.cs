@@ -24,7 +24,10 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            var player = DiabloController.player;
+            var playerInteractablesController = player.GetComponent<PlayerInteractablesController>();
+
+            if (other.CompareTag("Player") && playerInteractablesController.CompareInteractable(gameObject))
             {
                 switch (boxConfig.content)
                 {
