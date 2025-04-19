@@ -965,6 +965,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &796890439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 796890440}
+  m_Layer: 0
+  m_Name: ======Player======
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &796890440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796890439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0411415, y: -1.1200004, z: 7.092724}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &815911053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1143,8 @@ GameObject:
   - component: {fileID: 863770024}
   - component: {fileID: 863770025}
   - component: {fileID: 863770026}
+  - component: {fileID: 863770027}
+  - component: {fileID: 863770028}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1224,6 +1257,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &863770027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863770018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e3885b957689544b6e20bf8a8e1c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &863770028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863770018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88397b5a597b44a42ad4abc47dc81d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifebar: {fileID: 381282048166085299, guid: f5cee5a59b9970b48bfb70e2b8d58b1b, type: 3}
 --- !u!1001 &944786460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2745,7 +2803,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 863770022}
   - {fileID: 8427684117364752407}
   - {fileID: 1368719570}
   - {fileID: 6719655325756532961}
@@ -2778,3 +2835,5 @@ SceneRoots:
   - {fileID: 1854393141}
   - {fileID: 489801300}
   - {fileID: 417958232}
+  - {fileID: 796890440}
+  - {fileID: 863770022}

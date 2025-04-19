@@ -2,10 +2,12 @@ using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
-    [RequireComponent(typeof(BoxCollider))]
+    [RequireComponent(typeof(BoxCollider), typeof(Animator))]
     public class BoxController : MonoBehaviour
     {
         public static readonly string BOXTAG = "DiabloBox";
+
+        Animator anim;
         [SerializeField] BoxConfig boxConfig;
 
         void OnFindMemory()
@@ -19,7 +21,12 @@ namespace Assets.Scenes.Diablo.Scripts
         }
 
         void OnTriggerMonster() {
-            print("run!");
+            anim.SetTrigger("Attack");
+        }
+
+        void Awake()
+        {
+            anim = GetComponent<Animator>();
         }
 
         void OnTriggerEnter(Collider other)

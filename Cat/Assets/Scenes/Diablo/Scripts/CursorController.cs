@@ -8,7 +8,7 @@ namespace Assets.Scenes.Diablo.Scripts
         RaycastHit? HitInteractables() {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            // Debug.DrawRay(ray.origin, ray.direction * 200.0f, Color.green, 1.0f);
+            Debug.DrawRay(ray.origin, ray.direction * 200.0f, Color.green, 1.0f);
             if (Physics.Raycast(ray, out RaycastHit hit)) {
                 return hit;
             }
