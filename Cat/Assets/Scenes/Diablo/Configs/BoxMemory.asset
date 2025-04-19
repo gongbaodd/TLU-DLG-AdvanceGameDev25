@@ -10,5 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f57c113e921f7744b925466598fad2cf, type: 3}
-  m_Name: BoxNormal
+  m_Name: BoxMemory
   m_EditorClassIdentifier: 
+  content: 1
+  isMemoryStored: 0

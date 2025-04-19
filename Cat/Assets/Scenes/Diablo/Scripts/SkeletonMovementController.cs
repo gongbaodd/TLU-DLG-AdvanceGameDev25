@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 
 namespace Assets.Scenes.Diablo.Scripts
 {
@@ -9,21 +9,19 @@ namespace Assets.Scenes.Diablo.Scripts
     {
         NavMeshAgent agent;
         SkeletonAnimatorController aniController;
-        float timer = 0f;
 
-        [SerializeField] float wanderRadius = 50f;
         [SerializeField] float waitTime = 5f;
+        [SerializeField] List<Transform> spawnPositions = new();
 
-        void SetRandomDestination()
+        float waitTimer = 0f;
+        bool isWaiting = true;
+
+        void PickNewDestination()
         {
-            Vector3 randomDestination = transform.position + new Vector3(Random.insideUnitCircle.x, 0, Random.insideUnitCircle.y) * wanderRadius;
+            if (spawnPositions.Count == 0) return;
 
-            NavMeshHit hit;
-
-            if (NavMesh.SamplePosition(randomDestination, out hit, wanderRadius, NavMesh.AllAreas))
-            {
-                agent.SetDestination(hit.position);
-            }
+            Transform randomTarget = spawnPositions[Random.Range(0, spawnPositions.Count)];
+            agent.SetDestination(randomTarget.position);
         }
 
         void Awake()
@@ -32,23 +30,36 @@ namespace Assets.Scenes.Diablo.Scripts
             aniController = GetComponent<SkeletonAnimatorController>();
         }
 
+        void Start()
+        {
+            PickNewDestination();
+        }
+
         void Update()
         {
-            if (!agent.pathPending) {
-                SetRandomDestination();
-                if (agent.remainingDistance <= agent.stoppingDistance) {
-                    aniController.Stand();
-                    
-                    timer += Time.deltaTime;
-                    if (timer > waitTime) {
-                        timer = 0f;
-                    }    
+            if (isWaiting)
+            {
+                aniController.Stand();
+                waitTimer += Time.deltaTime;
 
-                } else {
+                if (waitTimer >= waitTime)
+                {
+                    waitTimer = 0f;
+                    isWaiting = false;
+                    PickNewDestination();
+                }
+            }
+            else
+            {
+                if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    isWaiting = true;
+                }
+                else
+                {
                     aniController.Walk();
                 }
             }
         }
     }
 }
-
