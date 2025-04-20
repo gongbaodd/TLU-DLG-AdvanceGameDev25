@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
-    [RequireComponent(typeof(BoxCollider), typeof(Animator))]
+    [RequireComponent(typeof(BoxCollider), typeof(Animator), typeof(BoxStateController))]
     public class BoxController : MonoBehaviour
     {
         public static readonly string BOXTAG = "DiabloBox";
