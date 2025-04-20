@@ -11,6 +11,7 @@ TagManager:
   - Static
   - FruitNinjaTarget
   - DiabloBox
+  - DiabloEnemy
   layers:
   - Default
   - TransparentFX
