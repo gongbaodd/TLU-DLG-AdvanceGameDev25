@@ -5,9 +5,13 @@ namespace Assets.Scenes.Diablo.Scripts
     // TODO: finish Box State
     /**
       Idle -> WaitInteraction: when clicked 
+      WaitInteraction -> Idle: when clicked somewhere else
       WaitInteraction -> AttackState: when collision triggered AND BoxConfig.content == Monster
       AttackState -> Idle: when out of collision
-      WaitInteraction -> OpenState: when collision triggered AND (BoxConfig.content == Memory OR BoxConfig.content == Health), memoryBox disappear after opened
+      WaitInteraction -> OpenState: 
+                when collision triggered AND (BoxConfig.content == Memory OR BoxConfig.content == Health), 
+                show VFX on the box the show feedback
+                memoryBox disappear after opened
       OpenState -> Idel: when out of collision
     **/
     public class BoxStateController : MonoBehaviour
@@ -17,7 +21,8 @@ namespace Assets.Scenes.Diablo.Scripts
             Idle,
             WaitInteraction,
             AttackState,
-            OpenState
+            OpenState,
+            DefeatedState
         }
 
         public BoxState currentState = BoxState.Idle;
@@ -43,24 +48,45 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void HandleIdle()
         {
-               
+            // Example transition
+            if (Input.GetKeyDown(KeyCode.I)) // simulate interaction
+            {
+                TransitionToState(BoxState.WaitInteraction);
+            }
         }
 
         void HandleWaitInteraction()
         {
-
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                TransitionToState(BoxState.AttackState);
+            }
+            else if (Input.GetKeyDown(KeyCode.O))
+            {
+                TransitionToState(BoxState.OpenState);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TransitionToState(BoxState.Idle);
+            }
         }
 
         void HandleAttackState()
         {
-
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                TransitionToState(BoxState.DefeatedState);
+            }
         }
 
         void HandleOpenState()
         {
-
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                TransitionToState(BoxState.Idle);
+            }
         }
-
+        
         void TransitionToState(BoxState newState)
         {
             Debug.Log($"Transitioning from {currentState} to {newState}");
