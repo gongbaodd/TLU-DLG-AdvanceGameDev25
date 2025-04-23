@@ -32,10 +32,10 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void OnTriggerEnter(Collider other)
         {
-            var player = DiabloController.player;
-            var playerInteractablesController = player.GetComponent<PlayerInteractablesController>();
+            var stateController = GetComponent<BoxStateController>();
+            var currentState = stateController.currentState;
 
-            if (other.CompareTag("Player") && playerInteractablesController.CompareInteractable(gameObject))
+            if (other.CompareTag("Player") && currentState == BoxStateController.BoxState.WaitInteraction)
             {
                 switch (boxConfig.content)
                 {

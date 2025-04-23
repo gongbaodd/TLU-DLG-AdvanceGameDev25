@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
@@ -48,8 +49,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void HandleIdle()
         {
-            // Example transition
-            if (Input.GetKeyDown(KeyCode.I)) // simulate interaction
+            if (interacted) 
             {
                 TransitionToState(BoxState.WaitInteraction);
             }
@@ -65,7 +65,7 @@ namespace Assets.Scenes.Diablo.Scripts
             {
                 TransitionToState(BoxState.OpenState);
             }
-            else if (Input.GetKeyDown(KeyCode.Escape))
+            else if (interacted == false)
             {
                 TransitionToState(BoxState.Idle);
             }
@@ -91,6 +91,17 @@ namespace Assets.Scenes.Diablo.Scripts
         {
             Debug.Log($"Transitioning from {currentState} to {newState}");
             currentState = newState;
+        }
+
+
+        bool interacted = false;
+
+        public void Interact() {
+            interacted = true;
+        }
+
+        public void ClearInteract() {
+            interacted = false;
         }
     }
 

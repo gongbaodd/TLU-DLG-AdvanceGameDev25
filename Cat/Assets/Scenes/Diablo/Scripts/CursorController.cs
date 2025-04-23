@@ -7,6 +7,7 @@ namespace Assets.Scenes.Diablo.Scripts
     {
         [SerializeField] GameObject interactableCanvas;
         CursorLabelController shownCursorLabel;
+        CursorLabelController lastInteractable;
 
         RaycastHit? HitInteractables()
         {
@@ -33,10 +34,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void ShowLabel(RaycastHit interactable)
         {
-            if (shownCursorLabel)
-            {
-                shownCursorLabel.HideLabel();
-            }
+            HideLabel();
 
             var transform = interactable.transform;
             var labelController = transform.gameObject.GetComponent<CursorLabelController>();
@@ -55,6 +53,22 @@ namespace Assets.Scenes.Diablo.Scripts
             }
         }
 
+        void Interact(RaycastHit interactable) {
+            var labelController = interactable.transform.gameObject.GetComponent<CursorLabelController>();
+
+            if (labelController) {
+                labelController.Interact();
+                lastInteractable = labelController;
+            }
+        }
+
+        void ClearInteract() {
+            if (lastInteractable) {
+                lastInteractable.ClearInteract();
+                lastInteractable = null;
+            }
+        }
+
         void Awake()
         {
             HideLabel();
@@ -62,6 +76,12 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void Update()
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                ClearInteract();
+            }
+
+
             var interactables = HitInteractables();
 
             if (interactables != null)
@@ -70,10 +90,8 @@ namespace Assets.Scenes.Diablo.Scripts
                 ShowLabel(interactable);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    DiabloController.player.GetComponent<PlayerInteractablesController>()
-                        .SetInteractWith(interactable.transform.gameObject);
+                    Interact(interactable);
                 }
-
             }
             else
             {

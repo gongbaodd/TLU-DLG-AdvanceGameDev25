@@ -16,7 +16,11 @@ namespace Assets.Scenes.Diablo.Scripts
         {
 
             var gameConfig = DiabloController.config;
-            var label = instance.transform.Find("Label")?.GetComponent<TextMeshProUGUI>();
+            var labelObject = instance.transform.Find("Label");
+
+            if (labelObject == null) return;
+
+            var label = labelObject.GetComponent<TextMeshProUGUI>();
 
             if (transform.CompareTag(BOXTAG))
             {
@@ -34,6 +38,24 @@ namespace Assets.Scenes.Diablo.Scripts
         public void HideLabel()
         {
             instance.SetActive(false);
+        }
+
+        public void Interact()
+        {
+            if (transform.CompareTag(BOXTAG))
+            {
+                var stateController = GetComponent<BoxStateController>();
+                stateController.Interact();
+            }
+        }
+
+        public void ClearInteract()
+        {
+            if (transform.CompareTag(BOXTAG))
+            {
+                var stateController = GetComponent<BoxStateController>();
+                stateController.ClearInteract();
+            }
         }
 
         void Awake()
