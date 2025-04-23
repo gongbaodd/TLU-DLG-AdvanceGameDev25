@@ -5,10 +5,9 @@ namespace Assets.Scenes.Diablo.Scripts
 {
     public class CursorController : MonoBehaviour
     {
-        readonly string BOXTAG = BoxController.BOXTAG;
-        readonly string ENEMYTAG = "DiabloEnemy";
-
         [SerializeField] GameObject interactableCanvas;
+        CursorLabelController shownCursorLabel;
+
         RaycastHit? HitInteractables()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -34,35 +33,26 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void ShowLabel(RaycastHit interactable)
         {
-            var transform = interactable.transform;
-            if (transform.CompareTag(BOXTAG) || transform.CompareTag(ENEMYTAG))
+            if (shownCursorLabel)
             {
-                interactableCanvas.transform.position = transform.position + Vector3.up * 1.5f;
-                interactableCanvas.SetActive(true);
-                interactableCanvas.transform.LookAt(Camera.main.transform.position);
-                interactableCanvas.transform.Rotate(0, 180f, 0);
+                shownCursorLabel.HideLabel();
+            }
 
-                var gameConfig = DiabloController.config;
-                var label = interactableCanvas.transform.Find("Label")?.GetComponent<TextMeshProUGUI>();
-
-                if (label != null)
-                {
-                    if (transform.CompareTag(BOXTAG))
-                    {
-                        label.text = gameConfig.boxCursorLabel;
-                    }
-
-                    if (transform.CompareTag(ENEMYTAG))
-                    {
-                        label.text = gameConfig.enemyCursorLabel;
-                    }
-                }
+            var transform = interactable.transform;
+            var labelController = transform.gameObject.GetComponent<CursorLabelController>();
+            if (labelController)
+            {
+                labelController.ShowLabel();
+                shownCursorLabel = labelController;
             }
         }
 
         void HideLabel()
         {
-            interactableCanvas.SetActive(false);
+            if (shownCursorLabel)
+            {
+                shownCursorLabel.HideLabel();
+            }
         }
 
         void Awake()
