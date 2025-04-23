@@ -21,7 +21,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
         public BoxState currentState = BoxState.Idle;
 
-        
+
         void HandleIdle()
         {
             if (interacted)
@@ -37,7 +37,7 @@ namespace Assets.Scenes.Diablo.Scripts
             if (playerIsAround)
             {
                 ClearInteract();
-                
+
                 if (boxConfig.content == BoxContent.Monster)
                 {
                     TransitionToState(BoxState.AttackState);
@@ -55,18 +55,31 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void HandleAttackState()
         {
-            var attackRoutine = KeepAttack();
-            StartCoroutine(attackRoutine);
+            var storedAttackRoutine = KeepAttack();
+            StartCoroutine(storedAttackRoutine);
+
 
             if (playerIsAround == false)
             {
-                StopCoroutine(attackRoutine);
+                StopCoroutine(storedAttackRoutine);
                 TransitionToState(BoxState.Idle);
             }
         }
 
         void HandleOpenState()
         {
+            var boxConfig = GetComponent<BoxController>().boxConfig;
+
+            if (boxConfig.content == BoxContent.Memory)
+            {
+                var manager = DiabloController.gameManager;
+                if (manager)
+                {
+                    manager.GetComponent<DiabloController>().Win();
+                }
+            }
+
+
             if (playerIsAround == false)
             {
                 TransitionToState(BoxState.Idle);
@@ -104,14 +117,15 @@ namespace Assets.Scenes.Diablo.Scripts
             playerIsAround = false;
         }
 
-        IEnumerator KeepAttack() {
+        IEnumerator KeepAttack()
+        {
             anim.SetTrigger("Attack");
 
             var boxConfig = GetComponent<BoxController>().boxConfig;
             yield return new WaitForSeconds(boxConfig.attackInterval);
         }
 
-        
+
         void Awake()
         {
             anim = GetComponent<Animator>();
