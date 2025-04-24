@@ -428,7 +428,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -478,7 +478,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1292,6 +1292,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3496443840633803396, guid: ba0bdb9b47ae9f6458e6b02bb01c75cd,
         type: 3}
+    - target: {fileID: 4100982018126940737, guid: 1888c2abab8e1144b9cfe960b72035c6,
+        type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: b699628a991fc744887ae6ded2ea9bfa,
+        type: 2}
     - target: {fileID: 5149855374763429748, guid: 1888c2abab8e1144b9cfe960b72035c6,
         type: 3}
       propertyPath: spawnPositions.Array.size
@@ -2537,6 +2543,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3496443840633803396, guid: ba0bdb9b47ae9f6458e6b02bb01c75cd,
         type: 3}
+    - target: {fileID: 4100982018126940737, guid: 1888c2abab8e1144b9cfe960b72035c6,
+        type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: b699628a991fc744887ae6ded2ea9bfa,
+        type: 2}
     - target: {fileID: 5149855374763429748, guid: 1888c2abab8e1144b9cfe960b72035c6,
         type: 3}
       propertyPath: spawnPositions.Array.size

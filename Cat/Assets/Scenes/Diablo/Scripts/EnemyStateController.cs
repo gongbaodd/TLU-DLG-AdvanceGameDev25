@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
+    [RequireComponent(typeof(SkeletonAnimatorController))]
+    [RequireComponent(typeof(SkeletonMovementController))]
     public class EnemyStateController : MonoBehaviour
     {
         public enum EnemyState
@@ -15,38 +18,19 @@ namespace Assets.Scenes.Diablo.Scripts
 
         public EnemyState currentState = EnemyState.Idle;
 
-        void Update()
-        {
-            // Global defeated trigger
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                TransitionToState(EnemyState.Defeated);
-                return;
-            }
+        bool isWalking = false;
 
-            switch (currentState)
-            {
-                case EnemyState.Idle:
-                    HandleIdle();
-                    break;
-                case EnemyState.Move:
-                    HandleMove();
-                    break;
-                case EnemyState.Catch:
-                    HandleCatch();
-                    break;
-                case EnemyState.Attack:
-                    HandleAttack();
-                    break;
-                case EnemyState.Defeated:
-                    HandleDefeated();
-                    break;
-            }
+        void StartWalking() {
+            movementController.PickNewDestination();
+            isWalking = true;
         }
 
+        
         void HandleIdle()
         {
-            if (Input.GetKeyDown(KeyCode.M))
+            aniController.Stand();
+
+            if (isWalking)
             {
                 TransitionToState(EnemyState.Move);
             }
@@ -56,20 +40,36 @@ namespace Assets.Scenes.Diablo.Scripts
             }
         }
 
+        IEnumerator Waiting() {
+            yield return new WaitForSeconds(config.waitTime);
+            StartWalking();
+        }
+
         void HandleMove()
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            aniController.Walk();
+
+            if (movementController.IsWalking() == false)
             {
+                isWalking = false;
                 TransitionToState(EnemyState.Idle);
+                StartCoroutine(Waiting());
             }
-            else if (Input.GetKeyDown(KeyCode.C))
+            else if (isCatch)
             {
                 TransitionToState(EnemyState.Catch);
             }
         }
 
+        bool isCatch = false;
+
+        public void Catch() {
+            isCatch = true;
+        }
+
         void HandleCatch()
         {
+            aniController.Run();
             if (Input.GetKeyDown(KeyCode.M))
             {
                 TransitionToState(EnemyState.Move);
@@ -103,5 +103,51 @@ namespace Assets.Scenes.Diablo.Scripts
             Debug.Log($"Enemy transitioning from {currentState} to {newState}");
             currentState = newState;
         }
+
+        SkeletonAnimatorController aniController;
+        SkeletonMovementController movementController;
+        EnemyConfig config;
+        void Awake()
+        {
+            aniController = GetComponent<SkeletonAnimatorController>();
+            movementController = GetComponent<SkeletonMovementController>();
+            var controller = GetComponent<SkeletonController>();
+            config = controller.config;
+        }
+
+        void Start()
+        {
+            StartWalking();
+        }
+
+        void Update()
+        {
+            // Global defeated trigger
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                TransitionToState(EnemyState.Defeated);
+                return;
+            }
+
+            switch (currentState)
+            {
+                case EnemyState.Idle:
+                    HandleIdle();
+                    break;
+                case EnemyState.Move:
+                    HandleMove();
+                    break;
+                case EnemyState.Catch:
+                    HandleCatch();
+                    break;
+                case EnemyState.Attack:
+                    HandleAttack();
+                    break;
+                case EnemyState.Defeated:
+                    HandleDefeated();
+                    break;
+            }
+        }
+
     }
 }
