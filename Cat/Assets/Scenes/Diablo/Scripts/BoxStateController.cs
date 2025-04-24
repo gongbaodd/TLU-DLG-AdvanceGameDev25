@@ -53,15 +53,21 @@ namespace Assets.Scenes.Diablo.Scripts
             }
         }
 
+        bool isAttacking = false;
+        IEnumerator storedAttack;
         void HandleAttackState()
         {
-            var storedAttackRoutine = KeepAttack();
-            StartCoroutine(storedAttackRoutine);
+            if (!isAttacking) {
+                storedAttack = KeepAttack();
+                StartCoroutine(storedAttack);
+                isAttacking = true;
+            }
 
 
             if (playerIsAround == false)
             {
-                StopCoroutine(storedAttackRoutine);
+                isAttacking = false;
+                StopCoroutine(storedAttack);
                 TransitionToState(BoxState.Idle);
             }
         }
@@ -119,10 +125,13 @@ namespace Assets.Scenes.Diablo.Scripts
 
         IEnumerator KeepAttack()
         {
-            anim.SetTrigger("Attack");
+            while (playerIsAround)
+            {
+                anim.SetTrigger("Attack");
 
-            var boxConfig = GetComponent<BoxController>().boxConfig;
-            yield return new WaitForSeconds(boxConfig.attackInterval);
+                var boxConfig = GetComponent<BoxController>().boxConfig;
+                yield return new WaitForSeconds(boxConfig.attackInterval);
+            }
         }
 
 
