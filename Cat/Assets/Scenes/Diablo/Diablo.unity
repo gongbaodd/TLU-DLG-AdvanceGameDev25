@@ -463,7 +463,7 @@ CapsuleCollider:
   m_Height: 2.0903316
   m_Direction: 1
   m_Center: {x: 0, y: 0.5451658, z: 0}
---- !u!65 &192296725
+--- !u!65 &192296733
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -484,6 +484,61 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1382816, y: 1.411487, z: 4.65104}
   m_Center: {x: -0.210099, y: 0.76674026, z: 2.4166648}
+--- !u!114 &192296734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192296708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: -1738021353122718970, guid: 2f300c89b9340f540aa9b968320c6146,
+    type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 9215107582324637919
+  - rid: 9215107582324637963
+  - rid: 9215107582324638077
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 9215107582324637919
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]',
+        ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 192296708}
+    - rid: 9215107582324637963
+      type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]',
+        ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1950957126619470089
+          m_Value1: 3684310714205825136
+        Name: Waypoints
+        m_Value:
+        - {fileID: 1642950982}
+        - {fileID: 1285833581}
+        - {fileID: 563402397}
+        - {fileID: 749006336}
+        - {fileID: 1470058352}
+    - rid: 9215107582324638077
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]',
+        ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10336456001317413952
+          m_Value1: 810419044588348441
+        Name: Player
+        m_Value: {fileID: 863770018}
 --- !u!1 &266900219 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6358859563659579807, guid: a4367b2fc500aa64d9cb638e62ab4462,
@@ -523,7 +578,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.R.n
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -716,7 +771,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.L.s
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -901,7 +956,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.L.n1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1323,7 +1378,8 @@ PrefabInstance:
       propertyPath: 'spawnPositions.Array.data[3]'
       value: 
       objectReference: {fileID: 1885769288}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 367621221649464495, guid: 1888c2abab8e1144b9cfe960b72035c6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1678,7 +1734,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.R.s
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1828,7 +1884,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.L.e
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1890,7 +1946,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.L.n2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1948,7 +2004,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.R.w
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2098,7 +2154,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.L.w
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2396,7 +2452,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPos.R.e
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2609,7 +2665,14 @@ PrefabInstance:
       propertyPath: 'spawnPosistions.Array.data[4]'
       value: 
       objectReference: {fileID: 1470058353}
-    m_RemovedComponents: []
+    - target: {fileID: 7113294103867661215, guid: 1888c2abab8e1144b9cfe960b72035c6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5149855374763429748, guid: 1888c2abab8e1144b9cfe960b72035c6, type: 3}
+    - {fileID: 367621221649464495, guid: 1888c2abab8e1144b9cfe960b72035c6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2620,7 +2683,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2102498553988639752, guid: 1888c2abab8e1144b9cfe960b72035c6,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 192296725}
+      addedObject: {fileID: 192296733}
+    - targetCorrespondingSourceObject: {fileID: 2102498553988639752, guid: 1888c2abab8e1144b9cfe960b72035c6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 192296734}
   m_SourcePrefab: {fileID: 100100000, guid: 1888c2abab8e1144b9cfe960b72035c6, type: 3}
 --- !u!1001 &7511921857866232359
 PrefabInstance:

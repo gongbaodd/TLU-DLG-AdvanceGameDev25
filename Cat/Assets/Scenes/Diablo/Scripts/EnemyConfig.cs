@@ -6,5 +6,8 @@ namespace Assets.Scenes.Diablo.Scripts
     public class EnemyConfig: ScriptableObject
     {
         public float waitTime;
+        public float detectionRange = 10f;
+
+        public float viewAngle = 120f;
     }
 }
