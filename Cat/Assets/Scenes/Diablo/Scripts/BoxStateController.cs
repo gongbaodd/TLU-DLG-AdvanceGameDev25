@@ -127,8 +127,21 @@ namespace Assets.Scenes.Diablo.Scripts
             {
                 anim.SetTrigger("Attack");
 
+                AttackThePlayer();
+
                 var boxConfig = GetComponent<BoxController>().boxConfig;
                 yield return new WaitForSeconds(boxConfig.attackInterval);
+            }
+        }
+
+        void AttackThePlayer() {
+            var player = DiabloController.player;
+            var distance = Vector3.Distance(transform.position, player.transform.position);
+            var boxConfig = GetComponent<BoxController>().boxConfig;
+
+            if (distance < boxConfig.attackRange) {
+                var lifeController = player.GetComponent<LifeBarController>();
+                lifeController.Attacked(boxConfig.attackValue);
             }
         }
 

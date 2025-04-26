@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: BoxMonster
   m_EditorClassIdentifier: 
   content: 2
+  attackInterval: 1
+  attackValue: 10
+  attackRange: 2

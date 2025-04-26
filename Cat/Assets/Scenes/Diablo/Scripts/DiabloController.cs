@@ -19,6 +19,11 @@ namespace Assets.Scenes.Diablo.Scripts
             throw new System.NotImplementedException("Need to addItem to Inventory! Wait the Inventory to be implemented!");
         }
 
+        public void Lose()
+        {
+            throw new System.NotImplementedException("Need to addItem to Inventory! Wait the Inventory to be implemented!");
+        }
+
         void Awake()
         {
             gameManager = gameObject;

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   boxCursorLabel: Check it
-  enemyCursorLabel: Attack
+  enemyCursorLabel: 

@@ -213,7 +213,7 @@ PrefabInstance:
     - target: {fileID: 6358859563659579807, guid: a4367b2fc500aa64d9cb638e62ab4462,
         type: 3}
       propertyPath: m_Name
-      value: Chest.NE.Health
+      value: Chest.NE.Monster
       objectReference: {fileID: 0}
     - target: {fileID: 7409886450369527604, guid: a4367b2fc500aa64d9cb638e62ab4462,
         type: 3}
@@ -254,7 +254,7 @@ PrefabInstance:
         type: 3}
       propertyPath: boxConfig
       value: 
-      objectReference: {fileID: 11400000, guid: c76cad05b2ef3c44c80561be920314c4,
+      objectReference: {fileID: 11400000, guid: 309c6969cd44a534e9411e528cc24a1c,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -332,7 +332,7 @@ PrefabInstance:
     - target: {fileID: 6358859563659579807, guid: a4367b2fc500aa64d9cb638e62ab4462,
         type: 3}
       propertyPath: m_Name
-      value: Chest.E.Health
+      value: Chest.E.Monster
       objectReference: {fileID: 0}
     - target: {fileID: 7409886450369527604, guid: a4367b2fc500aa64d9cb638e62ab4462,
         type: 3}
@@ -373,7 +373,7 @@ PrefabInstance:
         type: 3}
       propertyPath: boxConfig
       value: 
-      objectReference: {fileID: 11400000, guid: c76cad05b2ef3c44c80561be920314c4,
+      objectReference: {fileID: 11400000, guid: 309c6969cd44a534e9411e528cc24a1c,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2010,7 +2010,7 @@ PrefabInstance:
     - target: {fileID: 6358859563659579807, guid: a4367b2fc500aa64d9cb638e62ab4462,
         type: 3}
       propertyPath: m_Name
-      value: Chest.SW.Health
+      value: Chest.SW.Monster
       objectReference: {fileID: 0}
     - target: {fileID: 7409886450369527604, guid: a4367b2fc500aa64d9cb638e62ab4462,
         type: 3}
@@ -2051,7 +2051,7 @@ PrefabInstance:
         type: 3}
       propertyPath: boxConfig
       value: 
-      objectReference: {fileID: 11400000, guid: c76cad05b2ef3c44c80561be920314c4,
+      objectReference: {fileID: 11400000, guid: 309c6969cd44a534e9411e528cc24a1c,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

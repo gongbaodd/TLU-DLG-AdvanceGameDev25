@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: BoxMemory
   m_EditorClassIdentifier: 
   content: 1
-  isMemoryStored: 0
+  attackInterval: 1
+  attackValue: 10
+  attackRange: 2
