@@ -5,9 +5,19 @@ namespace Assets.Scenes.Diablo.Scripts
     {
         [SerializeField] GameObject lifebar;
 
+        GameObject myLifebar;
+
         void Start()
         {
-            Instantiate(lifebar, transform.position + Vector3.up * 2, Quaternion.identity, transform);   
+             myLifebar = Instantiate(lifebar, transform.position + Vector3.up * 2, Quaternion.identity, transform);   
+        }
+
+        void Update()
+        {
+            if (myLifebar != null) {
+                myLifebar.transform.LookAt(Camera.main.transform.position);
+                myLifebar.transform.Rotate(0, 180f, 0);
+            }
         }
     }
 }

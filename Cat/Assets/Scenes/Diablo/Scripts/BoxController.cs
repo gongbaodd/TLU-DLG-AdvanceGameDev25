@@ -1,56 +1,63 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
-    [RequireComponent(typeof(BoxCollider), typeof(Animator), typeof(BoxStateController))]
+    [RequireComponent(typeof(BoxCollider), typeof(BoxStateController))]
+    [RequireComponent(typeof(CursorLabelController))]
     public class BoxController : MonoBehaviour
     {
         public static readonly string BOXTAG = "DiabloBox";
 
-        Animator anim;
-        [SerializeField] BoxConfig boxConfig;
+        public BoxConfig boxConfig;
 
-        void OnFindMemory()
-        {
-            var manager = DiabloController.gameManager;
+        // void OnFindMemory()
+        // {
+        //     var manager = DiabloController.gameManager;
 
-            if (manager)
-            {
-                manager.GetComponent<DiabloController>().Win();
-            }
-        }
+        //     if (manager)
+        //     {
+        //         manager.GetComponent<DiabloController>().Win();
+        //     }
+        // }
 
-        void OnTriggerMonster() {
-            anim.SetTrigger("Attack");
-        }
+        // IEnumerator KeepAttack() {
+        //     anim.SetTrigger("Attack");
+        //     yield return new WaitForSeconds(boxConfig.attackInterval);
+        // }
 
-        void Awake()
-        {
-            anim = GetComponent<Animator>();
-        }
+        // void OnTriggerMonster() {
+        //     StartCoroutine(KeepAttack());
+        // }
 
         void OnTriggerEnter(Collider other)
         {
-            var player = DiabloController.player;
-            var playerInteractablesController = player.GetComponent<PlayerInteractablesController>();
+            var stateController = GetComponent<BoxStateController>();
+            var currentState = stateController.currentState;
 
-            if (other.CompareTag("Player") && playerInteractablesController.CompareInteractable(gameObject))
+            if (other.CompareTag("Player") && currentState == BoxStateController.BoxState.WaitInteraction)
             {
                 switch (boxConfig.content)
                 {
                     case BoxContent.None:
                         break;
                     case BoxContent.Memory:
-                        OnFindMemory();
-                        break;
                     case BoxContent.Health:
-                        break;
                     case BoxContent.Monster:
-                        OnTriggerMonster();
+                        stateController.PlayerCome();
                         break;
                     default:
                         throw new System.Exception("Invalid box content");
                 }
+            }
+        }
+
+        void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                var stateController = GetComponent<BoxStateController>();
+                stateController.PlayerLeave();
             }
         }
     }

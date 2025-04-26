@@ -4,7 +4,7 @@ using Assets.Prefabs.Cat.Scripts;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
-    [RequireComponent(typeof(PlayerInteractablesController), typeof(LifeBarController))]
+    [RequireComponent(typeof(LifeBarController))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] AssetReference playerAsset;

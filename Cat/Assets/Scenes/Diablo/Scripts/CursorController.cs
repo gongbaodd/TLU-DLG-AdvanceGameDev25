@@ -5,10 +5,10 @@ namespace Assets.Scenes.Diablo.Scripts
 {
     public class CursorController : MonoBehaviour
     {
-        readonly string BOXTAG = BoxController.BOXTAG;
-        readonly string ENEMYTAG = "DiabloEnemy";
-
         [SerializeField] GameObject interactableCanvas;
+        CursorLabelController shownCursorLabel;
+        CursorLabelController lastInteractable;
+
         RaycastHit? HitInteractables()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -34,35 +34,39 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void ShowLabel(RaycastHit interactable)
         {
+            HideLabel();
+
             var transform = interactable.transform;
-            if (transform.CompareTag(BOXTAG) || transform.CompareTag(ENEMYTAG))
+            var labelController = transform.gameObject.GetComponent<CursorLabelController>();
+            if (labelController)
             {
-                interactableCanvas.transform.position = transform.position + Vector3.up * 1.5f;
-                interactableCanvas.SetActive(true);
-                interactableCanvas.transform.LookAt(Camera.main.transform.position);
-                interactableCanvas.transform.Rotate(0, 180f, 0);
-
-                var gameConfig = DiabloController.config;
-                var label = interactableCanvas.transform.Find("Label")?.GetComponent<TextMeshProUGUI>();
-
-                if (label != null)
-                {
-                    if (transform.CompareTag(BOXTAG))
-                    {
-                        label.text = gameConfig.boxCursorLabel;
-                    }
-
-                    if (transform.CompareTag(ENEMYTAG))
-                    {
-                        label.text = gameConfig.enemyCursorLabel;
-                    }
-                }
+                labelController.ShowLabel();
+                shownCursorLabel = labelController;
             }
         }
 
         void HideLabel()
         {
-            interactableCanvas.SetActive(false);
+            if (shownCursorLabel)
+            {
+                shownCursorLabel.HideLabel();
+            }
+        }
+
+        void Interact(RaycastHit interactable) {
+            var labelController = interactable.transform.gameObject.GetComponent<CursorLabelController>();
+
+            if (labelController) {
+                labelController.Interact();
+                lastInteractable = labelController;
+            }
+        }
+
+        void ClearInteract() {
+            if (lastInteractable) {
+                lastInteractable.ClearInteract();
+                lastInteractable = null;
+            }
         }
 
         void Awake()
@@ -72,6 +76,12 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void Update()
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                ClearInteract();
+            }
+
+
             var interactables = HitInteractables();
 
             if (interactables != null)
@@ -80,10 +90,8 @@ namespace Assets.Scenes.Diablo.Scripts
                 ShowLabel(interactable);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    DiabloController.player.GetComponent<PlayerInteractablesController>()
-                        .SetInteractWith(interactable.transform.gameObject);
+                    Interact(interactable);
                 }
-
             }
             else
             {

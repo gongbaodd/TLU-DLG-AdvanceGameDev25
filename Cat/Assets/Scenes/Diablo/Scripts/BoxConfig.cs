@@ -8,6 +8,8 @@ namespace Assets.Scenes.Diablo.Scripts
     {
         public BoxContent content;
 
+        public float attackInterval = 1f;
+
     }
 
     public enum BoxContent
