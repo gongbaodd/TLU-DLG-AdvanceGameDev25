@@ -10,6 +10,10 @@ namespace Assets.Scenes.Diablo.Scripts
 
         public float attackInterval = 1f;
 
+        public float attackValue = 10f;
+
+        public float attackRange = 2f;
+
     }
 
     public enum BoxContent

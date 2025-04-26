@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57c113e921f7744b925466598fad2cf, type: 3}
   m_Name: BoxNormal
   m_EditorClassIdentifier: 
+  content: 0
+  attackInterval: 1
+  attackValue: 10
+  attackRange: 2

@@ -7,6 +7,6 @@ namespace Assets.Scenes.Diablo.Scripts
     public class GameConfig : ScriptableObject
     {
         public string boxCursorLabel = "Check it";
-        public string enemyCursorLabel = "Attack";
+        public string enemyCursorLabel = "";
     }
 }

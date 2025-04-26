@@ -9,5 +9,9 @@ namespace Assets.Scenes.Diablo.Scripts
         public float detectionRange = 10f;
 
         public float viewAngle = 120f;
+
+        public float attackValue = 20f;
+
+        public float attackRange = 2f;
     }
 }
