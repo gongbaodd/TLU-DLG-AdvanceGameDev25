@@ -92,7 +92,6 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void TransitionToState(BoxState newState)
         {
-            Debug.Log($"Transitioning from {currentState} to {newState}");
             currentState = newState;
         }
 
