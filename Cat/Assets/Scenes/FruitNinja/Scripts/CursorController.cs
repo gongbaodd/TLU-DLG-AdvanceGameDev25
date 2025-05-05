@@ -76,23 +76,31 @@ namespace Assets.Scenes.FruitNinja.Scripts
             LockMouse();
         }
 
+        private float mouseSpeed;
+        private Vector3 lastMousePosition;
+        [SerializeField] float drawingSpeedThreshold = 50f;
+
         void Update()
         {
 
-            if (Input.GetMouseButtonDown(0))
+            Vector3 currentMousePosition = Input.mousePosition;
+            mouseSpeed = (currentMousePosition - lastMousePosition).magnitude / Time.unscaledDeltaTime;
+            lastMousePosition = currentMousePosition;
+
+            if (!isDrawing && mouseSpeed > drawingSpeedThreshold)
             {
                 StartDrawing();
             }
+            else if (isDrawing && mouseSpeed < drawingSpeedThreshold * 0.5f)
+            {
+                StopDrawing();
+            }
 
-            if (Input.GetMouseButton(0) && isDrawing)
+            if (isDrawing)
             {
                 ContinueDrawing();
             }
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                StopDrawing();
-            }
 
             UpdateCatPawPos();
         }
