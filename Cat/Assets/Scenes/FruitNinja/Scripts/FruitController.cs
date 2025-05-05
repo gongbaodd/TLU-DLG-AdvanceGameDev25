@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Scenes.FruitNinja.Scripts
 {
 
-    [RequireComponent(typeof(Rigidbody), typeof(GetManager))]
+    [RequireComponent(typeof(Rigidbody))]
     public class FruitController : MonoBehaviour
     {
         private Rigidbody rb;
@@ -12,16 +12,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         [SerializeField] private Spawnables config;
 
-        public event System.Action<Vector2> OnFruitDestroyed;
-        protected virtual void Start()
+        public event System.Action<GameObject> OnFruitDestroyed;
+
+        public void Spawn()
         {
-            gameManager = GetComponent<GetManager>().GameManager;
-
-            if (config == null)
-            {
-                throw new System.Exception("Spawnables config not assigned. Please assign a Spawnables object in the inspector.");
-            }
-
+            var gameManager = FruitNinjaController.Manager;
             var spawnContoller = gameManager.GetComponent<SpawnFruitController>();
             var speed = config.speed;
             var torque = config.torque;
@@ -36,6 +31,40 @@ namespace Assets.Scenes.FruitNinja.Scripts
             return new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
         }
 
+        public event System.Action<SpawnFruitController.BorderType> OnOutBorder;
+
+        void WatchObjPosition() {
+            if (transform.position.x < leftBorder) {
+                OnOutBorder?.Invoke(SpawnFruitController.BorderType.Left);
+            }
+
+            if (transform.position.y < bottomBorder) {
+                OnOutBorder?.Invoke(SpawnFruitController.BorderType.Bottom);
+            }
+
+            if (transform.position.x > rightBorder) {
+                OnOutBorder?.Invoke(SpawnFruitController.BorderType.Right);
+            }
+        }
+
+        float leftBorder;
+        float rightBorder;
+        float bottomBorder;
+
+        protected virtual void Start()
+        {
+            gameManager = FruitNinjaController.Manager;
+            var spawnCtrl = gameManager.GetComponent<SpawnFruitController>();
+
+            leftBorder = spawnCtrl.LeftBorder;
+            rightBorder = spawnCtrl.RightBorder;
+            bottomBorder = spawnCtrl.BottomBorder;
+        }
+        void Update()
+        {
+            WatchObjPosition();
+        }
+
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
@@ -44,10 +73,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
                 if (cursorController.IsDrawing)
                 {
-                    Vector2 fruitPos = transform.position;
-                    OnFruitDestroyed?.Invoke(fruitPos);
-
-                    Destroy(gameObject);
+                    OnFruitDestroyed?.Invoke(gameObject);
                 }
             }
         }

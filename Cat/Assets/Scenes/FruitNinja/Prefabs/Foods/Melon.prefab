@@ -9,14 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7960156865191942057}
-  - component: {fileID: -5382210325052064015}
   - component: {fileID: 2148169792514893413}
   - component: {fileID: 1420079243036591455}
   - component: {fileID: 2093857969047217901}
   - component: {fileID: 7231667479299483584}
   - component: {fileID: 461357185287728973}
   - component: {fileID: 8650616898388068326}
-  - component: {fileID: 6447429876663070564}
   m_Layer: 0
   m_Name: Melon
   m_TagString: Untagged
@@ -39,18 +37,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &-5382210325052064015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4428620387052604318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2148169792514893413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,15 +176,3 @@ CapsuleCollider:
   m_Height: 0.95233727
   m_Direction: 2
   m_Center: {x: -0.19103086, y: 0.34823143, z: -0.021785498}
---- !u!114 &6447429876663070564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4428620387052604318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

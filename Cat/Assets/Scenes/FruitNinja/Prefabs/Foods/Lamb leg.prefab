@@ -9,14 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4168665546412459865}
-  - component: {fileID: -2533885051077200650}
   - component: {fileID: 4120460857912481912}
   - component: {fileID: 6572351257101852946}
   - component: {fileID: 7714509754724768328}
   - component: {fileID: -3227975311907393665}
   - component: {fileID: 3474252926211830105}
   - component: {fileID: 2633274847780232249}
-  - component: {fileID: 6171930854408724182}
   m_Layer: 0
   m_Name: Lamb leg
   m_TagString: Untagged
@@ -39,18 +37,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &-2533885051077200650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346995494261882188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4120460857912481912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,15 +176,3 @@ CapsuleCollider:
   m_Height: 0.75371414
   m_Direction: 2
   m_Center: {x: 0.008857846, y: 0.24328136, z: 0.08451736}
---- !u!114 &6171930854408724182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346995494261882188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

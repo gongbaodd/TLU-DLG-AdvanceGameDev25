@@ -9,14 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2401719911066095730}
-  - component: {fileID: 4670049105054842446}
   - component: {fileID: 6989208393377421010}
   - component: {fileID: 1465380538471423394}
   - component: {fileID: 9039135661541206626}
   - component: {fileID: 4662638761432831463}
   - component: {fileID: 7386146564535615790}
   - component: {fileID: 4588530112441592484}
-  - component: {fileID: 3315716654239907042}
   m_Layer: 0
   m_Name: Coffee Cup C
   m_TagString: Untagged
@@ -39,18 +37,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4670049105054842446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2408897254962647575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6989208393377421010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,15 +176,3 @@ CapsuleCollider:
   m_Height: 0.48998272
   m_Direction: 1
   m_Center: {x: 0.000049829483, y: 0.24499115, z: -0.00010155141}
---- !u!114 &3315716654239907042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2408897254962647575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51e17117e2307744bd9cfaa0080bc0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
