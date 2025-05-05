@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Scenes.FruitNinja.Scripts
 {
 
-    [RequireComponent(typeof(Rigidbody), typeof(GetManager))]
+    [RequireComponent(typeof(Rigidbody))]
     public class FruitController : MonoBehaviour
     {
         private Rigidbody rb;
@@ -15,7 +15,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public event System.Action<Vector2> OnFruitDestroyed;
         protected virtual void Start()
         {
-            gameManager = GetComponent<GetManager>().GameManager;
+            gameManager = FruitNinjaController.Manager;
 
             if (config == null)
             {

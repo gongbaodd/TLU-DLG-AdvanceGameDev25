@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace Assets.Scenes.FruitNinja.Scripts
 {
-    [RequireComponent(typeof(GetManager), typeof(BoxCollider))]
+    [RequireComponent(typeof(BoxCollider))]
     public class ChestController : MonoBehaviour
     {
+        GameObject manager;
         Vector3 targetPos;
         Collider chestCollider;
         bool isMoving = false;
@@ -20,6 +21,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Start()
         {
+            manager = FruitNinjaController.Manager;
+
             chestCollider = GetComponent<BoxCollider>();
             chestCollider.enabled = false;
 
@@ -45,9 +48,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
         void OnTriggerEnter(Collider other)
         {
             if(other.CompareTag("Player")) {
-                var cursorController = GetComponent<GetManager>().GameManager.GetComponent<CursorController>();
+                var cursorController = manager.GetComponent<CursorController>();
                 if (cursorController.IsDrawing) {
-                    var manager = GetComponent<GetManager>().GameManager;
                     var controller = manager.GetComponent<FruitNinjaController>();
                     controller.Win();
                 }

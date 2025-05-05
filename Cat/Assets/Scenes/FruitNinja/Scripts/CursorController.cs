@@ -3,9 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scenes.FruitNinja.Scripts
 {
-    [RequireComponent(
-        typeof(LineRenderer)
-    )]
+    [RequireComponent(typeof(LineRenderer))]
     public class CursorController : MonoBehaviour
     {
         [SerializeField] GameObject CatPaw;
