@@ -12,16 +12,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         [SerializeField] private Spawnables config;
 
-        public event System.Action<Vector2> OnFruitDestroyed;
-        protected virtual void Start()
+        public event System.Action<GameObject> OnFruitDestroyed;
+
+        public void Spawn()
         {
-            gameManager = FruitNinjaController.Manager;
-
-            if (config == null)
-            {
-                throw new System.Exception("Spawnables config not assigned. Please assign a Spawnables object in the inspector.");
-            }
-
+            var gameManager = FruitNinjaController.Manager;
             var spawnContoller = gameManager.GetComponent<SpawnFruitController>();
             var speed = config.speed;
             var torque = config.torque;
@@ -36,6 +31,40 @@ namespace Assets.Scenes.FruitNinja.Scripts
             return new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
         }
 
+        public event System.Action OnOutBorder;
+
+        void WatchObjPosition() {
+            if (transform.position.x < leftBorder) {
+                OnOutBorder?.Invoke();
+            }
+
+            if (transform.position.y < bottomBorder) {
+                OnOutBorder?.Invoke();
+            }
+
+            if (transform.position.x > rightBorder) {
+                OnOutBorder?.Invoke();
+            }
+        }
+
+        float leftBorder;
+        float rightBorder;
+        float bottomBorder;
+
+        protected virtual void Start()
+        {
+            gameManager = FruitNinjaController.Manager;
+            var spawnCtrl = gameManager.GetComponent<SpawnFruitController>();
+
+            leftBorder = spawnCtrl.LeftBorder;
+            rightBorder = spawnCtrl.RightBorder;
+            bottomBorder = spawnCtrl.BottomBorder;
+        }
+        void Update()
+        {
+            WatchObjPosition();
+        }
+
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
@@ -44,10 +73,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
                 if (cursorController.IsDrawing)
                 {
-                    Vector2 fruitPos = transform.position;
-                    OnFruitDestroyed?.Invoke(fruitPos);
-
-                    Destroy(gameObject);
+                    OnFruitDestroyed?.Invoke(gameObject);
                 }
             }
         }
