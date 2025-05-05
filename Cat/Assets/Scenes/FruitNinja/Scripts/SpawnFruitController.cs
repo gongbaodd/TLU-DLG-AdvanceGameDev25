@@ -10,9 +10,15 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         [SerializeField] private GameConfig config;
 
+        public enum BorderType {
+            Left,
+            Right,
+            Bottom,
+        }
         [SerializeField] private GameObject leftBorder;
         [SerializeField] private GameObject rightBorder;
         [SerializeField] private GameObject bottomBorder;
+        [SerializeField] private GameObject dropOutMark;
 
         public float LeftBorder => leftBorder.transform.position.x;
         public float RightBorder => rightBorder.transform.position.x;
@@ -31,7 +37,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             return direction;
         }
 
-        private IEnumerator SpawnFruitRoutine()
+        IEnumerator SpawnFruitRoutine()
         {
             while (keepSpawning)
             {
@@ -40,10 +46,29 @@ namespace Assets.Scenes.FruitNinja.Scripts
             }
         }
 
-        Vector3 RandomSpawnPos() => new Vector3(Random.Range(-config.spawnWidth, config.spawnWidth), config.spawnHeight, 0);
+        Vector3 RandomSpawnPos() => new (Random.Range(-config.spawnWidth, config.spawnWidth), config.spawnHeight, 0);
 
-        private GameObject SpawnFruit()
+        void InitOutBoundaryMark(BorderType border, Vector3 position) {
+            Vector3 pos;
+            switch (border) {
+                case BorderType.Left:
+                    pos = new Vector3(leftBorder.transform.position.x + 4f, position.y, 0);
+                    Instantiate(dropOutMark, pos, Quaternion.identity);
+                break;
+                case BorderType.Right:
+                    pos = new Vector3(rightBorder.transform.position.x - 4f, position.y, 0);
+                    Instantiate(dropOutMark, pos, Quaternion.identity);
+                break;
+                case BorderType.Bottom:
+                    pos = new Vector3(position.x, bottomBorder.transform.position.y + 4f, 0);
+                    Instantiate(dropOutMark, pos, Quaternion.identity);
+                break;
+            }
+        }
+
+        GameObject InitFruit()
         {
+            var gameCtrl = GetComponent<FruitNinjaController>();
             var fruits = config.fruits;
             var bombs = config.bombs;
 
@@ -60,12 +85,17 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 int index = Random.Range(0, bombs.Count);
                 var spawnable = Instantiate(bombs[index], RandomSpawnPos(), Quaternion.identity);
                 var boomCtrl = spawnable.GetComponent<FruitController>();
+
                 boomCtrl.OnFruitDestroyed += obj => {
                     Boom(obj.transform.position);
                     pool.Release(obj);
+
+                    gameCtrl.Lose();
                 };
 
-                boomCtrl.OnOutBorder += () => pool.Release(spawnable);
+                boomCtrl.OnOutBorder += borderType => {
+                    pool.Release(spawnable);
+                };
 
                 return spawnable;
             }
@@ -80,7 +110,12 @@ namespace Assets.Scenes.FruitNinja.Scripts
                     pool.Release(obj);
                 };
 
-                fruitCtrl.OnOutBorder += () => pool.Release(spawnable);
+                fruitCtrl.OnOutBorder += borderType => {
+                    InitOutBoundaryMark(borderType, spawnable.transform.position);
+                    pool.Release(spawnable);
+
+                    gameCtrl.Lose();
+                };
 
                 return spawnable;
             }
@@ -114,7 +149,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         void InitPool() {
             pool = new LinkedPool<GameObject>(
                 () => {
-                    var fruit = SpawnFruit();
+                    var fruit = InitFruit();
                     fruit.SetActive(false);
                     return fruit;
                 },

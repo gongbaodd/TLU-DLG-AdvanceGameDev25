@@ -31,19 +31,19 @@ namespace Assets.Scenes.FruitNinja.Scripts
             return new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
         }
 
-        public event System.Action OnOutBorder;
+        public event System.Action<SpawnFruitController.BorderType> OnOutBorder;
 
         void WatchObjPosition() {
             if (transform.position.x < leftBorder) {
-                OnOutBorder?.Invoke();
+                OnOutBorder?.Invoke(SpawnFruitController.BorderType.Left);
             }
 
             if (transform.position.y < bottomBorder) {
-                OnOutBorder?.Invoke();
+                OnOutBorder?.Invoke(SpawnFruitController.BorderType.Bottom);
             }
 
             if (transform.position.x > rightBorder) {
-                OnOutBorder?.Invoke();
+                OnOutBorder?.Invoke(SpawnFruitController.BorderType.Right);
             }
         }
 

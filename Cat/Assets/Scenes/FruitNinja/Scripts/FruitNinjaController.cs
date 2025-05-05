@@ -14,6 +14,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             throw new System.NotImplementedException("Need to addItem to Inventory! Wait the Inventory to be implemented!");
         }
+
+        public void Lose()
+        {
+            print("Lose");
+        }
         void Awake()
         {
             Manager = gameObject;
