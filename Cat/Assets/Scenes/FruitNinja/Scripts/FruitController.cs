@@ -24,6 +24,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
             rb = GetComponent<Rigidbody>();
             rb.AddForce(spawnContoller.CalculateForceDirection(transform.position) * speed, ForceMode.Impulse);
             rb.AddTorque(RandomTorque() * torque, ForceMode.Impulse);
+
+            var gameController = gameManager.GetComponent<FruitNinjaController>();
+            gameController.PlaySpawnSound();
         }
 
         private Vector3 RandomTorque()
