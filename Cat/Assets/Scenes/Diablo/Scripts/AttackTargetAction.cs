@@ -13,14 +13,17 @@ namespace Assets.Scenes.Diablo.Scripts
     {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<GameObject> Target;
-        protected override Status OnUpdate()
+    protected override Status OnUpdate()
         {
             var distance = Vector3.Distance(Agent.Value.transform.position, Target.Value.transform.position);
             var lifeController = Target.Value.GetComponent<LifeBarController>();
             var config = Agent.Value.GetComponent<SkeletonController>().config;
+            var gameManager = DiabloController.gameManager;
+            var gameCtrl = gameManager.GetComponent<DiabloController>();
 
             if (distance < config.attackRange) {
                 lifeController.Attacked(config.attackValue);
+                gameCtrl.PlayEnemyPunchSound();
             }
             
             return Status.Success;
