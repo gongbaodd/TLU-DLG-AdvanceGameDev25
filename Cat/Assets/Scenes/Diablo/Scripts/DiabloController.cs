@@ -12,6 +12,8 @@ namespace Assets.Scenes.Diablo.Scripts
 
         public static GameConfig config;
 
+        AudioSource sound;
+
         [SerializeField] GameConfig gameConfig;
 
         public void Win()
@@ -34,6 +36,7 @@ namespace Assets.Scenes.Diablo.Scripts
             }
             
             config = gameConfig;
+            sound = GetComponent<AudioSource>();
         }
 
         void OnDestroy()

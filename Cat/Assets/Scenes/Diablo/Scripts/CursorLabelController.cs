@@ -12,6 +12,8 @@ namespace Assets.Scenes.Diablo.Scripts
 
         GameObject instance;
 
+        GameObject manager;
+
         public void ShowLabel()
         {
 
@@ -62,6 +64,11 @@ namespace Assets.Scenes.Diablo.Scripts
         {
             instance = Instantiate(InteractableCanvas, transform);
             instance.SetActive(false);
+        }
+
+        void Start()
+        {
+            manager = DiabloController.gameManager;
         }
 
         // Update is called once per frame
