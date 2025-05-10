@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216406f43afab6e40b22d12bb03c829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 0}
-  chekSound: {fileID: 8300000, guid: 35cf7766e9e2aa542811e896fde57989, type: 3}
+  boxBiteSound: {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  enemyPunchSound: {fileID: 8300000, guid: b7b5a6156961bac44a67504d42ce6fcf, type: 3}
   gameConfig: {fileID: 11400000, guid: 051303e255ff75b4db756338c31e3e2c, type: 2}
 --- !u!82 &417958237
 AudioSource:

@@ -122,9 +122,13 @@ namespace Assets.Scenes.Diablo.Scripts
 
         IEnumerator KeepAttack()
         {
+            var manager = DiabloController.gameManager;
+            var gameCtrl = manager.GetComponent<DiabloController>();
+
             while (playerIsAround)
             {
                 anim.SetTrigger("Attack");
+                gameCtrl.PlayBoxBiteSound();
 
                 AttackThePlayer();
 

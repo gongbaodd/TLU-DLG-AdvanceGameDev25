@@ -11,25 +11,6 @@ namespace Assets.Scenes.Diablo.Scripts
 
         public BoxConfig boxConfig;
 
-        // void OnFindMemory()
-        // {
-        //     var manager = DiabloController.gameManager;
-
-        //     if (manager)
-        //     {
-        //         manager.GetComponent<DiabloController>().Win();
-        //     }
-        // }
-
-        // IEnumerator KeepAttack() {
-        //     anim.SetTrigger("Attack");
-        //     yield return new WaitForSeconds(boxConfig.attackInterval);
-        // }
-
-        // void OnTriggerMonster() {
-        //     StartCoroutine(KeepAttack());
-        // }
-
         void OnTriggerEnter(Collider other)
         {
             var stateController = GetComponent<BoxStateController>();

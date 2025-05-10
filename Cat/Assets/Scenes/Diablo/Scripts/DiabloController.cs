@@ -13,6 +13,10 @@ namespace Assets.Scenes.Diablo.Scripts
         public static GameConfig config;
 
         AudioSource sound;
+        [SerializeField] AudioClip boxBiteSound;
+        public void PlayBoxBiteSound() => sound.PlayOneShot(boxBiteSound);
+        [SerializeField] AudioClip enemyPunchSound;
+        public void PlayEnemyPunchSound() => sound.PlayOneShot(enemyPunchSound);
 
         [SerializeField] GameConfig gameConfig;
 
