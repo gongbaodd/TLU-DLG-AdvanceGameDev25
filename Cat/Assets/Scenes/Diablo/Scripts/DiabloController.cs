@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
@@ -17,17 +18,35 @@ namespace Assets.Scenes.Diablo.Scripts
         public void PlayBoxBiteSound() => sound.PlayOneShot(boxBiteSound);
         [SerializeField] AudioClip enemyPunchSound;
         public void PlayEnemyPunchSound() => sound.PlayOneShot(enemyPunchSound);
-
         [SerializeField] GameConfig gameConfig;
+        [SerializeField] GameObject MemoryFoundEffect;
+
+        [SerializeField] AudioClip winSound;
+        public void PlayWinSound() => sound.PlayOneShot(winSound);
+        [SerializeField] AudioClip loseSound;
+        public void PlayLoseSound() => sound.PlayOneShot(loseSound);
+
+        readonly float vfxTime = .6f;
 
         public void Win()
         {
-            throw new System.NotImplementedException("Need to addItem to Inventory! Wait the Inventory to be implemented!");
+            IEnumerator WinRoutine() {
+                PlayWinSound();
+                MemoryFoundEffect.SetActive(true);
+                yield return new WaitForSeconds(vfxTime);
+            }
+
+            StartCoroutine(WinRoutine());
         }
 
         public void Lose()
         {
-            throw new System.NotImplementedException("Need to addItem to Inventory! Wait the Inventory to be implemented!");
+            IEnumerator LoseRoutine() {
+                PlayLoseSound();
+                yield return new WaitForSeconds(vfxTime);
+            }
+
+            StartCoroutine(LoseRoutine());
         }
 
         void Awake()
@@ -41,6 +60,8 @@ namespace Assets.Scenes.Diablo.Scripts
             
             config = gameConfig;
             sound = GetComponent<AudioSource>();
+
+            MemoryFoundEffect.SetActive(false);
         }
 
         void OnDestroy()
