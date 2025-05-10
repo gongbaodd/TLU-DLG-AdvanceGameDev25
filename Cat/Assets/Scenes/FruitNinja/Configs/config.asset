@@ -35,7 +35,8 @@ MonoBehaviour:
   spawnHeight: -5
   spawnWidth: 10
   spawnDelay: 1
-  bombWeight: 20
-  fruitWeight: 80
+  bombWeight: 50
+  fruitWeight: 50
   timeInSeconds: 30
   showCountDownTime: 5
+  poolSize: 100

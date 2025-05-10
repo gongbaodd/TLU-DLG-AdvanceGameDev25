@@ -114,6 +114,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
                     InitOutBoundaryMark(borderType, spawnable.transform.position);
                     pool.Release(spawnable);
 
+                    gameCtrl.PlayOutBorderSound();
                     gameCtrl.Lose();
                 };
 
@@ -125,8 +126,10 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             var poofPrefab = config.poofPrefab;
             var poof = Instantiate(poofPrefab, new Vector3(fruitPos.x, fruitPos.y, 0), Quaternion.identity);
-
             poof.GetComponent<ParticleSystem>().Play();
+
+            var gameCtrl = GetComponent<FruitNinjaController>();
+            gameCtrl.PlayPoofSound();
 
             Destroy(poof, 1f);
         }
@@ -136,6 +139,10 @@ namespace Assets.Scenes.FruitNinja.Scripts
             var boom = Instantiate(boomPrefab, new Vector3(boomPos.x, boomPos.y, 0), Quaternion.identity);
 
             boom.GetComponent<ParticleSystem>().Play();
+
+            var gameCtrl = GetComponent<FruitNinjaController>();
+            gameCtrl.PlayBoomSound();
+
             Destroy(boom, 1f);
         }
 

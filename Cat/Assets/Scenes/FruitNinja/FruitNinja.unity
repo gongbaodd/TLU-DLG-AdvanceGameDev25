@@ -2166,6 +2166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnSound: {fileID: 8300000, guid: 83829ff414f47a048b5387e4ab33571c, type: 3}
+  poofSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
+  boomSound: {fileID: 8300000, guid: 21c4a490b24ba2045bc815f7626a40ef, type: 3}
+  outBorderSound: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
 --- !u!114 &1703314335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2214,7 +2217,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

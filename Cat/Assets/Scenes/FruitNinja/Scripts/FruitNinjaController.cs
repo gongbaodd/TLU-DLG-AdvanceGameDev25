@@ -11,7 +11,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
     {
         public static GameObject Manager;
         AudioSource player;
-        [SerializeField] AudioClip spawnSound;
 
         public void Win()
         {
@@ -22,8 +21,15 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             print("Lose");
         }
-
+        [SerializeField] AudioClip spawnSound;
         public void PlaySpawnSound() => player.PlayOneShot(spawnSound);
+        [SerializeField] AudioClip poofSound;
+        public void PlayPoofSound() => player.PlayOneShot(poofSound);
+        [SerializeField] AudioClip boomSound;
+        public void PlayBoomSound() => player.PlayOneShot(boomSound);
+        [SerializeField] AudioClip outBorderSound;
+        public void PlayOutBorderSound() => player.PlayOneShot(outBorderSound);
+
         void Awake()
         {
             Manager = gameObject;
