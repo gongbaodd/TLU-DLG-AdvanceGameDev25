@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scenes.FruitNinja.Scripts
@@ -10,30 +11,45 @@ namespace Assets.Scenes.FruitNinja.Scripts
     public class FruitNinjaController : MonoBehaviour
     {
         public static GameObject Manager;
-        AudioSource player;
+        AudioSource soundPlayer;
+        public float vfxTime = .6f;
 
         public void Win()
         {
-            throw new System.NotImplementedException("Need to addItem to Inventory! Wait the Inventory to be implemented!");
+            IEnumerator WinRoutine() {
+                yield return new WaitForSeconds(vfxTime);
+                PlayWinSound();
+            }
+
+            StartCoroutine(WinRoutine());
         }
 
         public void Lose()
         {
-            print("Lose");
+            IEnumerator LoseRoutine() {
+                yield return new WaitForSeconds(vfxTime);
+                PlayFailSound();
+            }
+
+            StartCoroutine(LoseRoutine());
         }
         [SerializeField] AudioClip spawnSound;
-        public void PlaySpawnSound() => player.PlayOneShot(spawnSound);
+        public void PlaySpawnSound() => soundPlayer.PlayOneShot(spawnSound);
         [SerializeField] AudioClip poofSound;
-        public void PlayPoofSound() => player.PlayOneShot(poofSound);
+        public void PlayPoofSound() => soundPlayer.PlayOneShot(poofSound);
         [SerializeField] AudioClip boomSound;
-        public void PlayBoomSound() => player.PlayOneShot(boomSound);
+        public void PlayBoomSound() => soundPlayer.PlayOneShot(boomSound);
         [SerializeField] AudioClip outBorderSound;
-        public void PlayOutBorderSound() => player.PlayOneShot(outBorderSound);
+        public void PlayOutBorderSound() => soundPlayer.PlayOneShot(outBorderSound);
+        [SerializeField] AudioClip failSound;
+        public void PlayFailSound() => soundPlayer.PlayOneShot(failSound);
+        [SerializeField] AudioClip winSound;
+        public void PlayWinSound() => soundPlayer.PlayOneShot(winSound);
 
         void Awake()
         {
             Manager = gameObject;
-            player = GetComponent<AudioSource>();
+            soundPlayer = GetComponent<AudioSource>();
         }
         void OnDestroy()
         {
