@@ -9,24 +9,29 @@ namespace Assets.Scenes.FruitNinja.Scripts
         Vector3 targetPos;
         Collider chestCollider;
         bool isMoving = false;
+        [SerializeField] GameObject winVFX;
+        [SerializeField] GameObject ChestObj;
 
         void OnTimerEnd() {
             isMoving = true;
-            chestCollider.enabled = true;
+            ChestObj.SetActive(true);
         }
 
         void MoveToCenter() {
             transform.position = Vector3.Lerp(targetPos, transform.position, 0.05f);
         }
 
+        void Awake()
+        {
+            winVFX.SetActive(false);
+            ChestObj.SetActive(false);
+        }
+
         void Start()
         {
             manager = FruitNinjaController.Manager;
 
-            chestCollider = GetComponent<BoxCollider>();
-            chestCollider.enabled = false;
-
-            Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane);
+            Vector3 screenCenter = new(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane);
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenCenter);
             targetPos = new Vector3(worldPos.x, worldPos.y, transform.position.z);
 
@@ -51,6 +56,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 var cursorController = manager.GetComponent<CursorController>();
                 if (cursorController.IsDrawing) {
                     var controller = manager.GetComponent<FruitNinjaController>();
+                    winVFX.SetActive(true);
+                    Destroy(gameObject, controller.vfxTime);
                     controller.Win();
                 }
             }

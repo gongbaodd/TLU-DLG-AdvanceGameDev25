@@ -24,6 +24,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public float showCountDownTime = 5f;
 
         public int poolSize = 100;
+
     }
 
 }

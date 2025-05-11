@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Garden
   m_GUID: 2dd6284328caa1344becb17f817457ed
   m_SerializeEntries:
+  - m_GUID: 006191225698f8f47bdf019aeb6be892
+    m_Address: Assets/Scenes/FruitNinja/Intro.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4d909b5421c9cd34bb21ef3f64b7c956
     m_Address: Assets/Scenes/Garden/Garden-design.unity
     m_ReadOnly: 0
@@ -31,6 +36,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Garden
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9cc1bfbac30d4cc448f92f418bc8a1e1
+    m_Address: Assets/Scenes/TestStarter/TestStarter.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a924029ba7a6a774385077b482178466
     m_Address: Assets/Scenes/MainScene/MainScene.unity

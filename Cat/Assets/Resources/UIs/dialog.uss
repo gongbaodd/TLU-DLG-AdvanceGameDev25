@@ -1,0 +1,19 @@
+.panel {
+    flex-grow: 1;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.god-content {
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Buttons/Button%20Yellow.png?fileID=-2047613651344142497&guid=e869268efd7d38745a52967381cef55f&type=3#Button Yellow_0");
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.evil-content {
+    background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Buttons/Button%20Violet.png?fileID=4717104774431673990&guid=2204c5120d209e24b8d8473101c0670f&type=3#Button Violet_0");
+}
+
+.cat-contetn {
+    background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Buttons/Button%20Blue.png?fileID=-8111322212487550922&guid=4edd415ab2cd6784ea5e7905122a703d&type=3#Button Blue_0");
+}
