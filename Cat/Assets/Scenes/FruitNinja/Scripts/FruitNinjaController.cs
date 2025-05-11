@@ -12,11 +12,18 @@ namespace Assets.Scenes.FruitNinja.Scripts
     {
         public static GameObject Manager;
         AudioSource soundPlayer;
+        [SerializeField] Item memoryItem;
         public float vfxTime = .6f;
+        [SerializeField] GameObject boss;
 
         public void Win()
         {
             IEnumerator WinRoutine() {
+                boss.SetActive(false);
+
+                var inventory = Inventory.instance;
+                inventory.Add(memoryItem);
+
                 yield return new WaitForSeconds(vfxTime);
                 PlayWinSound();
             }

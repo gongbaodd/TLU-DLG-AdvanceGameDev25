@@ -14,13 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Inventory
   m_GUID: ac6b15cc9111cf64d964787178e5ac64
-  m_SerializeEntries:
-  - m_GUID: b01ee1378c5d37b4689211bae4f610c6
-    m_Address: Assets/Scenes/Inventory/Inventory.unity
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Inventory
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f906c6ba9475bb04cb212d4768eba5bd, type: 2}
   m_SchemaSet:
