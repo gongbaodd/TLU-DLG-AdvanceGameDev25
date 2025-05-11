@@ -28,9 +28,14 @@ namespace Assets.Scenes.Diablo.Scripts
 
         readonly float vfxTime = .6f;
 
+        [SerializeField] Item memoryItem;
+
         public void Win()
         {
             IEnumerator WinRoutine() {
+                var inventory = Inventory.instance;
+                inventory.Add(memoryItem);
+
                 PlayWinSound();
                 MemoryFoundEffect.SetActive(true);
                 yield return new WaitForSeconds(vfxTime);
