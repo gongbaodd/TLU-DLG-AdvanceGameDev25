@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class DialogController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject god;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject boss;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
+    {
+        god.SetActive(false);
+        player.SetActive(false);
+        boss.SetActive(false);
+    }
+    void Start()
     {
         
     }
