@@ -41,3 +41,7 @@
 .hidden {
     display: none;
 }
+
+.button {
+    font-size: 36px;
+}

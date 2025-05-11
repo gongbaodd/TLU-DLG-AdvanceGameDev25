@@ -231,7 +231,19 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   GardenScene:
-    m_AssetGUID: 
+    m_AssetGUID: 4d909b5421c9cd34bb21ef3f64b7c956
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  FruitNinjaStoryScene:
+    m_AssetGUID: 006191225698f8f47bdf019aeb6be892
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  FruitNinjaGameScene:
+    m_AssetGUID: e07d84aa68f1b014782fd29ed1b93218
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 

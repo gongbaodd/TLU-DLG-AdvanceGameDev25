@@ -23,9 +23,10 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
                 var inventory = Inventory.instance;
                 inventory.Add(memoryItem);
+                PlayWinSound();
 
                 yield return new WaitForSeconds(vfxTime);
-                PlayWinSound();
+                DialogController.Win();
             }
 
             StartCoroutine(WinRoutine());
@@ -34,8 +35,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public void Lose()
         {
             IEnumerator LoseRoutine() {
-                yield return new WaitForSeconds(vfxTime);
                 PlayFailSound();
+                yield return new WaitForSeconds(vfxTime);
+                DialogController.Lose();
             }
 
             StartCoroutine(LoseRoutine());
@@ -57,6 +59,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             Manager = gameObject;
             soundPlayer = GetComponent<AudioSource>();
+
+            boss.GetComponentInChildren<Animator>().SetTrigger("Soccer");
         }
         void OnDestroy()
         {
