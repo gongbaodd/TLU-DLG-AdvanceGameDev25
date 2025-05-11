@@ -21,6 +21,11 @@ public class SceneManagerController : MonoBehaviour
     {
         _ = LoadScene(DebugScene);
     }
+    [SerializeField] AssetReference GardenScene;
+    public void GotoGardenScene()
+    {
+        _ = LoadScene(GardenScene);
+    }
 
     void ToSingleton()
     {
