@@ -14,6 +14,30 @@
     background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Buttons/Button%20Violet.png?fileID=4717104774431673990&guid=2204c5120d209e24b8d8473101c0670f&type=3#Button Violet_0");
 }
 
-.cat-contetn {
+.cat-content {
     background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Buttons/Button%20Blue.png?fileID=-8111322212487550922&guid=4edd415ab2cd6784ea5e7905122a703d&type=3#Button Blue_0");
+}
+
+.cat-button {
+    background-color: rgb(73, 174, 254);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-left-color: rgb(13, 7, 2);
+    border-right-color: rgb(13, 7, 2);
+    border-top-color: rgb(13, 7, 2);
+    border-bottom-color: rgb(13, 7, 2);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    margin-top: 24px;
+    margin-right: 24px;
+    margin-bottom: 0;
+    margin-left: 24px;
+}
+
+.hidden {
+    display: none;
 }

@@ -325,6 +325,22 @@ MonoBehaviour:
   god: {fileID: 166048942}
   player: {fileID: 1828764544}
   boss: {fileID: 502231918}
+  storyJson: '{"inkVersion":21,"root":[["^Shhhh! This is the hell kitchen.","\n",{"->":"intro"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"intro":[["ev","str","^god","/str","/ev",{"VAR=":"speaker","re":true},"^Do
+    not weak up the host here.","\n","ev","str","^What will happen if the owner finds
+    out?","/str","/ev",{"*":".^.c-0","flg":20},"ev","str","^Okay","/str","/ev",{"*":".^.c-1","flg":4},{"c-0":["^
+    ",{"->":"desp_host"},"\n",{"#f":5}],"c-1":["^ ",{"->":"rat_come"},"\n",{"#f":5}]}],{"#f":1}],"desp_host":[["^The
+    owner will cast you out here!","\n","ev","str","^Okay","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^
+    ",{"->":"intro"},"\n",{"#f":5}]}],{"#f":1}],"rat_come":[["ev","str","^boss","/str","/ev",{"VAR=":"speaker","re":true},"^Who
+    is there?","\n","ev","str","^It is me! Who are you?","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^
+    ",{"->":"desp_rat"},"\n",{"#f":5}]}],{"#f":1}],"desp_rat":[["ev","str","^god","/str","/ev",{"VAR=":"speaker","re":true},"^This
+    is a rat ghost. He must have one of the pieces. Ohhh, I can''t stay for long.
+    I will catch you when you get the piece.","\n","ev","str","^Okay","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^
+    ",{"->":"game_desp"},"\n",{"#f":5}]}],{"#f":1}],"game_desp":[["ev","str","^boss","/str","/ev",{"VAR=":"speaker","re":true},"^Haha,
+    you poor cat, want your master''s memory piece? Come and catch it~ However, you
+    can not make any sound to weak up the host.","\n","ev","str","^I will get my
+    friend back!","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^ ",{"->":"Ending"},"\n",{"#f":5}]}],{"#f":1}],"Ending":["^The
+    guy wakes up when all the soul pieces get back to him.","\n","end",{"#f":1}],"global
+    decl":["ev","str","^god","/str",{"VAR=":"speaker"},"/ev","end",null],"#f":1}],"listDefs":{}}'
 --- !u!1001 &645455473
 PrefabInstance:
   m_ObjectHideFlags: 0
