@@ -8,7 +8,6 @@ namespace Assets.Scenes.Diablo.Scripts
         [SerializeField] GameObject interactableCanvas;
         CursorLabelController shownCursorLabel;
         CursorLabelController lastInteractable;
-
         RaycastHit? HitInteractables()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -76,6 +75,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void Update()
         {
+
             if (Input.GetMouseButtonDown(0))
             {
                 ClearInteract();

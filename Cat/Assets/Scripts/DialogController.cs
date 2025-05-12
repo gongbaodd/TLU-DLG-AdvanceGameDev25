@@ -67,7 +67,7 @@ public class DialogController : MonoBehaviour
     {
         if (!story.canContinue)
         {
-            OnNextScene.Invoke();
+            OnNextScene?.Invoke();
             return;
         }
 
@@ -75,7 +75,7 @@ public class DialogController : MonoBehaviour
 
         if (IsGaming)
         {
-            OnStartGame.Invoke();
+            OnStartGame?.Invoke();
         }
 
         if (story.currentChoices.Count == 0)

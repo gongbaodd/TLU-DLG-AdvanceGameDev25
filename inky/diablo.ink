@@ -18,6 +18,7 @@ The Game starts
 + [Win] -> ending
 + [Lose] -> ending
 ===ending===
+~ isGaming = false
 Let's go back! -> END
 
 

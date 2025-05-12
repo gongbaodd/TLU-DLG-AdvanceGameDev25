@@ -51,6 +51,9 @@ namespace Assets.Scenes.Diablo.Scripts
             var gameManager = LevelController.Instance;
             if (gameManager)
             {
+                var state = gameManager.GetComponent<LevelStateController>().currentState;
+                if (state != LevelStateController.State.Game) return;
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     var cursorController = gameManager.GetComponent<CursorController>();
