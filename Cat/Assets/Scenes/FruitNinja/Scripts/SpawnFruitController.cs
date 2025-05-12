@@ -28,7 +28,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         private bool keepSpawning = true;
 
-        private IEnumerator spawnHandler;
+        private Coroutine spawnHandler;
 
         public Vector2 CalculateForceDirection(Vector2 fruitPos)
         {
@@ -68,7 +68,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         GameObject InitFruit()
         {
-            var gameCtrl = GetComponent<FruitNinjaController>();
+            var gameCtrl = GetComponent<LevelManagerController>();
             var fruits = config.fruits;
             var bombs = config.bombs;
 
@@ -114,7 +114,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
                     InitOutBoundaryMark(borderType, spawnable.transform.position);
                     pool.Release(spawnable);
 
-                    gameCtrl.PlayOutBorderSound();
+                    gameCtrl.GetComponent<AudioController>().PlayOutBorderSound();
                     gameCtrl.Lose();
                 };
 
@@ -128,8 +128,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
             var poof = Instantiate(poofPrefab, new Vector3(fruitPos.x, fruitPos.y, 0), Quaternion.identity);
             poof.GetComponent<ParticleSystem>().Play();
 
-            var gameCtrl = GetComponent<FruitNinjaController>();
-            gameCtrl.PlayPoofSound();
+            var gameCtrl = GetComponent<LevelManagerController>();
+            gameCtrl.GetComponent<AudioController>().PlayPoofSound();
 
             Destroy(poof, 1f);
         }
@@ -140,8 +140,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
             boom.GetComponent<ParticleSystem>().Play();
 
-            var gameCtrl = GetComponent<FruitNinjaController>();
-            gameCtrl.PlayBoomSound();
+            var gameCtrl = GetComponent<LevelManagerController>();
+            gameCtrl.GetComponent<AudioController>().PlayBoomSound();
 
             Destroy(boom, 1f);
         }
@@ -180,19 +180,30 @@ namespace Assets.Scenes.FruitNinja.Scripts
             );
         }
 
+        void ToggleSpawnByState(LevelStateController.State state) {
+            switch (state) {
+                case LevelStateController.State.Story:
+                    StopSpawning();
+                    break;
+                case LevelStateController.State.Game:
+                    keepSpawning = true;
+                    spawnHandler = StartCoroutine(SpawnFruitRoutine());
+                    break;
+            }
+        }
+
         void Start()
         {
-            spawnHandler = SpawnFruitRoutine();
-            StartCoroutine(spawnHandler);
-
             InitPool();
 
             TimerController.OnTimerEnd += StopSpawning;
+            LevelStateController.OnStateChange += ToggleSpawnByState;
         }
 
         void OnDestroy()
         {
             TimerController.OnTimerEnd -= StopSpawning;
+            LevelStateController.OnStateChange -= ToggleSpawnByState;
         }
     }
 }

@@ -5,9 +5,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
     [RequireComponent(typeof(BoxCollider))]
     public class ChestController : MonoBehaviour
     {
-        GameObject manager;
+        LevelManagerController manager;
         Vector3 targetPos;
-        Collider chestCollider;
         bool isMoving = false;
         [SerializeField] GameObject winVFX;
         [SerializeField] GameObject ChestObj;
@@ -29,7 +28,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Start()
         {
-            manager = FruitNinjaController.Manager;
+            manager = LevelManagerController.Instance;
 
             Vector3 screenCenter = new(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane);
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenCenter);
@@ -55,7 +54,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             if(other.CompareTag("Player")) {
                 var cursorController = manager.GetComponent<CursorController>();
                 if (cursorController.IsDrawing) {
-                    var controller = manager.GetComponent<FruitNinjaController>();
+                    var controller = manager.GetComponent<LevelManagerController>();
                     winVFX.SetActive(true);
                     Destroy(gameObject, controller.vfxTime);
                     controller.Win();

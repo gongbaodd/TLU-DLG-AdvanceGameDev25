@@ -9,13 +9,13 @@ namespace Assets.Scenes.FruitNinja.Scripts
         [SerializeField] GameObject CatPaw;
         [SerializeField] float mousePosZ = 10f;
         [SerializeField] float minPointDistance = 0.1f;
-        private LineRenderer lineRenderer;
-        private List<Vector3> points = new();
-        private bool isDrawing = false;
-
+        LineRenderer lineRenderer;
+        readonly List<Vector3> points = new();
+        LevelManagerController manager;
+        bool isDrawing = false;
         public bool IsDrawing => isDrawing;
 
-        private void StartDrawing()
+        void StartDrawing()
         {
             lineRenderer.enabled = true;
             isDrawing = true;
@@ -23,7 +23,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             AddPoint(GetMouseWorldPosition());
         }
 
-        private void ContinueDrawing()
+        void ContinueDrawing()
         {
             Vector3 newPos = GetMouseWorldPosition();
             if (points.Count == 0 || Vector3.Distance(points[points.Count - 1], newPos) > minPointDistance)
@@ -32,48 +32,62 @@ namespace Assets.Scenes.FruitNinja.Scripts
             }
         }
 
-        private void StopDrawing()
+        void StopDrawing()
         {
             isDrawing = false;
             lineRenderer.enabled = false;
         }
 
-        private void AddPoint(Vector3 point)
+        void AddPoint(Vector3 point)
         {
             points.Add(point);
             lineRenderer.positionCount = points.Count;
             lineRenderer.SetPositions(points.ToArray());
         }
 
-        private Vector3 GetMouseWorldPosition()
+        Vector3 GetMouseWorldPosition()
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = mousePosZ;
             return Camera.main.ScreenToWorldPoint(mousePos);
         }
 
-        private void LockMouse()
+        void LockMouse()
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
             CatPaw.SetActive(true);
         }
 
-        private void UnlockMouse()
+        void UnlockMouse()
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
 
-        private void UpdateCatPawPos()
+        void UpdateCatPawPos()
         {
             CatPaw.transform.position = GetMouseWorldPosition();
         }
 
+        void ToggleCursor(LevelStateController.State state) {
+            switch (state) {
+                case LevelStateController.State.Story:
+                    CatPaw.SetActive(false);
+                    UnlockMouse();
+                    break;
+                case LevelStateController.State.Game:
+                    LockMouse();
+                    break;
+            }
+        }
+
         void Start()
         {
+            manager = LevelManagerController.Instance;
             lineRenderer = GetComponent<LineRenderer>();
-            LockMouse();
+            UnlockMouse();
+            LevelStateController.OnStateChange += ToggleCursor;
         }
 
         private float mouseSpeed;
@@ -82,6 +96,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Update()
         {
+            var currentState = manager.GetComponent<LevelStateController>().currentState;
+            if (currentState != LevelStateController.State.Game)
+            {
+                return;
+            }
 
             Vector3 currentMousePosition = Input.mousePosition;
             mouseSpeed = (currentMousePosition - lastMousePosition).magnitude / Time.unscaledDeltaTime;
@@ -108,6 +127,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         void OnDestroy()
         {
             UnlockMouse();
+            LevelStateController.OnStateChange -= ToggleCursor;
         }
 
     }

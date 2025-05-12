@@ -8,7 +8,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
     public class FruitController : MonoBehaviour
     {
         private Rigidbody rb;
-        protected GameObject gameManager;
+        LevelManagerController gameManager;
 
         [SerializeField] private Spawnables config;
 
@@ -16,7 +16,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         public void Spawn()
         {
-            var gameManager = FruitNinjaController.Manager;
+            var gameManager = LevelManagerController.Instance;
             var spawnContoller = gameManager.GetComponent<SpawnFruitController>();
             var speed = config.speed;
             var torque = config.torque;
@@ -25,8 +25,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
             rb.AddForce(spawnContoller.CalculateForceDirection(transform.position) * speed, ForceMode.Impulse);
             rb.AddTorque(RandomTorque() * torque, ForceMode.Impulse);
 
-            var gameController = gameManager.GetComponent<FruitNinjaController>();
-            gameController.PlaySpawnSound();
+            var audioController = gameManager.GetComponent<AudioController>();
+            audioController.PlaySpawnSound();
         }
 
         private Vector3 RandomTorque()
@@ -56,7 +56,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         protected virtual void Start()
         {
-            gameManager = FruitNinjaController.Manager;
+            gameManager = LevelManagerController.Instance;
             var spawnCtrl = gameManager.GetComponent<SpawnFruitController>();
 
             leftBorder = spawnCtrl.LeftBorder;

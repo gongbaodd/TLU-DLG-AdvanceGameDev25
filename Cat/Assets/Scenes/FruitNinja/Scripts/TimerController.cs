@@ -1,16 +1,15 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Assets.Scenes.FruitNinja.Scripts
 {
-    [RequireComponent(typeof(UIDocument))]
     public class TimerController : MonoBehaviour
     {
-        GameObject manager;
+        LevelManagerController manager;
         float timeLeft;
-        Label label;
-
+        [SerializeField] TMP_Text label;
         public static event System.Action OnTimerEnd;
 
         IEnumerator TimerCoroutine()
@@ -19,7 +18,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
             {
                 timeLeft -= 1;
 
-                if (timeLeft < 6) {
+                if (timeLeft < 6)
+                {
                     label.text = timeLeft.ToString("0");
                 }
 
@@ -33,20 +33,45 @@ namespace Assets.Scenes.FruitNinja.Scripts
             }
         }
 
-
+        Coroutine timer;
+        void HandleStoryState()
+        {
+            if (timer != null) StopCoroutine(timer);
+            label.text = "";
+        }
+        void HandleGameState()
+        {
+            timer = StartCoroutine(TimerCoroutine());
+        }
+        void ToggleTimer(LevelStateController.State state)
+        {
+            switch (state)
+            {
+                case LevelStateController.State.Story:
+                    HandleStoryState();
+                    break;
+                case LevelStateController.State.Game:
+                    HandleGameState();
+                    break;
+            }
+        }
 
         void Start()
         {
-            manager = FruitNinjaController.Manager;
+            manager = LevelManagerController.Instance;
 
             var config = manager.GetComponent<SpawnFruitController>().Config;
-            var ui = GetComponent<UIDocument>();
-            var root = ui.rootVisualElement;
-            label = root.Q<Label>("timerLabel");
 
             timeLeft = config.timeInSeconds;
+            label.text = "";
 
-            StartCoroutine(TimerCoroutine());
+            LevelStateController.OnStateChange += ToggleTimer;
+            HandleStoryState();
+        }
+
+        void OnDestroy()
+        {
+            LevelStateController.OnStateChange -= ToggleTimer;
         }
     }
 }
