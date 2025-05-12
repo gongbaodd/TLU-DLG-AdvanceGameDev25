@@ -5,6 +5,7 @@ namespace Assets.Scenes.Diablo.Scripts
 {
     [RequireComponent(typeof(CursorController))]
     [RequireComponent(typeof(AudioManager))]
+    [RequireComponent(typeof(LevelStateController))]
     public class LevelController : MonoBehaviour
     {
         public static LevelController Instance;

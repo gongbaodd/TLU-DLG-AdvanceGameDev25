@@ -606,10 +606,12 @@ GameObject:
   m_Component:
   - component: {fileID: 417958232}
   - component: {fileID: 417958236}
+  - component: {fileID: 417958240}
   - component: {fileID: 417958238}
   - component: {fileID: 417958235}
   - component: {fileID: 417958234}
   - component: {fileID: 417958237}
+  - component: {fileID: 417958239}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -786,6 +788,32 @@ MonoBehaviour:
   enemyPunchSound: {fileID: 8300000, guid: b7b5a6156961bac44a67504d42ce6fcf, type: 3}
   winSound: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
   loseSound: {fileID: 8300000, guid: acbcb75601b0082458fda8807f67c813, type: 3}
+--- !u!114 &417958239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417958230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4ec27ef320f204f84e799bb9657d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 1
+--- !u!114 &417958240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417958230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4ec27ef320f204f84e799bb9657d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 1
 --- !u!1 &422401918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6358859563659579807, guid: a4367b2fc500aa64d9cb638e62ab4462,
