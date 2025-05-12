@@ -8,9 +8,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
         typeof(SpawnFruitController),
         typeof(CursorController)
     )]
-    public class GameManagerController: MonoBehaviour
+    public class LevelManagerController: MonoBehaviour
     {
-        public static GameObject Manager;
+        public static LevelManagerController Instance;
         AudioSource soundPlayer;
         [SerializeField] Item memoryItem;
         public float vfxTime = .6f;
@@ -55,14 +55,14 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Awake()
         {
-            Manager = gameObject;
+            Instance = this;
             soundPlayer = GetComponent<AudioSource>();
 
             boss.GetComponentInChildren<Animator>().SetTrigger("Soccer");
         }
         void OnDestroy()
         {
-            Manager = null;
+            Instance = null;
         }
     }
 

@@ -68,7 +68,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         GameObject InitFruit()
         {
-            var gameCtrl = GetComponent<GameManagerController>();
+            var gameCtrl = GetComponent<LevelManagerController>();
             var fruits = config.fruits;
             var bombs = config.bombs;
 
@@ -128,7 +128,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             var poof = Instantiate(poofPrefab, new Vector3(fruitPos.x, fruitPos.y, 0), Quaternion.identity);
             poof.GetComponent<ParticleSystem>().Play();
 
-            var gameCtrl = GetComponent<GameManagerController>();
+            var gameCtrl = GetComponent<LevelManagerController>();
             gameCtrl.PlayPoofSound();
 
             Destroy(poof, 1f);
@@ -140,7 +140,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
             boom.GetComponent<ParticleSystem>().Play();
 
-            var gameCtrl = GetComponent<GameManagerController>();
+            var gameCtrl = GetComponent<LevelManagerController>();
             gameCtrl.PlayBoomSound();
 
             Destroy(boom, 1f);

@@ -7,7 +7,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
     [RequireComponent(typeof(UIDocument))]
     public class TimerController : MonoBehaviour
     {
-        GameObject manager;
+        LevelManagerController manager;
         float timeLeft;
         Label label;
 
@@ -37,7 +37,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Start()
         {
-            manager = GameManagerController.Manager;
+            manager = LevelManagerController.Instance;
 
             var config = manager.GetComponent<SpawnFruitController>().Config;
             var ui = GetComponent<UIDocument>();

@@ -7,7 +7,6 @@ using Button = UnityEngine.UIElements.Button;
 
 public class DialogController : MonoBehaviour
 {
-    public static DialogController Instance { get; private set; }
     [SerializeField] GameObject god;
     [SerializeField] GameObject player;
     [SerializeField] GameObject boss;
@@ -133,22 +132,8 @@ public class DialogController : MonoBehaviour
         boss.SetActive(CurrentSpeaker == Speaker.Boss);
     }
 
-    void ToSingleton() {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Awake()
     {
-        ToSingleton();
-
         god.SetActive(false);
         player.SetActive(false);
         boss.SetActive(false);
