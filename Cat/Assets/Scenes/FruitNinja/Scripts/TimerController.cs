@@ -37,7 +37,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Start()
         {
-            manager = FruitNinjaController.Manager;
+            manager = GameManagerController.Manager;
 
             var config = manager.GetComponent<SpawnFruitController>().Config;
             var ui = GetComponent<UIDocument>();

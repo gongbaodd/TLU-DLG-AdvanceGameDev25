@@ -8,7 +8,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         typeof(SpawnFruitController),
         typeof(CursorController)
     )]
-    public class FruitNinjaController : MonoBehaviour
+    public class GameManagerController: MonoBehaviour
     {
         public static GameObject Manager;
         AudioSource soundPlayer;
@@ -26,7 +26,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 PlayWinSound();
 
                 yield return new WaitForSeconds(vfxTime);
-                DialogController.Win();
             }
 
             StartCoroutine(WinRoutine());
@@ -37,7 +36,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
             IEnumerator LoseRoutine() {
                 PlayFailSound();
                 yield return new WaitForSeconds(vfxTime);
-                DialogController.Lose();
             }
 
             StartCoroutine(LoseRoutine());

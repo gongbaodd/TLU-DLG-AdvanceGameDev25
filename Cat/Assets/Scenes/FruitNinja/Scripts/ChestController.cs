@@ -29,7 +29,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void Start()
         {
-            manager = FruitNinjaController.Manager;
+            manager = GameManagerController.Manager;
 
             Vector3 screenCenter = new(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane);
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenCenter);
@@ -55,7 +55,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             if(other.CompareTag("Player")) {
                 var cursorController = manager.GetComponent<CursorController>();
                 if (cursorController.IsDrawing) {
-                    var controller = manager.GetComponent<FruitNinjaController>();
+                    var controller = manager.GetComponent<GameManagerController>();
                     winVFX.SetActive(true);
                     Destroy(gameObject, controller.vfxTime);
                     controller.Win();

@@ -909,6 +909,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: startKnot
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

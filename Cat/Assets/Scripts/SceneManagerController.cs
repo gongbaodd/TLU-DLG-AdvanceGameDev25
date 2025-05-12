@@ -27,11 +27,6 @@ public class SceneManagerController : MonoBehaviour
         _ = LoadScene(GardenScene);
     }
     [Header("Fruit Ninja")]
-    [SerializeField] AssetReference FruitNinjaStoryScene;
-    public void GotoFruitNinjaStoryScene() 
-    {
-        _ = LoadScene(FruitNinjaStoryScene);
-    }
     [SerializeField] AssetReference FruitNinjaGameScene;
     public void GotoFruitNinjaGameScene() 
     {

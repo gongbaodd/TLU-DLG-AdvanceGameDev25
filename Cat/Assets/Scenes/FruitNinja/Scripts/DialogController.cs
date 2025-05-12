@@ -51,26 +51,17 @@ public class DialogController : MonoBehaviour
         dialog.SetActive(false);
         sceneManagerCtrl.GotoFruitNinjaGameScene();
     }
-    [SerializeField] string startKnot;
-    public static void Win() {
-        Instance.InstanceWin();
-    }
-    public static void Lose() {
-        Instance.InstanceLose();
-    }
-    public void InstanceWin() {
+    public void Win() {
         if (!IsGaming) return;
 
         story.ChooseChoiceIndex(0);
-        sceneManagerCtrl.GotoFruitNinjaStoryScene();
     }
-    public void InstanceLose() {
+    public void Lose() {
         print(story.path);
 
         if (!IsGaming) return;
 
         story.ChooseChoiceIndex(1);
-        sceneManagerCtrl.GotoFruitNinjaStoryScene();
     }
 
     string currentText = "";
@@ -175,16 +166,5 @@ public class DialogController : MonoBehaviour
 
         choices.Add(root.Q<Button>("choice1"));
         choices.Add(root.Q<Button>("choice2"));
-
-        if (startKnot == "") {
-            SetupCat();
-            RenderStory();
-        }
-
-        if (startKnot == "game") {
-            dialog.SetActive(false);
-            story.ChoosePathString(startKnot);
-            story.Continue();
-        }
     }
 }

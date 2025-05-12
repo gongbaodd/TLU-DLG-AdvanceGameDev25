@@ -16,7 +16,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         public void Spawn()
         {
-            var gameManager = FruitNinjaController.Manager;
+            var gameManager = GameManagerController.Manager;
             var spawnContoller = gameManager.GetComponent<SpawnFruitController>();
             var speed = config.speed;
             var torque = config.torque;
@@ -25,7 +25,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             rb.AddForce(spawnContoller.CalculateForceDirection(transform.position) * speed, ForceMode.Impulse);
             rb.AddTorque(RandomTorque() * torque, ForceMode.Impulse);
 
-            var gameController = gameManager.GetComponent<FruitNinjaController>();
+            var gameController = gameManager.GetComponent<GameManagerController>();
             gameController.PlaySpawnSound();
         }
 
@@ -56,7 +56,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         protected virtual void Start()
         {
-            gameManager = FruitNinjaController.Manager;
+            gameManager = GameManagerController.Manager;
             var spawnCtrl = gameManager.GetComponent<SpawnFruitController>();
 
             leftBorder = spawnCtrl.LeftBorder;
