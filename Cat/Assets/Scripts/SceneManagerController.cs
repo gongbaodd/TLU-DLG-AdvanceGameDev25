@@ -12,7 +12,7 @@ public class SceneManagerController : MonoBehaviour
 
     async Task LoadScene(AssetReference scene) {
         ToggleLoading(true);
-        var handler = Addressables.LoadSceneAsync(scene, LoadSceneMode.Single);
+        var handler = Addressables.LoadSceneAsync(scene, LoadSceneMode.Single, true);
         await handler.Task;
         ToggleLoading(false);
     }
