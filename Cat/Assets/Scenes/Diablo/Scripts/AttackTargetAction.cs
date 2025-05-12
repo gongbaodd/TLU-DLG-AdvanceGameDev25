@@ -18,12 +18,12 @@ namespace Assets.Scenes.Diablo.Scripts
             var distance = Vector3.Distance(Agent.Value.transform.position, Target.Value.transform.position);
             var lifeController = Target.Value.GetComponent<LifeBarController>();
             var config = Agent.Value.GetComponent<SkeletonController>().config;
-            var gameManager = DiabloController.gameManager;
-            var gameCtrl = gameManager.GetComponent<DiabloController>();
+            var gameManager = LevelController.Instance;
+            var gameCtrl = gameManager.GetComponent<LevelController>();
 
             if (distance < config.attackRange) {
                 lifeController.Attacked(config.attackValue);
-                gameCtrl.PlayEnemyPunchSound();
+                gameCtrl.GetComponent<AudioManager>().PlayEnemyPunchSound();
             }
             
             return Status.Success;

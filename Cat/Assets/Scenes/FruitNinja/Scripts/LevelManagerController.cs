@@ -19,10 +19,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
             stateManager.StartGame();
         }
 
-        bool isWon = false;
         public void Win()
         {
-            isWon = true;
             IEnumerator WinRoutine()
             {
                 var inventory = Inventory.instance;

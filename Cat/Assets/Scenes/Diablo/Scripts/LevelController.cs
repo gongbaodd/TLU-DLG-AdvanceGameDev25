@@ -3,75 +3,86 @@ using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
-    [RequireComponent(
-        typeof(CursorController)
-    )]
-    public class DiabloController : MonoBehaviour
+    [RequireComponent(typeof(CursorController))]
+    [RequireComponent(typeof(AudioManager))]
+    [RequireComponent(typeof(LevelStateController))]
+    public class LevelController : MonoBehaviour
     {
-        public static GameObject gameManager;
+        public static LevelController Instance;
         public static GameObject player;
-
         public static GameConfig config;
 
-        AudioSource sound;
-        [SerializeField] AudioClip boxBiteSound;
-        public void PlayBoxBiteSound() => sound.PlayOneShot(boxBiteSound);
-        [SerializeField] AudioClip enemyPunchSound;
-        public void PlayEnemyPunchSound() => sound.PlayOneShot(enemyPunchSound);
         [SerializeField] GameConfig gameConfig;
         [SerializeField] GameObject MemoryFoundEffect;
-
-        [SerializeField] AudioClip winSound;
-        public void PlayWinSound() => sound.PlayOneShot(winSound);
-        [SerializeField] AudioClip loseSound;
-        public void PlayLoseSound() => sound.PlayOneShot(loseSound);
-
         readonly float vfxTime = .6f;
-
-        [SerializeField] Item memoryItem;
-
+        [SerializeField] Item memoryItem;        
+        LevelStateController stateManager;
+        [SerializeField] DialogController dialog;
         public void Win()
         {
-            IEnumerator WinRoutine() {
+            IEnumerator WinRoutine()
+            {
                 var inventory = Inventory.instance;
                 inventory.Add(memoryItem);
 
-                PlayWinSound();
+                GetComponent<AudioManager>().PlayWinSound();
                 MemoryFoundEffect.SetActive(true);
+
+                dialog.Win();
+                stateManager.StartStory();
+
                 yield return new WaitForSeconds(vfxTime);
             }
 
             StartCoroutine(WinRoutine());
+
         }
 
         public void Lose()
         {
-            IEnumerator LoseRoutine() {
-                PlayLoseSound();
+
+            IEnumerator LoseRoutine()
+            {
+                GetComponent<AudioManager>().PlayLoseSound();
+                
+                dialog.Lose();
+                stateManager.StartStory();
+
                 yield return new WaitForSeconds(vfxTime);
             }
 
             StartCoroutine(LoseRoutine());
         }
 
+        public void NextScene()
+        {
+            SceneManagerController.Instance.GotoGardenScene();
+        }
+
+        public void StartGame()
+        {
+            stateManager.StartGame();
+        }
+
         void Awake()
         {
-            gameManager = gameObject;
+            Instance = this;
             player = GameObject.FindGameObjectWithTag("Player");
+            stateManager = GetComponent<LevelStateController>();
 
-            if (gameConfig == null) {
+            if (gameConfig == null)
+            {
                 throw new System.Exception("Spawnables config not assigned. Please assign a Spawnables object in the inspector.");
             }
-            
+
             config = gameConfig;
-            sound = GetComponent<AudioSource>();
 
             MemoryFoundEffect.SetActive(false);
         }
 
         void OnDestroy()
         {
-            gameManager = null;
+            Instance = null;
             player = null;
         }
     }
