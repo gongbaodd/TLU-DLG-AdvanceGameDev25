@@ -27,6 +27,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
             ctx.isGaming = true;
         }
 
+        public void StartStory()
+        {
+            ctx.isGaming = false;
+        }
+
         void HandleStoryState()
         {
             if (ctx.isGaming)

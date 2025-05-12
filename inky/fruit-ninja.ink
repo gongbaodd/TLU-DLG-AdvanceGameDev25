@@ -35,6 +35,7 @@ Haha, you poor cat, want your master's memory piece? Come and catch it~ Whatever
 
 === game ===
 ~ isGaming = true
+The Game starts
 
 + [Win] -> Win_game
 + [Fail] -> Lose_game

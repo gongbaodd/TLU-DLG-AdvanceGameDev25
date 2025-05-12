@@ -13,20 +13,20 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public static LevelManagerController Instance;
         [SerializeField] Item memoryItem;
         public float vfxTime = .6f;
+        LevelStateController stateManager;
+        [SerializeField] DialogController dialog;
         public void StartGame() {
-            var stateManager = GetComponent<LevelStateController>();
             stateManager.StartGame();
         }
-
         public void Win()
         {
             IEnumerator WinRoutine()
             {
                 var inventory = Inventory.instance;
                 inventory.Add(memoryItem);
-                
                 GetComponent<AudioController>().PlayWinSound();
-
+                dialog.Win();
+                stateManager.StartStory();
                 yield return new WaitForSeconds(vfxTime);
             }
 
@@ -38,6 +38,8 @@ namespace Assets.Scenes.FruitNinja.Scripts
             IEnumerator LoseRoutine()
             {
                 GetComponent<AudioController>().PlayFailSound();
+                dialog.Lose();
+                stateManager.StartStory();
                 yield return new WaitForSeconds(vfxTime);
             }
 
@@ -47,6 +49,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         void Awake()
         {
             Instance = this;
+            stateManager = GetComponent<LevelStateController>();
         }
 
         void OnDestroy()
