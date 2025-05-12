@@ -14,45 +14,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public float vfxTime = .6f;
         [SerializeField] GameObject boss;
 
-        public enum State
-        {
-            Story,
-            Game,
-        }
-
-        public State currentState = State.Story;
-        public bool isGaming = false;
-        void HandleStoryState()
-        {
-            if (isGaming) {
-                TranslateState(State.Game);
-            }
-        }
-
-        void HandleGameState()
-        {
-            if (isGaming == false) {
-                TranslateState(State.Story);
-            }
-
-        }
-        void TranslateState(State newState)
-        {
-            currentState = newState;
-        }
-        void UpdateFSM()
-        {
-            switch (currentState)
-            {
-                case State.Story:
-                    HandleStoryState();
-                    break;
-                case State.Game:
-                    HandleGameState();
-                    break;
-            }
-        }
-
         public void Win()
         {
             IEnumerator WinRoutine()
@@ -88,10 +49,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
             boss.GetComponentInChildren<Animator>().SetTrigger("Soccer");
         }
 
-        void Update()
-        {
-            UpdateFSM();
-        }
         void OnDestroy()
         {
             Instance = null;

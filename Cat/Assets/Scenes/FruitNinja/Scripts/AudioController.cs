@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Scenes.FruitNinja.Scripts
 {
     [RequireComponent(typeof(AudioSource))]
-    class AudioController : MonoBehaviour
+    public class AudioController : MonoBehaviour
     {
         AudioSource soundPlayer;
         [SerializeField] AudioClip spawnSound;
