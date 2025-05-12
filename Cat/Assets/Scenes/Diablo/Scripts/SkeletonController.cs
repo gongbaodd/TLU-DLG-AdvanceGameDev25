@@ -32,25 +32,6 @@ namespace Assets.Scenes.Diablo.Scripts
 
             if (status == null) return;
 
-
-        // var state = status.Value;
-
-
-
-        //     if (state == Status.Attack)
-        //     {
-        //         var player = DiabloController.player;
-        //         var distance = Vector2.Distance(player.transform.position, transform.position);
-
-
-        //         if (distance <= config.attackRange)
-        //         {
-
-        //             var life = player.GetComponent<LifeBarController>();
-        //             life.Attacked(config.attackValue);
-        //         }
-
-        //     }
         }
     }
 }

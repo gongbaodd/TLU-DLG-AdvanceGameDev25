@@ -6,9 +6,9 @@ namespace Assets.Scenes.Diablo.Scripts
     [RequireComponent(
         typeof(CursorController)
     )]
-    public class DiabloController : MonoBehaviour
+    public class LevelController : MonoBehaviour
     {
-        public static GameObject gameManager;
+        public static LevelController Instance;
         public static GameObject player;
 
         public static GameConfig config;
@@ -56,7 +56,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void Awake()
         {
-            gameManager = gameObject;
+            Instance = this;
             player = GameObject.FindGameObjectWithTag("Player");
 
             if (gameConfig == null) {
@@ -71,7 +71,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void OnDestroy()
         {
-            gameManager = null;
+            Instance = null;
             player = null;
         }
     }

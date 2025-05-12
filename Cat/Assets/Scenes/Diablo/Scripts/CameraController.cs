@@ -14,8 +14,8 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void LateUpdate()
         {
-            if (DiabloController.player) {
-                UpdateCameraPos(DiabloController.player);
+            if (LevelController.player) {
+                UpdateCameraPos(LevelController.player);
             }
         }
     }

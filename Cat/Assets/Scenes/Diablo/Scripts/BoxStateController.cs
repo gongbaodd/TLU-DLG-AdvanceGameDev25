@@ -76,10 +76,10 @@ namespace Assets.Scenes.Diablo.Scripts
 
             if (boxConfig.content == BoxContent.Memory)
             {
-                var manager = DiabloController.gameManager;
+                var manager = LevelController.Instance;
                 if (manager)
                 {
-                    manager.GetComponent<DiabloController>().Win();
+                    manager.GetComponent<LevelController>().Win();
                 }
             }
 
@@ -122,8 +122,8 @@ namespace Assets.Scenes.Diablo.Scripts
 
         IEnumerator KeepAttack()
         {
-            var manager = DiabloController.gameManager;
-            var gameCtrl = manager.GetComponent<DiabloController>();
+            var manager = LevelController.Instance;
+            var gameCtrl = manager.GetComponent<LevelController>();
 
             while (playerIsAround)
             {
@@ -138,7 +138,7 @@ namespace Assets.Scenes.Diablo.Scripts
         }
 
         void AttackThePlayer() {
-            var player = DiabloController.player;
+            var player = LevelController.player;
             var distance = Vector3.Distance(transform.position, player.transform.position);
             var boxConfig = GetComponent<BoxController>().boxConfig;
 

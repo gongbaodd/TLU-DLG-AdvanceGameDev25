@@ -32,7 +32,7 @@ namespace Assets.Scenes.Diablo.Scripts
             }
 
             if (currentLife <= 0) {
-                var manager = DiabloController.gameManager.GetComponent<DiabloController>();
+                var manager = LevelController.Instance.GetComponent<LevelController>();
                 manager.Lose();
             }
         }

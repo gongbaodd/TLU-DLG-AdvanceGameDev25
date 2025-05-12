@@ -48,7 +48,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
         private void UpdateMovement()
         {
-            var gameManager = DiabloController.gameManager;
+            var gameManager = LevelController.Instance;
             if (gameManager)
             {
                 if (Input.GetMouseButtonDown(0))

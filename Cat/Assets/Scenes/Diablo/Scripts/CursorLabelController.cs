@@ -12,12 +12,12 @@ namespace Assets.Scenes.Diablo.Scripts
 
         GameObject instance;
 
-        GameObject manager;
+        LevelController manager;
 
         public void ShowLabel()
         {
 
-            var gameConfig = DiabloController.config;
+            var gameConfig = LevelController.config;
             var labelObject = instance.transform.Find("Label");
 
             if (labelObject == null) return;
@@ -68,7 +68,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
         void Start()
         {
-            manager = DiabloController.gameManager;
+            manager = LevelController.Instance;
         }
 
         // Update is called once per frame
