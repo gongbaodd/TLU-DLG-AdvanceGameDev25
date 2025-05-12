@@ -26,11 +26,34 @@ public class SceneManagerController : MonoBehaviour
     {
         _ = LoadScene(GardenScene);
     }
-    [Header("Fruit Ninja")]
     [SerializeField] AssetReference FruitNinjaGameScene;
     public void GotoFruitNinjaGameScene() 
     {
         _ = LoadScene(FruitNinjaGameScene);
+    }
+    [SerializeField] AssetReference DiabloGameScene;
+    public void GotoDiabloGameScene()
+    {
+        _ = LoadScene(DiabloGameScene);
+    }
+
+    public void GotoNextLevel()
+    {
+        var items = Inventory.instance.GetItems();
+
+        var hasDiablo = items.Exists(x => x.name == "Diablo Memory");
+        var hasFruitNinja = items.Exists(x => x.name == "Fruit Memory");
+
+        if (!hasFruitNinja) 
+        {
+            GotoFruitNinjaGameScene();
+            return;
+        }
+        if (!hasDiablo) 
+        {
+            GotoDiabloGameScene();
+            return;
+        }
     }
 
     void ToSingleton()
