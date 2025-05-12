@@ -1,3 +1,4 @@
+using Assets.Prefabs.Cat.Scripts;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems; // For event system handling
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
     {
         catAgent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+
+        var catCtrl = GetComponentInChildren<CatController>();
+        catCtrl.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
     }
 
     void Update()

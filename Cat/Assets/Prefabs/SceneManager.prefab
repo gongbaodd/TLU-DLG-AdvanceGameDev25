@@ -236,14 +236,14 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  FruitNinjaStoryScene:
-    m_AssetGUID: 006191225698f8f47bdf019aeb6be892
+  FruitNinjaGameScene:
+    m_AssetGUID: e07d84aa68f1b014782fd29ed1b93218
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  FruitNinjaGameScene:
-    m_AssetGUID: e07d84aa68f1b014782fd29ed1b93218
+  DiabloGameScene:
+    m_AssetGUID: af18fe91a2a2d044ca9b7e94a6587874
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 

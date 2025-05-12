@@ -39,10 +39,13 @@ public class GameManager : MonoBehaviour
 
     public void MovetoNextLevel()
     {
+        /*
         string sceneAddress = "Assets/Scenes/MainScene/MainScene.unity"; // Address of the scene in Addressables
 
         Debug.Log("Loading next level using Addressables...");
         Addressables.LoadSceneAsync(sceneAddress).Completed += OnSceneLoaded;
+        */
+        SceneManagerController.Instance.GotoNextLevel();
     }
 
     // Callback to handle post-load actions
