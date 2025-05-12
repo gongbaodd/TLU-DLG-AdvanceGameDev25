@@ -128,7 +128,7 @@ namespace Assets.Scenes.Diablo.Scripts
             while (playerIsAround)
             {
                 anim.SetTrigger("Attack");
-                gameCtrl.PlayBoxBiteSound();
+                gameCtrl.GetComponent<AudioManager>().PlayBoxBiteSound();
 
                 AttackThePlayer();
 

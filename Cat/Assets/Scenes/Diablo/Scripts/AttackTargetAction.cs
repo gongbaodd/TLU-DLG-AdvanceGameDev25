@@ -23,7 +23,7 @@ namespace Assets.Scenes.Diablo.Scripts
 
             if (distance < config.attackRange) {
                 lifeController.Attacked(config.attackValue);
-                gameCtrl.PlayEnemyPunchSound();
+                gameCtrl.GetComponent<AudioManager>().PlayEnemyPunchSound();
             }
             
             return Status.Success;

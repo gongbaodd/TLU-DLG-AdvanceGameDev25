@@ -606,6 +606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 417958232}
   - component: {fileID: 417958236}
+  - component: {fileID: 417958238}
   - component: {fileID: 417958235}
   - component: {fileID: 417958234}
   - component: {fileID: 417958237}
@@ -669,13 +670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216406f43afab6e40b22d12bb03c829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxBiteSound: {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
-  enemyPunchSound: {fileID: 8300000, guid: b7b5a6156961bac44a67504d42ce6fcf, type: 3}
   gameConfig: {fileID: 11400000, guid: 051303e255ff75b4db756338c31e3e2c, type: 2}
   MemoryFoundEffect: {fileID: 176751992}
-  winSound: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
-  loseSound: {fileID: 8300000, guid: acbcb75601b0082458fda8807f67c813, type: 3}
-  memoryItem: {fileID: 0}
+  memoryItem: {fileID: 11400000, guid: ab6096e5faaf7064cad51fc0570c23b7, type: 2}
 --- !u!82 &417958237
 AudioSource:
   m_ObjectHideFlags: 0
@@ -773,6 +770,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &417958238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417958230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a511e119f8eebc45bd6815ddcd25696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxBiteSound: {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  enemyPunchSound: {fileID: 8300000, guid: b7b5a6156961bac44a67504d42ce6fcf, type: 3}
+  winSound: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  loseSound: {fileID: 8300000, guid: acbcb75601b0082458fda8807f67c813, type: 3}
 --- !u!1 &422401918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6358859563659579807, guid: a4367b2fc500aa64d9cb638e62ab4462,

@@ -3,28 +3,16 @@ using UnityEngine;
 
 namespace Assets.Scenes.Diablo.Scripts
 {
-    [RequireComponent(
-        typeof(CursorController)
-    )]
+    [RequireComponent(typeof(CursorController))]
+    [RequireComponent(typeof(AudioManager))]
     public class LevelController : MonoBehaviour
     {
         public static LevelController Instance;
         public static GameObject player;
-
         public static GameConfig config;
 
-        AudioSource sound;
-        [SerializeField] AudioClip boxBiteSound;
-        public void PlayBoxBiteSound() => sound.PlayOneShot(boxBiteSound);
-        [SerializeField] AudioClip enemyPunchSound;
-        public void PlayEnemyPunchSound() => sound.PlayOneShot(enemyPunchSound);
         [SerializeField] GameConfig gameConfig;
         [SerializeField] GameObject MemoryFoundEffect;
-
-        [SerializeField] AudioClip winSound;
-        public void PlayWinSound() => sound.PlayOneShot(winSound);
-        [SerializeField] AudioClip loseSound;
-        public void PlayLoseSound() => sound.PlayOneShot(loseSound);
 
         readonly float vfxTime = .6f;
 
@@ -36,7 +24,7 @@ namespace Assets.Scenes.Diablo.Scripts
                 var inventory = Inventory.instance;
                 inventory.Add(memoryItem);
 
-                PlayWinSound();
+                GetComponent<AudioManager>().PlayWinSound();
                 MemoryFoundEffect.SetActive(true);
                 yield return new WaitForSeconds(vfxTime);
             }
@@ -47,7 +35,7 @@ namespace Assets.Scenes.Diablo.Scripts
         public void Lose()
         {
             IEnumerator LoseRoutine() {
-                PlayLoseSound();
+                GetComponent<AudioManager>().PlayLoseSound();
                 yield return new WaitForSeconds(vfxTime);
             }
 
@@ -64,7 +52,6 @@ namespace Assets.Scenes.Diablo.Scripts
             }
             
             config = gameConfig;
-            sound = GetComponent<AudioSource>();
 
             MemoryFoundEffect.SetActive(false);
         }
