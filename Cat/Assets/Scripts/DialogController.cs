@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 using System.Collections.Generic;
 using Button = UnityEngine.UIElements.Button;
 using Assets.Scenes.FruitNinja.Scripts;
+using UnityEngine.Events;
 
 public class DialogController : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class DialogController : MonoBehaviour
     Label contentLabel;
     VisualElement contentContainer;
     readonly List<Button> choices = new();
-    LevelManagerController manager;
 
     enum Speaker { God, Boss }
     Speaker CurrentSpeaker
@@ -50,25 +50,24 @@ public class DialogController : MonoBehaviour
     }
     public void Win()
     {
-        var stateCtrl = manager.GetComponent<LevelStateController>();
-        if (stateCtrl.currentState == LevelStateController.State.Story) return;
-
+        if (!IsGaming) return;
         story.ChooseChoiceIndex(0);
     }
     public void Lose()
     {
-        var stateCtrl = manager.GetComponent<LevelStateController>();
-        if (stateCtrl.currentState == LevelStateController.State.Story) return;
-
+        if (!IsGaming) return;
         story.ChooseChoiceIndex(1);
     }
 
     string currentText = "";
+
+    [SerializeField] UnityEvent OnNextScene;
+    [SerializeField] UnityEvent OnStartGame;
     void RenderStory()
     {
         if (!story.canContinue)
         {
-            manager.NextScene();
+            OnNextScene.Invoke();
             return;
         }
 
@@ -76,7 +75,7 @@ public class DialogController : MonoBehaviour
 
         if (IsGaming)
         {
-            manager.StartGame();
+            OnStartGame.Invoke();
         }
 
         if (story.currentChoices.Count == 0)
@@ -181,10 +180,7 @@ public class DialogController : MonoBehaviour
     }
     void Start()
     {
-        manager = LevelManagerController.Instance;
-
         OpenStory();
-
         LevelStateController.OnStateChange += ToggleDialogByState;
     }
 

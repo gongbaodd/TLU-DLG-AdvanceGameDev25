@@ -2616,7 +2616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689976552}
   m_Layer: 0
-  m_Name: ===Inventory===
+  m_Name: ===Singleton===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2865,6 +2865,87 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2041232070
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387457226126716775, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: storyJson
+      value: '{"inkVersion":21,"root":[["^This is where they hide their treasure.","\n","ev","str","^Okay","/str","/ev",{"*":"0.c-0","flg":4},{"c-0":["^
+        ",{"->":"intro"},"\n",{"->":"0.g-0"},{"#f":5}],"g-0":["done",{"#f":5}]}],"done",{"intro":[["^They
+        must hide the last piece in one of the chests.","\n","ev","str","^That is
+        easy","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^ ",{"->":"monsters"},"\n",{"#f":5}]}],{"#f":1}],"monsters":[["^But
+        be careful, there are guards and some stuff may not look like what it is.","\n","ev","str","^Okay","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^
+        ",{"->":"game"},"\n",{"#f":5}]}],{"#f":1}],"game":[["ev",true,"/ev",{"VAR=":"isGaming","re":true},"^The
+        Game starts","\n","ev","str","^Win","/str","/ev",{"*":".^.c-0","flg":4},"ev","str","^Lose","/str","/ev",{"*":".^.c-1","flg":4},{"c-0":["^
+        ",{"->":"ending"},"\n",{"#f":5}],"c-1":["^ ",{"->":"ending"},"\n",{"#f":5}]}],{"#f":1}],"ending":["^Let''s
+        go back! ","end","\n",{"#f":1}],"global decl":["ev",false,{"VAR=":"isGaming"},"str","^god","/str",{"VAR=":"speaker"},"/ev","end",null],"#f":1}],"listDefs":{}}'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f6f3462abad46314ca81b5349d210b77, type: 3}
 --- !u!1001 &6719655325756532961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3122,3 +3203,4 @@ SceneRoots:
   - {fileID: 1689976552}
   - {fileID: 673264765}
   - {fileID: 918053938}
+  - {fileID: 2041232070}
