@@ -18,8 +18,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public void StartGame() {
             stateManager.StartGame();
         }
+
+        bool isWon = false;
         public void Win()
         {
+            isWon = true;
             IEnumerator WinRoutine()
             {
                 var inventory = Inventory.instance;
@@ -44,6 +47,10 @@ namespace Assets.Scenes.FruitNinja.Scripts
             }
 
             StartCoroutine(LoseRoutine());
+        }
+        public void NextScene()
+        {
+            SceneManagerController.Instance.GotoGardenScene();
         }
 
         void Awake()

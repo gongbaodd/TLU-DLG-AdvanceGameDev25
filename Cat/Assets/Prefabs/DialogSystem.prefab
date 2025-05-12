@@ -158,7 +158,8 @@ MonoBehaviour:
     ",{"->":"game_desp"},"\n",{"#f":5}]}],{"#f":1}],"game_desp":[["ev","str","^boss","/str","/ev",{"VAR=":"speaker","re":true},"^Haha,
     you poor cat, want your master''s memory piece? Come and catch it~ Whatever,
     you can not make any sound to weak up the host.","\n","ev","str","^I will get
-    my friend back!","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^ ",{"->":"game"},"\n",{"#f":5}]}],{"#f":1}],"game":[["ev",true,"/ev",{"VAR=":"isGaming","re":true},"ev","str","^Win","/str","/ev",{"*":".^.c-0","flg":4},"ev","str","^Fail","/str","/ev",{"*":".^.c-1","flg":4},{"c-0":["^
+    my friend back!","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^ ",{"->":"game"},"\n",{"#f":5}]}],{"#f":1}],"game":[["ev",true,"/ev",{"VAR=":"isGaming","re":true},"^The
+    Game starts","\n","ev","str","^Win","/str","/ev",{"*":".^.c-0","flg":4},"ev","str","^Fail","/str","/ev",{"*":".^.c-1","flg":4},{"c-0":["^
     ",{"->":"Win_game"},"\n",{"#f":5}],"c-1":["^ ",{"->":"Lose_game"},"\n",{"#f":5}]}],{"#f":1}],"Lose_game":[["ev",false,"/ev",{"VAR=":"isGaming","re":true},"ev","str","^boss","/str","/ev",{"VAR=":"speaker","re":true},"^You
     are so clumsy.","\n","ev","str","^I have to leave.","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^
     ",{"->":"Ending"},"\n",{"#f":5}]}],{"#f":1}],"Win_game":[["ev",false,"/ev",{"VAR=":"isGaming","re":true},"ev","str","^boss","/str","/ev",{"VAR=":"speaker","re":true},"ev",true,"/ev",{"VAR=":"isWon","re":true},"^Noooo!
@@ -167,7 +168,6 @@ MonoBehaviour:
     host is not home! It is so good! Let''s go back to save your friend first.","\n",{"->":".^.^.^.11"},null]}],[{"->":".^.b"},{"b":["\n","^It
     is fine, we can always come back.","\n",{"->":".^.^.^.11"},null]}],"nop","\n","ev","str","^Okay","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["^
     ","end","\n",{"#f":5}]}],{"#f":1}],"global decl":["ev","str","^god","/str",{"VAR=":"speaker"},false,{"VAR=":"isGaming"},false,{"VAR=":"isWon"},"/ev","end",null],"#f":1}],"listDefs":{}}'
-  startKnot: game
 --- !u!1 &6672973959994035520
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class DialogController : MonoBehaviour
     Story story;
     UIDocument ui;
     Label contentLabel;
+    VisualElement contentContainer;
     readonly List<Button> choices = new();
     LevelManagerController manager;
 
@@ -40,6 +41,7 @@ public class DialogController : MonoBehaviour
         }
     }
 
+
     void SetupCat()
     {
         player.SetActive(true);
@@ -48,12 +50,16 @@ public class DialogController : MonoBehaviour
     }
     public void Win()
     {
-        if (!IsGaming) return;
+        var stateCtrl = manager.GetComponent<LevelStateController>();
+        if (stateCtrl.currentState == LevelStateController.State.Story) return;
+
         story.ChooseChoiceIndex(0);
     }
     public void Lose()
     {
-        if (!IsGaming) return;
+        var stateCtrl = manager.GetComponent<LevelStateController>();
+        if (stateCtrl.currentState == LevelStateController.State.Story) return;
+
         story.ChooseChoiceIndex(1);
     }
 
@@ -62,16 +68,21 @@ public class DialogController : MonoBehaviour
     {
         if (!story.canContinue)
         {
-            return;
-        }
-
-        if (IsGaming)
-        {
-            manager.StartGame();
+            manager.NextScene();
             return;
         }
 
         currentText = story.Continue();
+
+        if (IsGaming)
+        {
+            manager.StartGame();
+        }
+
+        if (story.currentChoices.Count == 0)
+        {
+            RenderStory();
+        }
 
         RenderContent();
         RenderSpeaker();
@@ -82,18 +93,17 @@ public class DialogController : MonoBehaviour
     {
         contentLabel.text = currentText;
 
-        contentLabel.RemoveFromClassList(".god-content");
-        contentLabel.RemoveFromClassList(".evil-content");
+        contentContainer.RemoveFromClassList("god-content");
+        contentContainer.RemoveFromClassList("evil-content");
 
         if (CurrentSpeaker == Speaker.God)
         {
-            contentLabel.AddToClassList(".god-content");
+            contentContainer.AddToClassList("god-content");
         }
         else if (CurrentSpeaker == Speaker.Boss)
         {
-            contentLabel.AddToClassList(".evil-content");
+            contentContainer.AddToClassList("evil-content");
         }
-
     }
 
     void RenderChoices()
@@ -107,7 +117,6 @@ public class DialogController : MonoBehaviour
         {
             choices[i].text = story.currentChoices[i].text;
             choices[i].RemoveFromClassList("hidden");
-            choices[i].RegisterCallbackOnce(OnChoiceSelected(i));
         }
     }
 
@@ -120,6 +129,22 @@ public class DialogController : MonoBehaviour
         };
     }
 
+    void InitUI() {
+        ui = dialog.GetComponent<UIDocument>();
+        var root = ui.rootVisualElement;
+
+        contentLabel = root.Q<Label>("content");
+        contentContainer = root.Q<VisualElement>("container");
+
+        choices.Clear();
+        choices.Add(root.Q<Button>("choice1"));
+        choices.Add(root.Q<Button>("choice2"));
+
+        for (int i = 0; i < choices.Count; i++)
+        {
+            choices[i].RegisterCallback(OnChoiceSelected(i));
+        }
+    }
     void RenderSpeaker()
     {
         god.SetActive(CurrentSpeaker == Speaker.God);
@@ -142,6 +167,7 @@ public class DialogController : MonoBehaviour
     void OpenStory()
     {
         dialog.SetActive(true);
+        InitUI();
         SetupCat();
         RenderStory();
     }
@@ -156,14 +182,6 @@ public class DialogController : MonoBehaviour
     void Start()
     {
         manager = LevelManagerController.Instance;
-
-        ui = dialog.GetComponent<UIDocument>();
-        var root = ui.rootVisualElement;
-
-        contentLabel = root.Q<Label>("content");
-
-        choices.Add(root.Q<Button>("choice1"));
-        choices.Add(root.Q<Button>("choice2"));
 
         OpenStory();
 

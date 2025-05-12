@@ -4,8 +4,11 @@
     margin-right: 300px;
 }
 
-.god-content {
+.content {
     flex-grow: 1;
+}
+
+.god-content {
     background-image: url("project://database/Assets/Vendors/Violet%20Theme%20Ui/Buttons/Button%20Yellow.png?fileID=-2047613651344142497&guid=e869268efd7d38745a52967381cef55f&type=3#Button Yellow_0");
     -unity-background-image-tint-color: rgb(255, 255, 255);
 }

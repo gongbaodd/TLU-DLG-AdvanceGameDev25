@@ -1,6 +1,5 @@
 VAR speaker = "god"
 VAR isGaming = false
-VAR isWon = false
 
 Shhhh! This is the hell kitchen.
 + [Okay] -> intro
@@ -45,23 +44,13 @@ The Game starts
 ~ speaker = "boss"
 You are so clumsy.
 
-+ [I have to leave.] -> Ending
++ [I have to leave.] -> END
 
 === Win_game ===
 ~ isGaming = false
 ~ speaker = "boss"
-~ isWon = true
 Noooo! I'd better run before master gets home.
 
-+ [Wait! Your master is not home?] -> Ending
++ He's not home? Great! -> END
 
 
-=== Ending ====
-~ speaker = "god"
-{isWon:
-    The host is not home! It is so good! Let's go back to save your friend first.
-- else:
-    It is fine, we can always come back.
-}
-
-+ [Okay] -> END

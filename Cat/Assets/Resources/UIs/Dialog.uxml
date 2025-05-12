@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/Resources/UIs/dialog.uss?fileID=7433441132597879392&amp;guid=4556322f03b027648ba9c3be01a697d0&amp;type=3#dialog" />
     <engine:VisualElement name="panel" class="panel">
         <engine:VisualElement style="flex-grow: 1;" />
-        <engine:VisualElement class="god-content" style="padding-top: 30px; padding-bottom: 30px; padding-right: 30px; padding-left: 30px; font-size: 36px;">
+        <engine:VisualElement name="container" class="content" style="padding-top: 30px; padding-bottom: 30px; padding-right: 30px; padding-left: 30px; font-size: 36px;">
             <engine:Label text="..." name="content" style="white-space: normal; text-overflow: clip;" />
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 1; justify-content: flex-start; margin-top: 0; margin-bottom: 50px;">
