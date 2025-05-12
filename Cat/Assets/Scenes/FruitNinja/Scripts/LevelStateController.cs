@@ -21,6 +21,12 @@ namespace Assets.Scenes.FruitNinja.Scripts
         };
         public State currentState = State.Story;
         public static Action<State> OnStateChange;
+
+        public void StartGame() 
+        {
+            ctx.isGaming = true;
+        }
+
         void HandleStoryState()
         {
             if (ctx.isGaming)
@@ -35,7 +41,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
             {
                 TranslateState(State.Story);
             }
-
         }
         void TranslateState(State newState)
         {

@@ -4,6 +4,7 @@ using Assets.Prefabs.Cat.Scripts;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using Button = UnityEngine.UIElements.Button;
+using Assets.Scenes.FruitNinja.Scripts;
 
 public class DialogController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class DialogController : MonoBehaviour
     UIDocument ui;
     Label contentLabel;
     readonly List<Button> choices = new();
+    LevelManagerController manager;
 
     enum Speaker { God, Boss }
     Speaker CurrentSpeaker
@@ -44,22 +46,14 @@ public class DialogController : MonoBehaviour
         var catCtrl = player.GetComponentInChildren<CatController>();
         catCtrl.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
     }
-
-    SceneManagerController sceneManagerCtrl;
-    void GotoGame() {
-        dialog.SetActive(false);
-        sceneManagerCtrl.GotoFruitNinjaGameScene();
-    }
-    public void Win() {
+    public void Win()
+    {
         if (!IsGaming) return;
-
         story.ChooseChoiceIndex(0);
     }
-    public void Lose() {
-        print(story.path);
-
+    public void Lose()
+    {
         if (!IsGaming) return;
-
         story.ChooseChoiceIndex(1);
     }
 
@@ -73,7 +67,7 @@ public class DialogController : MonoBehaviour
 
         if (IsGaming)
         {
-            GotoGame();
+            manager.StartGame();
             return;
         }
 
@@ -132,6 +126,25 @@ public class DialogController : MonoBehaviour
         boss.SetActive(CurrentSpeaker == Speaker.Boss);
     }
 
+    void ToggleDialogByState(LevelStateController.State state)
+    {
+        switch (state)
+        {
+            case LevelStateController.State.Story:
+                OpenStory();
+                break;
+            case LevelStateController.State.Game:
+                dialog.SetActive(false);
+                break;
+        }
+    }
+
+    void OpenStory()
+    {
+        dialog.SetActive(true);
+        SetupCat();
+        RenderStory();
+    }
     void Awake()
     {
         god.SetActive(false);
@@ -142,7 +155,7 @@ public class DialogController : MonoBehaviour
     }
     void Start()
     {
-        sceneManagerCtrl = SceneManagerController.Instance;
+        manager = LevelManagerController.Instance;
 
         ui = dialog.GetComponent<UIDocument>();
         var root = ui.rootVisualElement;
@@ -151,5 +164,14 @@ public class DialogController : MonoBehaviour
 
         choices.Add(root.Q<Button>("choice1"));
         choices.Add(root.Q<Button>("choice2"));
+
+        OpenStory();
+
+        LevelStateController.OnStateChange += ToggleDialogByState;
+    }
+
+    void OnDestroy()
+    {
+        LevelStateController.OnStateChange -= ToggleDialogByState;
     }
 }

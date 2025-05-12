@@ -13,14 +13,15 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public static LevelManagerController Instance;
         [SerializeField] Item memoryItem;
         public float vfxTime = .6f;
-        [SerializeField] GameObject boss;
+        public void StartGame() {
+            var stateManager = GetComponent<LevelStateController>();
+            stateManager.StartGame();
+        }
 
         public void Win()
         {
             IEnumerator WinRoutine()
             {
-                boss.SetActive(false);
-
                 var inventory = Inventory.instance;
                 inventory.Add(memoryItem);
                 
@@ -46,8 +47,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
         void Awake()
         {
             Instance = this;
-            boss.SetActive(false);
-            boss.GetComponentInChildren<Animator>().SetTrigger("Soccer");
         }
 
         void OnDestroy()

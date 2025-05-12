@@ -61,6 +61,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void UnlockMouse()
         {
+            CatPaw.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
@@ -85,6 +86,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             manager = LevelManagerController.Instance;
             lineRenderer = GetComponent<LineRenderer>();
+            UnlockMouse();
             LevelStateController.OnStateChange += ToggleCursor;
         }
 
