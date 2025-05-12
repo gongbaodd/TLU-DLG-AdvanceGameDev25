@@ -2539,12 +2539,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1703314332}
   - component: {fileID: 1703314334}
+  - component: {fileID: 1703314338}
   - component: {fileID: 1703314336}
   - component: {fileID: 1703314335}
   - component: {fileID: 1703314333}
   - component: {fileID: 1703314337}
   m_Layer: 0
-  m_Name: GameManger
+  m_Name: LevelManger
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2705,6 +2706,8 @@ MonoBehaviour:
   memoryItem: {fileID: 11400000, guid: 09952adf0dfd30e43836fdbcd33690d8, type: 2}
   vfxTime: 0.6
   boss: {fileID: 1424641146}
+  currentState: 0
+  isGaming: 0
   spawnSound: {fileID: 8300000, guid: 83829ff414f47a048b5387e4ab33571c, type: 3}
   poofSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
   boomSound: {fileID: 8300000, guid: 21c4a490b24ba2045bc815f7626a40ef, type: 3}
@@ -2843,6 +2846,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1703314338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703314330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996804c12e37f9c409b9906caa7a2ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnSound: {fileID: 8300000, guid: 83829ff414f47a048b5387e4ab33571c, type: 3}
+  poofSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
+  boomSound: {fileID: 8300000, guid: 21c4a490b24ba2045bc815f7626a40ef, type: 3}
+  outBorderSound: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
+  failSound: {fileID: 8300000, guid: acbcb75601b0082458fda8807f67c813, type: 3}
+  winSound: {fileID: 8300000, guid: d654174ef194bd7479bf4b8d8f753318, type: 3}
 --- !u!1001 &1706578652
 PrefabInstance:
   m_ObjectHideFlags: 0

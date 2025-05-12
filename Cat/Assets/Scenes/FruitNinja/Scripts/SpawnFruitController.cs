@@ -114,7 +114,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
                     InitOutBoundaryMark(borderType, spawnable.transform.position);
                     pool.Release(spawnable);
 
-                    gameCtrl.PlayOutBorderSound();
+                    gameCtrl.GetComponent<AudioController>().PlayOutBorderSound();
                     gameCtrl.Lose();
                 };
 
@@ -129,7 +129,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             poof.GetComponent<ParticleSystem>().Play();
 
             var gameCtrl = GetComponent<LevelManagerController>();
-            gameCtrl.PlayPoofSound();
+            gameCtrl.GetComponent<AudioController>().PlayPoofSound();
 
             Destroy(poof, 1f);
         }
@@ -141,7 +141,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             boom.GetComponent<ParticleSystem>().Play();
 
             var gameCtrl = GetComponent<LevelManagerController>();
-            gameCtrl.PlayBoomSound();
+            gameCtrl.GetComponent<AudioController>().PlayBoomSound();
 
             Destroy(boom, 1f);
         }

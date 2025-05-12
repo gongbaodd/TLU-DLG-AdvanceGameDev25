@@ -4,26 +4,65 @@ using UnityEngine;
 namespace Assets.Scenes.FruitNinja.Scripts
 {
 
-    [RequireComponent(
-        typeof(SpawnFruitController),
-        typeof(CursorController)
-    )]
-    public class LevelManagerController: MonoBehaviour
+    [RequireComponent(typeof(SpawnFruitController))]
+    [RequireComponent(typeof(CursorController))]
+    [RequireComponent(typeof(AudioController))]
+    public class LevelManagerController : MonoBehaviour
     {
         public static LevelManagerController Instance;
-        AudioSource soundPlayer;
         [SerializeField] Item memoryItem;
         public float vfxTime = .6f;
         [SerializeField] GameObject boss;
 
+        public enum State
+        {
+            Story,
+            Game,
+        }
+
+        public State currentState = State.Story;
+        public bool isGaming = false;
+        void HandleStoryState()
+        {
+            if (isGaming) {
+                TranslateState(State.Game);
+            }
+        }
+
+        void HandleGameState()
+        {
+            if (isGaming == false) {
+                TranslateState(State.Story);
+            }
+
+        }
+        void TranslateState(State newState)
+        {
+            currentState = newState;
+        }
+        void UpdateFSM()
+        {
+            switch (currentState)
+            {
+                case State.Story:
+                    HandleStoryState();
+                    break;
+                case State.Game:
+                    HandleGameState();
+                    break;
+            }
+        }
+
         public void Win()
         {
-            IEnumerator WinRoutine() {
+            IEnumerator WinRoutine()
+            {
                 boss.SetActive(false);
 
                 var inventory = Inventory.instance;
                 inventory.Add(memoryItem);
-                PlayWinSound();
+                
+                GetComponent<AudioController>().PlayWinSound();
 
                 yield return new WaitForSeconds(vfxTime);
             }
@@ -33,32 +72,25 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         public void Lose()
         {
-            IEnumerator LoseRoutine() {
-                PlayFailSound();
+            IEnumerator LoseRoutine()
+            {
+                GetComponent<AudioController>().PlayFailSound();
                 yield return new WaitForSeconds(vfxTime);
             }
 
             StartCoroutine(LoseRoutine());
         }
-        [SerializeField] AudioClip spawnSound;
-        public void PlaySpawnSound() => soundPlayer.PlayOneShot(spawnSound);
-        [SerializeField] AudioClip poofSound;
-        public void PlayPoofSound() => soundPlayer.PlayOneShot(poofSound);
-        [SerializeField] AudioClip boomSound;
-        public void PlayBoomSound() => soundPlayer.PlayOneShot(boomSound);
-        [SerializeField] AudioClip outBorderSound;
-        public void PlayOutBorderSound() => soundPlayer.PlayOneShot(outBorderSound);
-        [SerializeField] AudioClip failSound;
-        public void PlayFailSound() => soundPlayer.PlayOneShot(failSound);
-        [SerializeField] AudioClip winSound;
-        public void PlayWinSound() => soundPlayer.PlayOneShot(winSound);
 
         void Awake()
         {
             Instance = this;
-            soundPlayer = GetComponent<AudioSource>();
-
+            boss.SetActive(false);
             boss.GetComponentInChildren<Animator>().SetTrigger("Soccer");
+        }
+
+        void Update()
+        {
+            UpdateFSM();
         }
         void OnDestroy()
         {
