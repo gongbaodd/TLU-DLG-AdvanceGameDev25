@@ -1,16 +1,15 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Assets.Scenes.FruitNinja.Scripts
 {
-    [RequireComponent(typeof(UIDocument))]
     public class TimerController : MonoBehaviour
     {
         LevelManagerController manager;
         float timeLeft;
-        Label label;
-        UIDocument ui;
+        [SerializeField] TMP_Text label;
         public static event System.Action OnTimerEnd;
 
         IEnumerator TimerCoroutine()
@@ -37,13 +36,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
         Coroutine timer;
         void HandleStoryState()
         {
-            ui.enabled = false;
             if (timer != null) StopCoroutine(timer);
+            label.text = "";
         }
         void HandleGameState()
         {
-
-            ui.enabled = true;
             timer = StartCoroutine(TimerCoroutine());
         }
         void ToggleTimer(LevelStateController.State state)
@@ -64,11 +61,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
             manager = LevelManagerController.Instance;
 
             var config = manager.GetComponent<SpawnFruitController>().Config;
-            ui = GetComponent<UIDocument>();
-            var root = ui.rootVisualElement;
-            label = root.Q<Label>("timerLabel");
 
             timeLeft = config.timeInSeconds;
+            label.text = "";
 
             LevelStateController.OnStateChange += ToggleTimer;
             HandleStoryState();
