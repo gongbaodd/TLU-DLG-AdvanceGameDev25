@@ -7,6 +7,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
     [RequireComponent(typeof(SpawnFruitController))]
     [RequireComponent(typeof(CursorController))]
     [RequireComponent(typeof(AudioController))]
+    [RequireComponent(typeof(LevelStateController))]
     public class LevelManagerController : MonoBehaviour
     {
         public static LevelManagerController Instance;

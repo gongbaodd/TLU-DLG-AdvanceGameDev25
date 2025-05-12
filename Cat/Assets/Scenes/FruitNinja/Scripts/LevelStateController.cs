@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 namespace Assets.Scenes.FruitNinja.Scripts
@@ -19,6 +20,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             isGaming = false
         };
         public State currentState = State.Story;
+        public static Action<State> OnStateChange;
         void HandleStoryState()
         {
             if (ctx.isGaming)
@@ -38,6 +40,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         void TranslateState(State newState)
         {
             currentState = newState;
+            OnStateChange?.Invoke(newState);
         }
         void Update()
         {

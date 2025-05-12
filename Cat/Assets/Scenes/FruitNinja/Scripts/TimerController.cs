@@ -33,7 +33,17 @@ namespace Assets.Scenes.FruitNinja.Scripts
             }
         }
 
-
+        Coroutine timer;
+        void ToggleTimer(LevelStateController.State state) {
+            switch (state) {
+                case LevelStateController.State.Story:
+                    if (timer != null) StopCoroutine(timer);
+                    break;
+                case LevelStateController.State.Game:
+                    timer = StartCoroutine(TimerCoroutine());
+                    break;
+            }
+        }
 
         void Start()
         {
@@ -46,7 +56,12 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
             timeLeft = config.timeInSeconds;
 
-            StartCoroutine(TimerCoroutine());
+            LevelStateController.OnStateChange += ToggleTimer;
+        }
+
+        void OnDestroy()
+        {
+            LevelStateController.OnStateChange -= ToggleTimer;            
         }
     }
 }

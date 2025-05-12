@@ -28,7 +28,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         private bool keepSpawning = true;
 
-        private IEnumerator spawnHandler;
+        private Coroutine spawnHandler;
 
         public Vector2 CalculateForceDirection(Vector2 fruitPos)
         {
@@ -180,19 +180,30 @@ namespace Assets.Scenes.FruitNinja.Scripts
             );
         }
 
+        void ToggleSpawnByState(LevelStateController.State state) {
+            switch (state) {
+                case LevelStateController.State.Story:
+                    StopSpawning();
+                    break;
+                case LevelStateController.State.Game:
+                    keepSpawning = true;
+                    spawnHandler = StartCoroutine(SpawnFruitRoutine());
+                    break;
+            }
+        }
+
         void Start()
         {
-            spawnHandler = SpawnFruitRoutine();
-            StartCoroutine(spawnHandler);
-
             InitPool();
 
             TimerController.OnTimerEnd += StopSpawning;
+            LevelStateController.OnStateChange += ToggleSpawnByState;
         }
 
         void OnDestroy()
         {
             TimerController.OnTimerEnd -= StopSpawning;
+            LevelStateController.OnStateChange -= ToggleSpawnByState;
         }
     }
 }
