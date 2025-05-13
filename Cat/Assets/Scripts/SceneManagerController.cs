@@ -3,18 +3,30 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using Unity.AppUI.Core;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class SceneManagerController : MonoBehaviour
 {
     public static SceneManagerController Instance { get; private set; }
     [SerializeField] GameObject loading;
     void ToggleLoading(bool value) => loading.SetActive(value);
-
+    AsyncOperationHandle previousHander;
     async Task LoadScene(AssetReference scene) {
         ToggleLoading(true);
-        var handler = Addressables.LoadSceneAsync(scene, LoadSceneMode.Single, true);
+        var downloadHandler = Addressables.DownloadDependenciesAsync(scene);
+        await downloadHandler.Task;
+
+        var handler = scene.LoadSceneAsync(LoadSceneMode.Single);
         await handler.Task;
+
         ToggleLoading(false);
+
+        if (previousHander.IsValid()) {
+            Addressables.Release(previousHander);
+        }
+
+        previousHander = handler;
     }
     [SerializeField] AssetReference DebugScene;
     public void GotoDebugScene()
