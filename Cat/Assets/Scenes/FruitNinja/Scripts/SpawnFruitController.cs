@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -66,59 +67,106 @@ namespace Assets.Scenes.FruitNinja.Scripts
             }
         }
 
-        GameObject InitFruit()
+        class Spawnable {
+            public List<GameObject> fruits = new ();
+            public List<GameObject> bombs = new ();
+            public GameObject currentObj;
+        }
+
+        Spawnable InitSpawnable()
         {
             var gameCtrl = GetComponent<LevelManagerController>();
             var fruits = config.fruits;
             var bombs = config.bombs;
 
-            var bombWeight = config.bombWeight;
-            var fruitWeight = config.fruitWeight;
+            var spawnable = new Spawnable();
 
-            var spawnWidth = config.spawnWidth;
-            var spawnHeight = config.spawnHeight;
-
-            bool isSpawnBomb = Random.Range(0, bombWeight + fruitWeight) < bombWeight ? true : false;
-
-            if (isSpawnBomb)
-            {
-                int index = Random.Range(0, bombs.Count);
-                var spawnable = Instantiate(bombs[index], RandomSpawnPos(), Quaternion.identity);
-                var boomCtrl = spawnable.GetComponent<FruitController>();
+            for (int i =0; i < bombs.Count; i++) {
+                var bomb = Instantiate(bombs[i], RandomSpawnPos(), Quaternion.identity);
+                var boomCtrl = bomb.GetComponent<FruitController>();
 
                 boomCtrl.OnFruitDestroyed += obj => {
                     Boom(obj.transform.position);
-                    pool.Release(obj);
-
+                    pool.Release(spawnable);
                     gameCtrl.Lose();
                 };
 
-                boomCtrl.OnOutBorder += borderType => {
-                    pool.Release(spawnable);
-                };
+                bomb.SetActive(false);
 
-                return spawnable;
+                spawnable.bombs.Add(bomb);
             }
-            else
-            {
-                int index = Random.Range(0, fruits.Count);
-                var spawnable = Instantiate(fruits[index], RandomSpawnPos(), Quaternion.identity);
-                var fruitCtrl = spawnable.GetComponent<FruitController>();
+
+            for (int i =0; i < fruits.Count; i++) {
+                var fruit = Instantiate(fruits[i], RandomSpawnPos(), Quaternion.identity);
+                var fruitCtrl = fruit.GetComponent<FruitController>();
 
                 fruitCtrl.OnFruitDestroyed += obj => {
                     Poof(obj.transform.position);
-                    pool.Release(obj);
+                    pool.Release(spawnable);
                 };
 
                 fruitCtrl.OnOutBorder += borderType => {
-                    InitOutBoundaryMark(borderType, spawnable.transform.position);
+                    InitOutBoundaryMark(borderType, fruit.transform.position);
                     pool.Release(spawnable);
-
                     gameCtrl.GetComponent<AudioController>().PlayOutBorderSound();
                     gameCtrl.Lose();
                 };
 
-                return spawnable;
+                fruit.SetActive(false);
+
+                spawnable.fruits.Add(fruit);
+            }
+
+            return spawnable;
+        }
+
+        void SpawnOne(Spawnable spawnable) 
+        {
+            var bombWeight = config.bombWeight;
+            var fruitWeight = config.fruitWeight;
+
+            bool isSpawnBomb = Random.Range(0, bombWeight + fruitWeight) < bombWeight;
+
+            if (isSpawnBomb)
+            {
+                int index = Random.Range(0, spawnable.bombs.Count);
+                spawnable.currentObj = spawnable.bombs[index];
+                spawnable.currentObj.SetActive(true);
+            }
+            else 
+            {
+                int index = Random.Range(0, spawnable.fruits.Count);
+                spawnable.currentObj = spawnable.fruits[index];
+                spawnable.currentObj.SetActive(true);
+            }
+
+            spawnable.currentObj.GetComponent<FruitController>().Spawn();
+        }
+
+        void RetrieveOne(Spawnable spawnable)
+        {
+            var fruit = spawnable.currentObj;
+            
+            var rb = fruit.GetComponent<Rigidbody>();
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            fruit.transform.position = RandomSpawnPos();
+            fruit.SetActive(false);
+
+            spawnable.currentObj = null;
+        }
+
+        void DestoryOne(Spawnable spawnable)
+        {
+            Destroy(spawnable.currentObj);
+
+            foreach (var fruit in spawnable.fruits) {
+                Destroy(fruit);
+            }
+
+            foreach (var bomb in spawnable.bombs) {
+                Destroy(bomb);
             }
         }
 
@@ -152,29 +200,13 @@ namespace Assets.Scenes.FruitNinja.Scripts
             StopCoroutine(spawnHandler);
         }
 
-        LinkedPool<GameObject> pool;
+        LinkedPool<Spawnable> pool;
         void InitPool() {
-            pool = new LinkedPool<GameObject>(
-                () => {
-                    var fruit = InitFruit();
-                    fruit.SetActive(false);
-                    return fruit;
-                },
-                fruit =>
-                {
-                    fruit.SetActive(true);
-                    fruit.GetComponent<FruitController>().Spawn();
-                },
-                fruit =>
-                {
-                    var rb = fruit.GetComponent<Rigidbody>();
-                    rb.linearVelocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-
-                    fruit.transform.position = RandomSpawnPos();
-                    fruit.SetActive(false);
-                },
-                fruit => Destroy(fruit),
+            pool = new (
+                InitSpawnable,
+                SpawnOne,
+                RetrieveOne,
+                DestoryOne,
                 true,
                 config.poolSize
             );
