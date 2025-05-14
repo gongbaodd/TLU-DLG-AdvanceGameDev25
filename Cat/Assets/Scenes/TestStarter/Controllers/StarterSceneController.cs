@@ -13,31 +13,26 @@ public class StarterSceneController : MonoBehaviour
     [SerializeField] AssetReference fruitNinjaScene;
     [SerializeField] AssetReference diabloScene;
     [SerializeField] AssetReference inventoryScene;
+
+    SceneManagerController manager;
     
-    private AsyncOperationHandle handle;
     public void LoadGardenScene()
     {
-        handle = gardenScene.LoadSceneAsync(LoadSceneMode.Single);
+        manager.GotoGardenScene();
     }
 
     public void LoadFruitNinjaScene()
     {
-        handle = fruitNinjaScene.LoadSceneAsync(LoadSceneMode.Single);
+        manager.GotoFruitNinjaGameScene();
     }
 
     public void LoadDiabloScene()
     {
-        handle = diabloScene.LoadSceneAsync(LoadSceneMode.Single);
+        manager.GotoDiabloGameScene();
     }
 
-    public void LoadInventoryScene()
+    void Start()
     {
-        handle = inventoryScene.LoadSceneAsync(LoadSceneMode.Single);
-    }
-
-    void OnDestroy()
-    {
-        // TODO: destory logic
-        print("Destroying StarterSceneController");
+        manager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
     }
 }

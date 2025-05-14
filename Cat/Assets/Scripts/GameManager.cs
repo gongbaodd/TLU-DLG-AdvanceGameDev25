@@ -26,13 +26,48 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public enum Level
+    {
+        FruitNinja,
+        Diablo,
+        None,
+    }
+    Level GetNextLevel()
+    {
+        var items = Inventory.instance.GetItems();
+
+        var hasDiablo = items.Exists(x => x.name == "Diablo Memory");
+        var hasFruitNinja = items.Exists(x => x.name == "Fruit Memory");
+
+        if (!hasFruitNinja) 
+        {
+            return Level.FruitNinja;
+        }
+        if (!hasDiablo) 
+        {
+            return Level.Diablo;
+        }
+        return Level.None;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
             Debug.Log("Quest started");
             questDialoguebox.SetActive(true);
-            QuestDialogueText.text = "Hello Player";
+
+            var next = GetNextLevel();
+
+            if (next != Level.None)
+            {
+                QuestDialogueText.text = "Hello Player";
+            } 
+            else 
+            {
+                QuestDialogueText.text = "You get all the items!";
+            }
+
         }
 
     }
@@ -45,7 +80,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Loading next level using Addressables...");
         Addressables.LoadSceneAsync(sceneAddress).Completed += OnSceneLoaded;
         */
-        SceneManagerController.Instance.GotoNextLevel();
+        var next = GetNextLevel();
+        var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
+        if (next == Level.FruitNinja) 
+        {
+            sceneManager.GotoFruitNinjaGameScene();
+        }
+        else
+        {
+            sceneManager.GotoDiabloGameScene();
+        }
     }
 
     // Callback to handle post-load actions
