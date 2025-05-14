@@ -6,13 +6,20 @@ namespace Assets.Scenes.Diablo.Prefabs.Level.Scripts
 {
     public class ObjectLoaders : MonoBehaviour
     {
-        [SerializeField] List<AssetReference> prefabs;
+        [SerializeField] List<GameObject> prefabList;
+        List<GameObject> instances = new();
         void Awake()
         {
-            foreach (var prefab in prefabs)
+            foreach (var prefab in prefabList)
             {
-                prefab.InstantiateAsync(Vector3.zero, Quaternion.identity, gameObject.transform);
+                var ins = Instantiate(prefab, Vector3.zero, Quaternion.identity, gameObject.transform);
+                instances.Add(ins);
             }
+        }
+
+        void OnDestroy()
+        {
+            foreach(var ins in instances) Destroy(ins);
         }
     }
 }

@@ -15,8 +15,92 @@ MonoBehaviour:
   m_GroupName: Diablo
   m_GUID: 0cf9813aa10144245874c1c0a44966f3
   m_SerializeEntries:
+  - m_GUID: 063aa35abbce67847b0aa89e4be1e7b7
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Pictures.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45e522110de7da941a5c7651f8441ee2
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom04.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ce4c969865f99a44aca2895f4a834de
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Rugs.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50e69b74a6fdc2548a26ae64273fb08b
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51cda50f7c568fb478cd707d1567dfb7
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Diningroom01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56627f26f8d4ab044bff4930592a994e
+    m_Address: Assets/Prefabs/Cat/Cat.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 641aec1586bee494ba2d7648c302cb72
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom02.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a738c47cedea5a41a6944707bd2889d
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/VFX.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b9cf57e71bb3a74b8e73586b543beb1
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Lights.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: af18fe91a2a2d044ca9b7e94a6587874
     m_Address: Assets/Scenes/Diablo/Diablo.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb3906f32244b374cb7d88b149c9c430
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom03.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c598e0acac397d9439483cf396a9c082
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Diningroom02.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: deb64bf332ff4b74ebd5385da9ef4726
+    m_Address: Assets/Scenes/Diablo/Prefabs/Levell.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec4606f41c39a654398cafefd95e7080
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bathroom.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Diablo
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9d88add33c354643a665667ff4bdaaa
+    m_Address: Assets/Scenes/Diablo/Prefabs/Level/ExteriorWalls.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Diablo

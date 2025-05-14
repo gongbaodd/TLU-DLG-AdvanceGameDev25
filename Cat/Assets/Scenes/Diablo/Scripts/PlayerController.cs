@@ -7,18 +7,15 @@ namespace Assets.Scenes.Diablo.Scripts
     [RequireComponent(typeof(LifeBarController))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] AssetReference playerAsset;
+        [SerializeField] GameObject playerAsset;
         private GameObject loadedPlayer;
         private Vector3? targetPos;
 
         private void LoadAsset()
         {
-            playerAsset.InstantiateAsync(transform.position, Quaternion.identity, transform).Completed += handle =>
-            {
-                loadedPlayer = handle.Result;
-                var catController = loadedPlayer.GetComponent<CatController>();
-                catController.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
-            };
+            loadedPlayer = Instantiate(playerAsset, transform.position, Quaternion.identity, transform);
+            var catController = loadedPlayer.GetComponent<CatController>();
+            catController.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
         }
 
         private void SetTarget(Vector3 position)
@@ -78,6 +75,11 @@ namespace Assets.Scenes.Diablo.Scripts
         void Update()
         {
             UpdateMovement();
+        }
+
+        void OnDestroy()
+        {
+            Destroy(loadedPlayer);
         }
     }
 }

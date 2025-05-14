@@ -15,13 +15,79 @@ MonoBehaviour:
   m_GroupName: FruitNinja
   m_GUID: e7d14c521c7769c4da0f17f07c5d1ec8
   m_SerializeEntries:
+  - m_GUID: 15008ae71d43a4b4f97779bd74d68f25
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Doughnut H.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37819b9d328ca354c8b7df27f4e4a313
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Bundt Cake.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ef2c8d6e05c7df4992ffa9fe2210d33
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Peach.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ba9b74809ae5384aacbb67264fabb91
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Melon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 518cb9f3621861244baee8a7ba668c55
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Hotdog A.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5af434c3c35ad4047957df4e449af8a3
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Doughnut D.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6917ec6f88f3ee04892b5af54af7cd97
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Salmon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 695f533ba2149184a82172dfda24ef58
     m_Address: Assets/Scenes/FruitNinja/Prefabs/Room/02_Kitchen Variant.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c18614998d16b214e8e03eadfceeb777
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Pizza Margarita Slice.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3090a9f2a99a3845982ef29c883fb78
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Coffee Cup C.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e07d84aa68f1b014782fd29ed1b93218
     m_Address: Assets/Scenes/FruitNinja/FruitNinja.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ecf629e73c15808408948496fc48676c
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Soda bottle Glass A.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FruitNinja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f661dd7c1015e6641b5c23b913ee38cd
+    m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Lamb leg.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - FruitNinja

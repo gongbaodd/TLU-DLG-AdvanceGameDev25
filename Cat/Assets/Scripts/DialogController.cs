@@ -12,6 +12,7 @@ public class DialogController : MonoBehaviour
     [SerializeField] GameObject god;
     [SerializeField] GameObject player;
     [SerializeField] GameObject boss;
+    [SerializeField] bool hideSpeaker = false;
     [SerializeField] GameObject dialog;
     [SerializeField] string storyJson;
     Story story;
@@ -44,6 +45,8 @@ public class DialogController : MonoBehaviour
 
     void SetupCat()
     {
+        if (hideSpeaker) return;
+
         player.SetActive(true);
         var catCtrl = player.GetComponentInChildren<CatController>();
         catCtrl.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
@@ -146,6 +149,8 @@ public class DialogController : MonoBehaviour
     }
     void RenderSpeaker()
     {
+        if (hideSpeaker) return;
+
         god.SetActive(CurrentSpeaker == Speaker.God);
         boss.SetActive(CurrentSpeaker == Speaker.Boss);
     }
