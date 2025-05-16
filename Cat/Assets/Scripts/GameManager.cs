@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement; // Make sure to include this for scene manage
 public class GameManager : MonoBehaviour
 {
     public GameObject questDialoguebox;
+    public GameObject nextButton;
     public TMP_Text QuestDialogueText;
     public Button nextLevelButton;
 
@@ -62,10 +63,11 @@ public class GameManager : MonoBehaviour
             if (next != Level.None)
             {
                 QuestDialogueText.text = "Hello Player";
-            } 
-            else 
+            }
+            else
             {
                 QuestDialogueText.text = "You get all the items!";
+                nextButton.SetActive(false);
             }
 
         }

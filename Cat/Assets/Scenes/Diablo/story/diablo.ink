@@ -19,6 +19,6 @@ The Game starts
 + [Lose] -> ending
 ===ending===
 ~ isGaming = false
-Let's go back! -> END
+Let's go back!
 
-
++ Okay -> END

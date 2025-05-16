@@ -344,7 +344,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3530740937975761491}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3530740937975761492}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questDialoguebox: {fileID: 91065697}
+  nextButton: {fileID: 3530740937975761492}
   QuestDialogueText: {fileID: 772263730}
   nextLevelButton: {fileID: 769626883}
 --- !u!1 &860107118
@@ -1617,6 +1618,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 587a06db57bbf6d44a9744b90d2d6f7e, type: 3}
+--- !u!1 &3530740937975761492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7312867712963908936, guid: 587a06db57bbf6d44a9744b90d2d6f7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3530740937975761491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4384188790293004832
 PrefabInstance:
   m_ObjectHideFlags: 0
