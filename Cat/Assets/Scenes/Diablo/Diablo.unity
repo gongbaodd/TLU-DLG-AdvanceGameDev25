@@ -3132,6 +3132,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
+      propertyPath: hideSpeaker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: storyJsonAsset
+      value: 
+      objectReference: {fileID: 4900000, guid: 50e0812fa1a46c04db96019f8d9c2965, type: 3}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
       propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

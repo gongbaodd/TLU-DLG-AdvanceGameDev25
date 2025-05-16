@@ -14,7 +14,7 @@ public class DialogController : MonoBehaviour
     [SerializeField] GameObject boss;
     [SerializeField] bool hideSpeaker = false;
     [SerializeField] GameObject dialog;
-    [SerializeField] string storyJson;
+    [SerializeField] TextAsset storyJsonAsset;
     Story story;
     UIDocument ui;
     Label contentLabel;
@@ -181,7 +181,7 @@ public class DialogController : MonoBehaviour
         player.SetActive(false);
         boss.SetActive(false);
 
-        story = new(storyJson);
+        story = new(storyJsonAsset.text);
     }
     void Start()
     {
