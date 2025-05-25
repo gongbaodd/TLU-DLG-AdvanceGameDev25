@@ -1,9 +1,7 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
-using Unity.AppUI.Core;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class SceneManagerController : MonoBehaviour

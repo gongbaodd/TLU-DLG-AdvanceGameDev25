@@ -28,10 +28,11 @@ namespace Assets.Scenes.Diablo.Scripts
                 GetComponent<AudioManager>().PlayWinSound();
                 MemoryFoundEffect.SetActive(true);
 
+                yield return new WaitForSeconds(vfxTime);
+
+                
                 dialog.Win();
                 stateManager.StartStory();
-
-                yield return new WaitForSeconds(vfxTime);
             }
 
             StartCoroutine(WinRoutine());
@@ -44,11 +45,11 @@ namespace Assets.Scenes.Diablo.Scripts
             IEnumerator LoseRoutine()
             {
                 GetComponent<AudioManager>().PlayLoseSound();
-                
-                dialog.Lose();
-                stateManager.StartStory();
 
                 yield return new WaitForSeconds(vfxTime);
+
+                dialog.Lose();
+                stateManager.StartStory();
             }
 
             StartCoroutine(LoseRoutine());
