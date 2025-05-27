@@ -31,6 +31,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         private Coroutine spawnHandler;
 
+        // Track all active fruits
+        private List<Spawnable> activeFruits = new();
+
         public Vector2 CalculateForceDirection(Vector2 fruitPos)
         {
             Vector2 targetPos = target.transform.position;
@@ -103,13 +106,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 fruitCtrl.OnFruitDestroyed += obj => {
                     Poof(obj.transform.position);
                     pool.Release(spawnable);
-                };
-
-                fruitCtrl.OnOutBorder += borderType => {
-                    InitOutBoundaryMark(borderType, fruit.transform.position);
-                    pool.Release(spawnable);
-                    gameCtrl.GetComponent<AudioController>().PlayOutBorderSound();
-                    gameCtrl.Lose();
+                    activeFruits.Remove(spawnable);
                 };
 
                 fruit.SetActive(false);
@@ -138,9 +135,25 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 int index = Random.Range(0, spawnable.fruits.Count);
                 spawnable.currentObj = spawnable.fruits[index];
                 spawnable.currentObj.SetActive(true);
+                // Track active fruit
+                if (!activeFruits.Contains(spawnable))
+                    activeFruits.Add(spawnable);
             }
 
-            spawnable.currentObj.GetComponent<FruitController>().Spawn();
+            // Calculate force and torque
+            var fruitCtrl = spawnable.currentObj.GetComponent<FruitController>();
+            var speed = fruitCtrl.Speed;
+            var torqueAmount = fruitCtrl.Torque;
+            var force = CalculateForceDirection(spawnable.currentObj.transform.position) * speed;
+            var torque = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * torqueAmount;
+
+            // Play spawn audio
+            var gameManager = GetComponent<LevelManagerController>();
+            var audioController = gameManager.GetComponent<AudioController>();
+            audioController.PlaySpawnSound();
+
+            // Call new Spawn method
+            fruitCtrl.Spawn(force, torque);
         }
 
         void RetrieveOne(Spawnable spawnable)
@@ -153,6 +166,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
             fruit.transform.position = RandomSpawnPos();
             fruit.SetActive(false);
+
+            // Remove from active fruits if present
+            activeFruits.Remove(spawnable);
 
             spawnable.currentObj = null;
         }
@@ -236,6 +252,31 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             TimerController.OnTimerEnd -= StopSpawning;
             LevelStateController.OnStateChange -= ToggleSpawnByState;
+        }
+
+        void Update()
+        {
+            // Check all active fruits for out-of-bounds
+            for (int i = activeFruits.Count - 1; i >= 0; i--)
+            {
+                var fruit = activeFruits[i];
+                if (!fruit.currentObj.activeInHierarchy) continue;
+                var pos = fruit.currentObj.transform.position;
+                BorderType? outBorder = null;
+                if (pos.x < LeftBorder) outBorder = BorderType.Left;
+                else if (pos.x > RightBorder) outBorder = BorderType.Right;
+                else if (pos.y < BottomBorder) outBorder = BorderType.Bottom;
+                if (outBorder.HasValue)
+                {
+                    InitOutBoundaryMark(outBorder.Value, pos);
+                    activeFruits.RemoveAt(i);
+                    pool.Release(fruit);
+
+                    var gameCtrl = GetComponent<LevelManagerController>();
+                    gameCtrl.GetComponent<AudioController>().PlayOutBorderSound();
+                    gameCtrl.Lose();
+                }
+            }
         }
     }
 }
