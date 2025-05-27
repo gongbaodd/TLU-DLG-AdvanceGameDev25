@@ -7,7 +7,7 @@ Shhhh! This is the hell kitchen.
 
 === intro ===
 ~ speaker = "god"
-Do not weak up the host here.
+Do not wake up the host here.
 
 * [The host?] -> desp_host
 + [Okay] -> rat_come
@@ -29,7 +29,7 @@ This is a rat ghost. He must have one of the pieces. Ohhh, I can't stay for long
 
 === game_desp ===
 ~ speaker = "boss"
-Haha, you poor cat, want your master's memory piece? Come and catch it~ Whatever, you can not make any sound to weak up the host.
+Haha, you poor cat, want your master's memory piece? Come and get it~ Whatever, you can not make any sound to wake up the host.
 
 + [I will get my friend back!] -> game
 
