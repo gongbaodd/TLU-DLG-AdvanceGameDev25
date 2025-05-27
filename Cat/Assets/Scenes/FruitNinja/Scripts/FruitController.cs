@@ -33,11 +33,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
             rb.AddTorque(torque, ForceMode.Impulse);
         }
 
-        private Vector3 RandomTorque()
-        {
-            return new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
-        }
-
         void Start()
         {
             gameManager = LevelManagerController.Instance;
