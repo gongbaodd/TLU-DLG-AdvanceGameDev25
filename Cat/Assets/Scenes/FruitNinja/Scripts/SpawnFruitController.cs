@@ -32,7 +32,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         private Coroutine spawnHandler;
 
         // Track all active fruits
-        private List<Spawnable> activeFruits = new();
+        private List<SpawnFruitModel> activeFruits = new();
 
         public Vector2 CalculateForceDirection(Vector2 fruitPos)
         {
@@ -70,19 +70,13 @@ namespace Assets.Scenes.FruitNinja.Scripts
             }
         }
 
-        class Spawnable {
-            public List<GameObject> fruits = new ();
-            public List<GameObject> bombs = new ();
-            public GameObject currentObj;
-        }
-
-        Spawnable InitSpawnable()
+        SpawnFruitModel InitSpawnable()
         {
             var gameCtrl = GetComponent<LevelManagerController>();
             var fruits = config.fruits;
             var bombs = config.bombs;
 
-            var spawnable = new Spawnable();
+            var spawnable = new SpawnFruitModel();
 
             for (int i =0; i < bombs.Count; i++) {
                 var bomb = Instantiate(bombs[i], RandomSpawnPos(), Quaternion.identity);
@@ -117,7 +111,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             return spawnable;
         }
 
-        void SpawnOne(Spawnable spawnable) 
+        void SpawnOne(SpawnFruitModel spawnable)
         {
             var bombWeight = config.bombWeight;
             var fruitWeight = config.fruitWeight;
@@ -156,7 +150,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             fruitCtrl.Spawn(force, torque);
         }
 
-        void RetrieveOne(Spawnable spawnable)
+        void RetrieveOne(SpawnFruitModel spawnable)
         {
             var fruit = spawnable.currentObj;
             
@@ -173,7 +167,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             spawnable.currentObj = null;
         }
 
-        void DestoryOne(Spawnable spawnable)
+        void DestoryOne(SpawnFruitModel spawnable)
         {
             Destroy(spawnable.currentObj);
 
@@ -216,7 +210,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             StopCoroutine(spawnHandler);
         }
 
-        LinkedPool<Spawnable> pool;
+        LinkedPool<SpawnFruitModel> pool;
         void InitPool() {
             pool = new (
                 InitSpawnable,
