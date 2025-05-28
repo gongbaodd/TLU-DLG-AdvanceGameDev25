@@ -1,65 +1,67 @@
-
 using System;
 using UnityEngine;
 
-public class LevelStateController : MonoBehaviour
+namespace Assets.Scenes.FruitNinja.Scripts
 {
-    struct Ctx
+    public class LevelStateController : MonoBehaviour
     {
-        public bool isGaming;
-    }
-    public enum State
-    {
-        Game,
-        Story,
-    }
-    Ctx ctx = new()
-    {
-        isGaming = false
-    };
-    public State currentState = State.Story;
-    public static Action<State> OnStateChange;
-
-    public void StartGame()
-    {
-        ctx.isGaming = true;
-    }
-
-    public void StartStory()
-    {
-        ctx.isGaming = false;
-    }
-
-    void HandleStoryState()
-    {
-        if (ctx.isGaming)
+        struct Ctx
         {
-            TranslateState(State.Game);
+            public bool isGaming;
         }
-    }
-
-    void HandleGameState()
-    {
-        if (ctx.isGaming == false)
+        public enum State
         {
-            TranslateState(State.Story);
+            Game,
+            Story,
         }
-    }
-    void TranslateState(State newState)
-    {
-        currentState = newState;
-        OnStateChange?.Invoke(newState);
-    }
-    void Update()
-    {
-        switch (currentState)
+        Ctx ctx = new()
         {
-            case State.Story:
-                HandleStoryState();
-                break;
-            case State.Game:
-                HandleGameState();
-                break;
+            isGaming = false
+        };
+        public State currentState = State.Story;
+        public static Action<State> OnStateChange;
+
+        public void StartGame()
+        {
+            ctx.isGaming = true;
+        }
+
+        public void StartStory()
+        {
+            ctx.isGaming = false;
+        }
+
+        void HandleStoryState()
+        {
+            if (ctx.isGaming)
+            {
+                TranslateState(State.Game);
+            }
+        }
+
+        void HandleGameState()
+        {
+            if (ctx.isGaming == false)
+            {
+                TranslateState(State.Story);
+            }
+        }
+        void TranslateState(State newState)
+        {
+            currentState = newState;
+            OnStateChange?.Invoke(newState);
+        }
+        void Update()
+        {
+            switch (currentState)
+            {
+                case State.Story:
+                    HandleStoryState();
+                    break;
+                case State.Game:
+                    HandleGameState();
+                    break;
+            }
         }
     }
 }
