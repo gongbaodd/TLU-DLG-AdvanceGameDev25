@@ -20,16 +20,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         private Coroutine spawnHandler;
 
-        // Track all active fruits
-        private readonly List<SpawnFruitModel> activeFruits = new();
-        public List<SpawnFruitModel> ActiveFruits => activeFruits;
-
-        private Vector2 CalculateForceDirection(Vector2 fruitPos)
-        {
-            Vector2 targetPos = target.transform.position;
-            Vector2 direction = (targetPos - fruitPos).normalized;
-            return direction;
-        }
+        private SpawnFruitViewModel viewModel;
 
         IEnumerator SpawnFruitRoutine()
         {
@@ -39,8 +30,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 pool.Get();
             }
         }
-
-        Vector3 RandomSpawnPos() => new(Random.Range(-config.spawnWidth, config.spawnWidth), config.spawnHeight, 0);
 
         SpawnFruitModel InitSpawnable()
         {
@@ -53,7 +42,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
             for (int i = 0; i < bombs.Count; i++)
             {
-                var bomb = Instantiate(bombs[i], RandomSpawnPos(), Quaternion.identity);
+                var bomb = Instantiate(bombs[i], viewModel.RandomSpawnPos(), Quaternion.identity);
                 var boomCtrl = bomb.GetComponent<FruitController>();
 
                 boomCtrl.OnFruitDestroyed += obj =>
@@ -70,14 +59,14 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
             for (int i = 0; i < fruits.Count; i++)
             {
-                var fruit = Instantiate(fruits[i], RandomSpawnPos(), Quaternion.identity);
+                var fruit = Instantiate(fruits[i], viewModel.RandomSpawnPos(), Quaternion.identity);
                 var fruitCtrl = fruit.GetComponent<FruitController>();
 
                 fruitCtrl.OnFruitDestroyed += obj =>
                 {
                     effectController.PlayPoof(obj.transform.position);
                     pool.Release(spawnable);
-                    activeFruits.Remove(spawnable);
+                    viewModel.RemoveActiveFruit(spawnable);
                 };
 
                 fruit.SetActive(false);
@@ -90,10 +79,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         void SpawnOne(SpawnFruitModel spawnable)
         {
-            var bombWeight = config.bombWeight;
-            var fruitWeight = config.fruitWeight;
-
-            bool isSpawnBomb = Random.Range(0, bombWeight + fruitWeight) < bombWeight;
+            bool isSpawnBomb = viewModel.ShouldSpawnBomb();
 
             if (isSpawnBomb)
             {
@@ -107,15 +93,14 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 spawnable.currentObj = spawnable.fruits[index];
                 spawnable.currentObj.SetActive(true);
                 // Track active fruit
-                if (!activeFruits.Contains(spawnable))
-                    activeFruits.Add(spawnable);
+                viewModel.AddActiveFruit(spawnable);
             }
 
             // Calculate force and torque
             var fruitCtrl = spawnable.currentObj.GetComponent<FruitController>();
             var speed = fruitCtrl.Speed;
             var torqueAmount = fruitCtrl.Torque;
-            var force = CalculateForceDirection(spawnable.currentObj.transform.position) * speed;
+            var force = viewModel.CalculateForceDirection(spawnable.currentObj.transform.position, target.transform.position) * speed;
             var torque = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * torqueAmount;
 
             // Play spawn audio
@@ -135,11 +120,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            fruit.transform.position = RandomSpawnPos();
+            fruit.transform.position = viewModel.RandomSpawnPos();
             fruit.SetActive(false);
 
             // Remove from active fruits if present
-            activeFruits.Remove(spawnable);
+            viewModel.RemoveActiveFruit(spawnable);
 
             spawnable.currentObj = null;
         }
@@ -193,8 +178,13 @@ namespace Assets.Scenes.FruitNinja.Scripts
         }
         public void ReleaseFruit(SpawnFruitModel fruit)
         {
-            activeFruits.Remove(fruit);
+            viewModel.RemoveActiveFruit(fruit);
             pool.Release(fruit);
+        }
+
+        void Awake()
+        {
+            viewModel = new SpawnFruitViewModel(config);
         }
 
         void Start()
@@ -209,7 +199,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
         {
             // Delegate out-of-border check to SpawnOutBorderController
             var outBorderCtrl = GetComponent<SpawnOutBorderController>();
-            outBorderCtrl.CheckFruitsOutOfBorder(activeFruits);
+            outBorderCtrl.CheckFruitsOutOfBorder(viewModel.ActiveFruits);
         }
 
         void OnDestroy()
