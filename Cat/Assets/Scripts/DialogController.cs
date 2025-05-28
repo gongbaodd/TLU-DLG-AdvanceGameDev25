@@ -4,7 +4,6 @@ using Assets.Prefabs.Cat.Scripts;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using Button = UnityEngine.UIElements.Button;
-using Assets.Scenes.FruitNinja.Scripts;
 using UnityEngine.Events;
 
 public class DialogController : MonoBehaviour

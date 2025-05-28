@@ -295,18 +295,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36953327}
   m_Mesh: {fileID: -5184154299412297575, guid: 63e6069ebe726454ab160677d1ad79ec, type: 3}
---- !u!114 &97260560 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
-    type: 3}
-  m_PrefabInstance: {fileID: 551831657}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab6a0e32a087de468db36a3e0001bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &184641473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,6 +2321,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 755695078}
+--- !u!114 &1440539718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+    type: 3}
+  m_PrefabInstance: {fileID: 551831657}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab6a0e32a087de468db36a3e0001bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1517583293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memoryItem: {fileID: 11400000, guid: 09952adf0dfd30e43836fdbcd33690d8, type: 2}
   vfxTime: 0.6
-  dialog: {fileID: 97260560}
+  dialog: {fileID: 1440539718}
 --- !u!114 &1703314335
 MonoBehaviour:
   m_ObjectHideFlags: 0
