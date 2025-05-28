@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Assets.Scenes.FruitNinja.Scripts
 {
-    class SpawnFruitModel
+    public class SpawnFruitModel
     {
         public List<GameObject> fruits = new();
         public List<GameObject> bombs = new();

@@ -2752,9 +2752,12 @@ GameObject:
   - component: {fileID: 1703314339}
   - component: {fileID: 1703314338}
   - component: {fileID: 1703314336}
+  - component: {fileID: 1703314340}
+  - component: {fileID: 1703314342}
   - component: {fileID: 1703314335}
   - component: {fileID: 1703314333}
   - component: {fileID: 1703314337}
+  - component: {fileID: 1703314341}
   m_Layer: 0
   m_Name: LevelManger
   m_TagString: GameController
@@ -2947,11 +2950,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 920142410}
   config: {fileID: 11400000, guid: bef472d44699a414cb68a7f48120a9fd, type: 2}
-  leftBorder: {fileID: 241150754}
-  rightBorder: {fileID: 530470940}
-  bottomBorder: {fileID: 754090445}
-  dropOutMark: {fileID: 5831446847855262213, guid: a7e5d044a875b37408c0205a0bdd5b43,
-    type: 3}
 --- !u!82 &1703314337
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3080,6 +3078,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 1
+--- !u!114 &1703314340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703314330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8e0ffc59fd54b4f9662ca6e6620c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1703314341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703314330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a117417c65310e949bda910d096289b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropOutMark: {fileID: 0}
+  leftBorder: {fileID: 0}
+  rightBorder: {fileID: 0}
+  bottomBorder: {fileID: 0}
+--- !u!114 &1703314342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703314330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a117417c65310e949bda910d096289b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropOutMark: {fileID: 5831446847855262213, guid: a7e5d044a875b37408c0205a0bdd5b43,
+    type: 3}
+  leftBorder: {fileID: 241150754}
+  rightBorder: {fileID: 530470940}
+  bottomBorder: {fileID: 754090445}
 --- !u!1001 &1706578652
 PrefabInstance:
   m_ObjectHideFlags: 0

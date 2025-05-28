@@ -39,4 +39,4 @@ MonoBehaviour:
   fruitWeight: 100
   timeInSeconds: 30
   showCountDownTime: 5
-  poolSize: 100
+  poolSize: 10

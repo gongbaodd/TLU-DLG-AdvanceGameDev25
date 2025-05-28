@@ -6,26 +6,13 @@ using UnityEngine.Pool;
 namespace Assets.Scenes.FruitNinja.Scripts
 {
     [RequireComponent(typeof(SpawnFruitController))]
+    [RequireComponent(typeof(SpawnOutBorderController))]
+    [RequireComponent(typeof(SpawnFruitEffectController))]
     public class SpawnFruitController : MonoBehaviour
     {
         [SerializeField] private GameObject target;
 
         [SerializeField] private GameConfig config;
-
-        public enum BorderType
-        {
-            Left,
-            Right,
-            Bottom,
-        }
-        [SerializeField] private GameObject leftBorder;
-        [SerializeField] private GameObject rightBorder;
-        [SerializeField] private GameObject bottomBorder;
-        [SerializeField] private GameObject dropOutMark;
-
-        public float LeftBorder => leftBorder.transform.position.x;
-        public float RightBorder => rightBorder.transform.position.x;
-        public float BottomBorder => bottomBorder.transform.position.y;
 
         public GameConfig Config => config;
 
@@ -34,9 +21,10 @@ namespace Assets.Scenes.FruitNinja.Scripts
         private Coroutine spawnHandler;
 
         // Track all active fruits
-        private List<SpawnFruitModel> activeFruits = new();
+        private readonly List<SpawnFruitModel> activeFruits = new();
+        public List<SpawnFruitModel> ActiveFruits => activeFruits;
 
-        public Vector2 CalculateForceDirection(Vector2 fruitPos)
+        private Vector2 CalculateForceDirection(Vector2 fruitPos)
         {
             Vector2 targetPos = target.transform.position;
             Vector2 direction = (targetPos - fruitPos).normalized;
@@ -53,26 +41,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
         }
 
         Vector3 RandomSpawnPos() => new(Random.Range(-config.spawnWidth, config.spawnWidth), config.spawnHeight, 0);
-
-        void InitOutBoundaryMark(BorderType border, Vector3 position)
-        {
-            Vector3 pos;
-            switch (border)
-            {
-                case BorderType.Left:
-                    pos = new Vector3(leftBorder.transform.position.x + 4f, position.y, 0);
-                    Instantiate(dropOutMark, pos, Quaternion.identity);
-                    break;
-                case BorderType.Right:
-                    pos = new Vector3(rightBorder.transform.position.x - 4f, position.y, 0);
-                    Instantiate(dropOutMark, pos, Quaternion.identity);
-                    break;
-                case BorderType.Bottom:
-                    pos = new Vector3(position.x, bottomBorder.transform.position.y + 4f, 0);
-                    Instantiate(dropOutMark, pos, Quaternion.identity);
-                    break;
-            }
-        }
 
         SpawnFruitModel InitSpawnable()
         {
@@ -223,6 +191,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
                     break;
             }
         }
+        public void ReleaseFruit(SpawnFruitModel fruit)
+        {
+            activeFruits.Remove(fruit);
+            pool.Release(fruit);
+        }
 
         void Start()
         {
@@ -232,35 +205,17 @@ namespace Assets.Scenes.FruitNinja.Scripts
             LevelStateController.OnStateChange += ToggleSpawnByState;
         }
 
+        void Update()
+        {
+            // Delegate out-of-border check to SpawnOutBorderController
+            var outBorderCtrl = GetComponent<SpawnOutBorderController>();
+            outBorderCtrl.CheckFruitsOutOfBorder(activeFruits);
+        }
+
         void OnDestroy()
         {
             TimerController.OnTimerEnd -= StopSpawning;
             LevelStateController.OnStateChange -= ToggleSpawnByState;
-        }
-
-        void Update()
-        {
-            // Check all active fruits for out-of-bounds
-            for (int i = activeFruits.Count - 1; i >= 0; i--)
-            {
-                var fruit = activeFruits[i];
-                if (!fruit.currentObj.activeInHierarchy) continue;
-                var pos = fruit.currentObj.transform.position;
-                BorderType? outBorder = null;
-                if (pos.x < LeftBorder) outBorder = BorderType.Left;
-                else if (pos.x > RightBorder) outBorder = BorderType.Right;
-                else if (pos.y < BottomBorder) outBorder = BorderType.Bottom;
-                if (outBorder.HasValue)
-                {
-                    InitOutBoundaryMark(outBorder.Value, pos);
-                    activeFruits.RemoveAt(i);
-                    pool.Release(fruit);
-
-                    var gameCtrl = GetComponent<LevelManagerController>();
-                    gameCtrl.GetComponent<AudioController>().PlayOutBorderSound();
-                    gameCtrl.Lose();
-                }
-            }
         }
     }
 }

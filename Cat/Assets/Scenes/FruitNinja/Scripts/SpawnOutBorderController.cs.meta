@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a117417c65310e949bda910d096289b6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dropOutMark: {fileID: 5831446847855262213, guid: a7e5d044a875b37408c0205a0bdd5b43,
+      type: 3}
+  - leftBorder: {instanceID: 0}
+  - rightBorder: {instanceID: 0}
+  - bottomBorder: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
