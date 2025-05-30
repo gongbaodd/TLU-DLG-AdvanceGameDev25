@@ -1497,6 +1497,16 @@ PrefabInstance:
       propertyPath: storyJsonAsset
       value: 
       objectReference: {fileID: 4900000, guid: 824f7fe2e738ecc4ab697ad777e18db1, type: 3}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

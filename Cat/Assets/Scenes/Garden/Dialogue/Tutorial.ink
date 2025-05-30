@@ -59,12 +59,11 @@ GHOST KING: You want your owner back? Then chase after me. But you’ll have to 
 * [You'll regret this!] -> ending
 
 === ending ===
-{name_given > 0:
-    GHOST KING: Then come, little flame. Let’s see how far your devotion burns...
-    (The ghost fades into mist. The wind picks up. The fruit realm awakens.)
+~ speaker = "god"
+{ name_given > 0:
+    GHOST KING: Then come, little flame. Let’s see how far your devotion burns...  
 - else:
     ???: Then come, little flame. Let’s see how far your devotion burns...
-    (The ghost fades into mist. The wind picks up. The fruit realm awakens.)
 }
 
--> END
++ [Continue] -> END
