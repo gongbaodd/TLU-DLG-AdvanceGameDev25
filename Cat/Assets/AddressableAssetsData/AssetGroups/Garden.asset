@@ -26,12 +26,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 99483ed8f244aab40a5cb2fcdf81a984
-    m_Address: Assets/Scenes/Garden/Garden.unity
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Garden
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9cc1bfbac30d4cc448f92f418bc8a1e1
     m_Address: Assets/Scenes/TestStarter/TestStarter.unity
     m_ReadOnly: 0

@@ -1,77 +1,70 @@
 VAR speaker = "god"
-
-The Cat’s Awakening
+VAR name_given = 0
 
 -> START
 
 === START ===
 (The world is quiet. A low hum echoes. You, a small but determined cat, awaken in your home's backyard.)
 
+~ speaker = "god"
 ???: So... you’ve come after me.
 
-* [Say nothing.]
-    -> SILENT
-* Who are you?
-    -> ASK_NAME
-* Where's my human?!
-    -> ASK_HUMAN
+* [Say nothing.] -> SILENT
+* [Who are you?] -> ASK_NAME
 
 === SILENT ===
-???: Hmph. Silent... but your eyes tell me everything. You're not giving up, are you?
-
--> CONTINUE1
+???: Hmph. Silent... but your eyes tell me everything. You're not giving up, are you? 
++[Continue]-> CONTINUE1
 
 === ASK_NAME ===
 ???: Names? I’ve had many. But for now... you may call me the Ghost King.
-
--> CONTINUE1
-
-=== ASK_HUMAN ===
-???: That soul... it was glowing. Pure. I took it. I needed it. You wouldn’t understand.
-
--> CONTINUE1
+~ name_given += 1  
++[Continue]-> CONTINUE1
 
 === CONTINUE1 ===
-GHOST KING: You want them back? Then chase me. But you’ll have to collect every fragment of what was lost.
-
-GHOST KING: Memories... scattered. Broken. Hiding in fruit. In enemies. In shadows.
-
-* What do you mean?
-    -> TUTORIAL1
-* Give them back!
-    -> THREATEN
-* How do I find these memory pieces?
-    -> TUTORIAL1
+{ name_given > 0:
+GHOST KING: You want your owner back? Then chase after me. But you’ll have to collect every fragment of what was lost.
+- else:
+???: How boring! If you want your owner back, then chase after me. But you’ll have to collect every fragment of what was lost.
+}
+* [What do you mean?] -> TUTORIAL1
+* [Give them back!] -> THREATEN
 
 === THREATEN ===
-GHOST KING: Fierce little beast. But fury won’t save them. You’ll need precision... patience... claws.
+{ name_given > 0:
+    GHOST KING: Fierce little beast. But fury won’t save him. You’ll need precision... patience... claws.
+- else:
+    ???: Fierce little beast. But fury won’t save him. You’ll need precision... patience... claws.
+}
 
--> TUTORIAL1
++[Continue]-> TUTORIAL1
 
 === TUTORIAL1 ===
-GHOST KING: In the realm ahead, objects will fly through the air.
-
-GHOST KING: Slice them with your paws. Some hold memory pieces, others are just... fruit.
-
-GHOST KING: Miss too many, and your chance may vanish.
-
--> TUTORIAL2
+{ name_given > 0:
+    GHOST KING: In the realm ahead, objects will fly through the air. Slice them with your paws. Some hold memory pieces, others are just... fruit.
+- else:
+    ???: In the realm ahead, objects will fly through the air. Slice them with your paws. Some hold memory pieces, others are just... fruit.
+}
+ 
++[Continue]-> TUTORIAL2
 
 === TUTORIAL2 ===
-GHOST KING: Once you've collected enough, the gate will open. That’s when your claws will truly be tested.
+{ name_given > 0:
+    GHOST KING: Once you've collected enough, the gate will open. That’s when your claws will truly be tested.
+- else:
+    ???: Once you've collected enough, the gate will open. That’s when your claws will truly be tested.
+}
 
-GHOST KING: Enemies. Shadows. Regret.
-
-* I’m ready.
-    -> ending
-* I’ll get them back... no matter what.
-    -> ending
-* This is your last warning.
-    -> ending
+* [I’m ready.] -> ending
+* [You'll regret this!] -> ending
 
 === ending ===
-GHOST KING: Then come, little flame. Let’s see how far your devotion burns...
-
-(The ghost fades into mist. The wind picks up. The fruit realm awakens.)
+{name_given > 0:
+    GHOST KING: Then come, little flame. Let’s see how far your devotion burns...
+    (The ghost fades into mist. The wind picks up. The fruit realm awakens.)
+- else:
+    ???: Then come, little flame. Let’s see how far your devotion burns...
+    (The ghost fades into mist. The wind picks up. The fruit realm awakens.)
+}
 
 -> END

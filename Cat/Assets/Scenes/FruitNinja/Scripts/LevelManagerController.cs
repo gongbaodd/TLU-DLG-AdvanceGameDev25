@@ -15,7 +15,9 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public float vfxTime = .6f;
         LevelStateController stateManager;
         [SerializeField] DialogController dialog;
-        public void StartGame() {
+
+        public void StartGame()
+        {
             stateManager.StartGame();
         }
 
@@ -49,6 +51,11 @@ namespace Assets.Scenes.FruitNinja.Scripts
         public void NextScene()
         {
             SceneManagerController.Instance.GotoGardenScene();
+        }
+
+        public void FinishTutorial()
+        {
+            SceneManagerController.Instance.GotoFruitNinjaGameScene();
         }
 
         void Awake()
