@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement; // Make sure to include this for scene manage
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject dialogController;
     public GameObject questDialoguebox;
     public GameObject nextButton;
     public TMP_Text QuestDialogueText;
@@ -40,11 +41,11 @@ public class GameManager : MonoBehaviour
         var hasDiablo = items.Exists(x => x.name == "Diablo Memory");
         var hasFruitNinja = items.Exists(x => x.name == "Fruit Memory");
 
-        if (!hasFruitNinja) 
+        if (!hasFruitNinja)
         {
             return Level.FruitNinja;
         }
-        if (!hasDiablo) 
+        if (!hasDiablo)
         {
             return Level.Diablo;
         }
@@ -56,12 +57,14 @@ public class GameManager : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             Debug.Log("Quest started");
-            questDialoguebox.SetActive(true);
+            dialogController.SetActive(true);
+            //questDialoguebox.SetActive(true);
 
             var next = GetNextLevel();
 
             if (next != Level.None)
             {
+
                 QuestDialogueText.text = "Hello Player";
             }
             else
@@ -84,7 +87,7 @@ public class GameManager : MonoBehaviour
         */
         var next = GetNextLevel();
         var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
-        if (next == Level.FruitNinja) 
+        if (next == Level.FruitNinja)
         {
             sceneManager.GotoFruitNinjaGameScene();
         }
