@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        pauseButton.onClick.AddListener(() => PauseGame());
+        // pauseButton.onClick.AddListener(() => PauseGame());
 
     }
 
@@ -47,67 +47,16 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public enum Level
-    {
-        FruitNinja,
-        Diablo,
-        None,
-    }
-    Level GetNextLevel()
-    {
-        var items = Inventory.instance.GetItems();
-
-        var hasDiablo = items.Exists(x => x.name == "Diablo Memory");
-        var hasFruitNinja = items.Exists(x => x.name == "Fruit Memory");
-
-        if (!hasFruitNinja)
-        {
-            return Level.FruitNinja;
-        }
-        if (!hasDiablo)
-        {
-            return Level.Diablo;
-        }
-        return Level.None;
-    }
+    public static Action OnOpenStory;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
             Debug.Log("Quest started");
-            dialogController.SetActive(true);
-
-            var next = GetNextLevel();
-
-            if (next != Level.None)
-            {
-
-                QuestDialogueText.text = "Hello Player";
-            }
-            else
-            {
-                QuestDialogueText.text = "You get all the items!";
-                nextButton.SetActive(false);
-            }
-
+            OnOpenStory?.Invoke();
         }
 
-    }
-
-    public void MovetoNextLevel()
-    {
-
-        var next = GetNextLevel();
-        var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
-        if (next == Level.FruitNinja)
-        {
-            sceneManager.GotoFruitNinjaGameScene();
-        }
-        else
-        {
-            sceneManager.GotoDiabloGameScene();
-        }
     }
 
     // Callback to handle post-load actions

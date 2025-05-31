@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2067540110961451378
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3035501132942589268, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133235762032909134, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387457226126716775, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387457226126716775, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: storyJsonAsset
+      value: 
+      objectReference: {fileID: 4900000, guid: 824f7fe2e738ecc4ab697ad777e18db1, type: 3}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6387457226126716775, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 711015233580371928}
+  m_SourcePrefab: {fileID: 100100000, guid: f6f3462abad46314ca81b5349d210b77, type: 3}
+--- !u!1 &4906018991571619349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6387457226126716775, guid: f6f3462abad46314ca81b5349d210b77,
+    type: 3}
+  m_PrefabInstance: {fileID: 2067540110961451378}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &711015233580371928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906018991571619349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c774c6730db334f8440362ecd6e4c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  god: {fileID: 0}
+  player: {fileID: 0}
+  boss: {fileID: 0}
+  hideSpeaker: 0
+  dialog: {fileID: 0}
+  storyJsonAsset: {fileID: 0}
+  OnNextScene:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartGame:
+    m_PersistentCalls:
+      m_Calls: []
