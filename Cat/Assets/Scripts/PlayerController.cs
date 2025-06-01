@@ -15,16 +15,12 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 2f;
 
     private NavMeshAgent catAgent;
-    private Vector3 targetPosition;
-    private bool isMoving = false;
-    private Rigidbody rb;
 
     private Interactable currentFocus; // Current interactable object
 
     void Start()
     {
         catAgent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
 
         var catCtrl = GetComponentInChildren<CatController>();
         catCtrl.ChooseAnimationLayer(CatController.AnimationLayer.FIGHT);
