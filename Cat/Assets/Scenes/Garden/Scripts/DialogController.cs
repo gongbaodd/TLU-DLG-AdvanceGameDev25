@@ -43,27 +43,38 @@ namespace Assets.Scenes.Garden.Scripts
             get => story.variablesState["is_goto_fruit_ninja"] as bool? ?? false;
         }
 
+        void Awake()
+        {
+            dialog.SetActive(false); // Initially hide the dialog
+        }
+        void Start()
+        {
+            GameManager.OnOpenStory += OpenStory; // Subscribe to the event to open the story dialog
+        }
+
 
         void RenderStory()
         {
-
             var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
 
-            currentText = story.Continue();
-
+            // Check if we need to go to the Fruit Ninja game scene
             if (IsGotoFruitNinja)
             {
                 sceneManager.GotoFruitNinjaGameScene();
                 return;
             }
 
+            currentText = story.Continue(); // Get the next line of text from the story
+
+
+
             if (story.currentChoices.Count == 0)
             {
-                RenderStory();
+                RenderStory(); // Continue rendering until there are no choices left
             }
 
-            RenderContent();
-            RenderChoices();
+            RenderContent(); // Update the content label with the current text
+            RenderChoices(); // Update the choices based on the current state of the story
         }
 
         void RenderContent()
@@ -92,6 +103,7 @@ namespace Assets.Scenes.Garden.Scripts
             }
         }
 
+        // Event callback for when a choice is selected
         EventCallback<ClickEvent> OnChoiceSelected(int index)
         {
             return evt =>
@@ -119,43 +131,19 @@ namespace Assets.Scenes.Garden.Scripts
             }
         }
 
-        // bool IsFruitNinjaDone
-        // {
-        //     get
-        //     {
-        //         var items = Inventory.instance.GetItems();
-        //         return items.Exists(x => x.name == "Fruit Memory");
-        //     }
-        // }
-        // bool IsDiabloDone
-        // {
-        //     get
-        //     {
-        //         var items = Inventory.instance.GetItems();
-        //         return items.Exists(x => x.name == "Diablo Memory");
-        //     }
-        // }
-
         void OpenStory()
         {
-            story = new(storyJsonAsset.text);
+            story = new(storyJsonAsset.text); // Load the story from the JSON asset
 
-            dialog.SetActive(true);
+            dialog.SetActive(true); // Show the dialog
             InitUI();
             RenderStory();
         }
-        void Awake()
-        {
-            dialog.SetActive(false);
-        }
-        void Start()
-        {
-            GameManager.OnOpenStory += OpenStory;
-        }
+
 
         void OnDestroy()
         {
-            GameManager.OnOpenStory -= OpenStory;
+            GameManager.OnOpenStory -= OpenStory; // Unsubscribe from the event to avoid memory leaks
         }
     }
 

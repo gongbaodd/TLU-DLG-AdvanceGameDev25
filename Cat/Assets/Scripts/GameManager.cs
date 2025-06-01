@@ -47,16 +47,23 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // This action is invoked when the player enters a trigger zone to start a quest.
     public static Action OnOpenStory;
+    private bool questStarted = false;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(playerTag))
+        if (!questStarted && other != null && other.CompareTag(playerTag))
         {
+            questStarted = true;
             Debug.Log("Quest started");
+            // Trigger the OnOpenStory action, which starts the quest dialogue or story sequence.
             OnOpenStory?.Invoke();
         }
-
+        else if (other == null || !other.CompareTag(playerTag))
+        {
+            Debug.LogWarning("Collider is null or does not have the expected tag.");
+        }
     }
 
     // Callback to handle post-load actions
