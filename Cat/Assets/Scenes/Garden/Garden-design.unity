@@ -1731,6 +1731,11 @@ PrefabInstance:
       propertyPath: storyJsonAsset
       value: 
       objectReference: {fileID: 4900000, guid: 824f7fe2e738ecc4ab697ad777e18db1, type: 3}
+    - target: {fileID: 1025824758408139217, guid: 3cbf3433656d7d243979964fa90c1b61,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4906018991571619349, guid: 3cbf3433656d7d243979964fa90c1b61,
         type: 3}
       propertyPath: m_Name
