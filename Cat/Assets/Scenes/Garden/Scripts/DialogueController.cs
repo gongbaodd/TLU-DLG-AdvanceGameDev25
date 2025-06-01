@@ -10,7 +10,7 @@ using System.Linq;
 namespace Assets.Scenes.Garden.Scripts
 {
 
-    public class DialogController : MonoBehaviour
+    public class DialogueController : MonoBehaviour
     {
         [SerializeField] GameObject dialog;
         [SerializeField] TextAsset storyJsonAsset;
@@ -53,7 +53,7 @@ namespace Assets.Scenes.Garden.Scripts
         }
 
 
-        void RenderStory()
+        public void RenderStory()
         {
             var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
 
