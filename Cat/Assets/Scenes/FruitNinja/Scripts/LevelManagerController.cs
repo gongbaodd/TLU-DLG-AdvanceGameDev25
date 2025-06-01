@@ -48,7 +48,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
             StartCoroutine(LoseRoutine());
         }
-        public void NextScene()
+        public void PreviousScene()
         {
             SceneManagerController.Instance.GotoGardenScene();
         }
