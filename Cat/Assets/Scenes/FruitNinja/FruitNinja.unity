@@ -803,7 +803,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3989417037294542392, guid: dc095ce8d2086f541bd26c7e3a71ef12,
+  m_Sprite: {fileID: -6316392241553622110, guid: 215687feeab0b7445b4a1cd86c82c2e1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1040,7 +1040,7 @@ PrefabInstance:
         type: 3}
       propertyPath: storyJsonAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 9a3da01968353e241b8a1de671d5801c, type: 3}
+      objectReference: {fileID: 4900000, guid: aa2727ff4beac7b459e8d0ecaa142692, type: 3}
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
       propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.size
