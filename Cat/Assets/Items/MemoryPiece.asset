@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MemoryPiece
   m_EditorClassIdentifier: 
   name: Memory Piece
-  icon: {fileID: -4120535925080400364, guid: decd9f9d258a2a846af4921e94195170, type: 3}
+  icon: {fileID: 8678780475385641507, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
   isDefaultItem: 0
