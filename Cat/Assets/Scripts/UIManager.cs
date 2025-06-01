@@ -5,7 +5,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance; // This is a singleton pattern to ensure only one instance of GameManager exists.
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject controlsMenu;
     [SerializeField] private Button pauseButton;
+    [SerializeField] private Button controlsButton;
+    [SerializeField] private Button backButton;
     private bool isPaused = false;
 
     private void Awake()
@@ -26,7 +29,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         pauseButton.onClick.AddListener(PauseGame);
-
+        controlsButton.onClick.AddListener(OpenControlsMenu);
+        backButton.onClick.AddListener(CloseControlsMenu);
     }
 
     private void PauseGame()
@@ -49,4 +53,19 @@ public class UIManager : MonoBehaviour
         pauseButton.onClick.RemoveListener(ResumeGame);
         pauseButton.onClick.AddListener(PauseGame);
     }
+
+    private void OpenControlsMenu()
+    {
+        // Logic to open the controls menu
+        controlsMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+
+    }
+    private void CloseControlsMenu()
+    {
+        // Logic to close the controls menu
+        controlsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
+    }
+
 }
