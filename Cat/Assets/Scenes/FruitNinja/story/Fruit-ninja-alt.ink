@@ -1,6 +1,8 @@
 VAR speaker = "god"
 VAR isGaming = false
 VAR isWon = false
+VAR is_goto_diablo = false
+VAR is_goto_garden = false
 
 (The scent of scorched wood. The heat of something watching. You descend into the kitchen — or what remains of it.)
 
@@ -46,6 +48,7 @@ RAT SHADE: Brave words for such a soft belly. You want the memory shard? Then *e
 ~ isGaming = false
 ~ speaker = "boss"
 ~ isWon = false
+~is_goto_garden = true
 RAT SHADE: Hah! Is that all? Maybe your owner deserves to be forgotten.
 
 + [No… not yet.] -> Result
@@ -54,6 +57,7 @@ RAT SHADE: Hah! Is that all? Maybe your owner deserves to be forgotten.
 ~ isGaming = false
 ~ speaker = "boss"
 ~ isWon = true
+~ is_goto_diablo = true
 RAT SHADE: No—! I’ll be dust before the Host returns. Take your cursed piece!
 
 + [It's mine now.] -> Result
@@ -66,4 +70,4 @@ RAT SHADE: No—! I’ll be dust before the Host returns. Take your cursed piece
     GHOST KING: Even in failure, you endure. Return, recover… and try again.
 }
 
-+ [Return.] -> END
++ [Continue.] -> END
