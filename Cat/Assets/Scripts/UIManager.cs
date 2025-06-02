@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         pauseButton.onClick.AddListener(PauseGame);
         controlsButton.onClick.AddListener(OpenControlsMenu);
         backButton.onClick.AddListener(CloseControlsMenu);
-        backtoMenuButton.onClick.AddListener(BackToMenu);
+        //backtoMenuButton.onClick.AddListener(BackToMenu);
     }
 
     private void PauseGame()
@@ -74,19 +74,26 @@ public class UIManager : MonoBehaviour
         controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }
-    public void BackToMenu()
-    {
-        var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
-        pauseMenu.SetActive(false);
-        sceneManager.GotoMainMenuScene();
-    }
+    // public void BackToMenu()
+    // {
+    //     StartCoroutine(BackToMenuAfterDelay(2f)); // Call the coroutine to go back to the main menu after a delay
+    // }
+
+    // public IEnumerator BackToMenuAfterDelay(float delay)
+    // {
+    //     yield return new WaitForSeconds(delay);
+    //     // Replace with your main menu scene name
+    //     string mainMenuSceneName = "Main";
+    //     Time.timeScale = 1f; // Ensure the game is resumed when going back to the menu
+    //     SceneManager.LoadScene(mainMenuSceneName);
+    // }
 
     public void ShowWinPanel()
     {
         // Logic to show the win panel
         Debug.Log("You won the game!");
         winPanel.SetActive(true);
-        Time.timeScale = 0f; // Pause the game when showing the win panel
+        //Time.timeScale = 0f; // Pause the game when showing the win panel
     }
     public IEnumerator HideNotification(float duration = 2f)
     {
