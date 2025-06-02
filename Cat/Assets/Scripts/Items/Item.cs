@@ -16,6 +16,7 @@ public class Item : ScriptableObject
         // Use the item
         UIManager.Instance.ShowNotificationPanel("Using memory piece"); // Show the notification panel if it's open
         Debug.Log("Using " + name);
+        RemoveFromInventory(); // Remove the item from the inventory
     }
 
     public void RemoveFromInventory()
