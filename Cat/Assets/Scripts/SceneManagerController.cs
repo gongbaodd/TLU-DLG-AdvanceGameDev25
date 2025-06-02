@@ -8,13 +8,13 @@ public class SceneManagerController : MonoBehaviour
 {
     public static SceneManagerController Instance { get; private set; }
     [SerializeField] GameObject loading;
-    void ToggleLoading(bool value) => loading.SetActive(value);
-    AsyncOperationHandle previousHander;
+    void ToggleLoading(bool value) => loading.SetActive(value); // Show or hide the loading screen
+    AsyncOperationHandle previousHander; // Store the previous scene handle to release it later
     async Task LoadScene(AssetReference scene)
     {
         ToggleLoading(true);
-        var downloadHandler = Addressables.DownloadDependenciesAsync(scene);
-        await downloadHandler.Task;
+        var downloadHandler = Addressables.DownloadDependenciesAsync(scene); // Download the scene dependencies
+        await downloadHandler.Task; // Wait for the dependencies to be downloaded
 
         var handler = scene.LoadSceneAsync(LoadSceneMode.Single);
         await handler.Task;

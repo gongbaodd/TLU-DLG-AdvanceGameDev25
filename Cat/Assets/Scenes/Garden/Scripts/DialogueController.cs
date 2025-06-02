@@ -81,7 +81,7 @@ namespace Assets.Scenes.Garden.Scripts
         {
             contentLabel.text = currentText;
 
-            contentContainer.RemoveFromClassList("god-content");
+            contentContainer.RemoveFromClassList("god-content"); // Remove any previous speaker styles
 
             if (CurrentSpeaker == Speaker.God)
             {
@@ -93,7 +93,7 @@ namespace Assets.Scenes.Garden.Scripts
         {
             for (int i = 0; i < choices.Count; i++)
             {
-                choices[i].AddToClassList("hidden");
+                choices[i].AddToClassList("hidden"); // Hide all choices initially
             }
 
             for (int i = 0; i < story.currentChoices.Count; i++)
@@ -116,7 +116,7 @@ namespace Assets.Scenes.Garden.Scripts
         void InitUI()
         {
             ui = dialog.GetComponent<UIDocument>();
-            var root = ui.rootVisualElement;
+            var root = ui.rootVisualElement; // Get the root visual element of the UI document
 
             contentLabel = root.Q<Label>("content");
             contentContainer = root.Q<VisualElement>("container");
@@ -127,7 +127,7 @@ namespace Assets.Scenes.Garden.Scripts
 
             for (int i = 0; i < choices.Count; i++)
             {
-                choices[i].RegisterCallback(OnChoiceSelected(i));
+                choices[i].RegisterCallback(OnChoiceSelected(i)); // Register the callback for each choice button
             }
         }
 
