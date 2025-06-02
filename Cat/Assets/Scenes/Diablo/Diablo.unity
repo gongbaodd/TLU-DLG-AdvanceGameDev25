@@ -993,6 +993,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401785974902689413, guid: 669a840ebb9df1944aa8eb19b2202d55,
+        type: 3}
+      propertyPath: MainMenuScene.m_AssetGUID
+      value: 2ecac9627e41aca47b9da52970d8c8f7
+      objectReference: {fileID: 0}
     - target: {fileID: 6693740848748806507, guid: 669a840ebb9df1944aa8eb19b2202d55,
         type: 3}
       propertyPath: m_Name
@@ -1748,6 +1753,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InventoryCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915189082212336808, guid: 587a06db57bbf6d44a9744b90d2d6f7e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button controlsButton;
     [SerializeField] private Button backButton;
+    [SerializeField] private Button backtoMenuButton;
     private bool isPaused = false;
 
     private void Awake()
@@ -32,6 +34,7 @@ public class UIManager : MonoBehaviour
         pauseButton.onClick.AddListener(PauseGame);
         controlsButton.onClick.AddListener(OpenControlsMenu);
         backButton.onClick.AddListener(CloseControlsMenu);
+        backtoMenuButton.onClick.AddListener(BackToMenu);
     }
 
     private void PauseGame()
@@ -67,6 +70,12 @@ public class UIManager : MonoBehaviour
         // Logic to close the controls menu
         controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
+    }
+    public void BackToMenu()
+    {
+        var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
+        pauseMenu.SetActive(false);
+        sceneManager.GotoMainMenuScene();
     }
 
     public void ShowWinPanel()
