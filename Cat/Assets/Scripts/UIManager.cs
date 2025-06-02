@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using TMPro; // Ensure you have TextMeshPro package installed for UI text
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject controlsMenu;
     [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject notificationPanel;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button controlsButton;
     [SerializeField] private Button backButton;
@@ -84,6 +87,21 @@ public class UIManager : MonoBehaviour
         Debug.Log("You won the game!");
         winPanel.SetActive(true);
         Time.timeScale = 0f; // Pause the game when showing the win panel
+    }
+    public IEnumerator HideNotification(float duration = 2f)
+    {
+        yield return new WaitForSeconds(duration);
+        notificationPanel.SetActive(false);
+    }
+    public void ShowNotificationPanel(string message)
+    {
+        notificationPanel.SetActive(true);
+        notificationPanel.GetComponentInChildren<TMP_Text>().text = message;
+        HideNotificationPanel(); // Automatically hide after a short duration
+    }
+    public void HideNotificationPanel()
+    {
+        StartCoroutine(HideNotification());
     }
 
 }
