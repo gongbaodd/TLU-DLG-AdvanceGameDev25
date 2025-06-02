@@ -48,6 +48,10 @@ public class DialogController : MonoBehaviour
     {
         get => story.variablesState["is_goto_garden"] as bool? ?? false;
     }
+    bool IsWon
+    {
+        get => story.variablesState["is_won"] as bool? ?? false;
+    }
 
     void SetupCat()
     {
@@ -76,15 +80,24 @@ public class DialogController : MonoBehaviour
     {
         var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
 
-        // Check if we need to go to the Fruit Ninja game scene
+        // Check if we need to go to the Diablo game scene
         if (IsGotoDiablo)
         {
             sceneManager.GotoDiabloGameScene();
             return;
         }
+
+        // Check if we need to go to the Garden scene
         if (IsGotoGarden)
         {
             sceneManager.GotoGardenScene();
+            return;
+        }
+
+        if (IsWon)
+        {
+            //sceneManager.GotoFruitNinjaGameScene();
+            UIManager.Instance.ShowWinPanel();
             return;
         }
 
