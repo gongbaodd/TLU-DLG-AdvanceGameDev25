@@ -1,5 +1,7 @@
 VAR isGaming = false
 VAR speaker = "god"
+VAR is_won = false
+VAR is_goto_garden = false
 
 (The shadows are thicker here. The air smells of rust and secrets. You've made it — to the heart of the Ghost King's lair.)
 
@@ -26,17 +28,24 @@ GHOST KING: You’re bold, little flame. But not everything here is what it seem
 === Win_game ===
 ~ isGaming = false
 ~ speaker = "god"
+~ is_won = true
 GHOST KING: Impossible... You’ve undone what I shattered.
 
-(The final memory glows in your paws. It hums with warmth — a promise of return.)
-
-+ [I’m taking him back.] -> END
++ [I'm taking him back.] -> ending
 
 === Lose_game ===
 ~ isGaming = false
 ~ speaker = "god"
-GHOST KING: Lost, are you? No matter. I’ll scatter the pieces again if I must.
+~ is_goto_garden = true
+GHOST KING: Hahaha! Futile! There goes all hope of seeing your master again.
 
-(The chests vanish in smoke. But somewhere in the dark, the final memory still calls to you.)
++ [I won’t give up.] -> ending
 
-+ [I won’t give up.] -> END
+=== ending ===
+{is_won:
+    (The final memory glows in your paws. It hums with warmth — a promise of return.)
+ - else:
+    (The chests vanish in smoke. But somewhere in the dark, the final memory still calls to you.)
+ }
+
+ + [Escape] -> END

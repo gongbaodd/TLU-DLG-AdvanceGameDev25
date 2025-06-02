@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance; // This is a singleton pattern to ensure only one instance of GameManager exists.
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject controlsMenu;
+    [SerializeField] private GameObject winPanel;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button controlsButton;
     [SerializeField] private Button backButton;
@@ -66,6 +67,14 @@ public class UIManager : MonoBehaviour
         // Logic to close the controls menu
         controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
+    }
+
+    public void ShowWinPanel()
+    {
+        // Logic to show the win panel
+        Debug.Log("You won the game!");
+        winPanel.SetActive(true);
+        Time.timeScale = 0f; // Pause the game when showing the win panel
     }
 
 }
