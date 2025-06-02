@@ -38,7 +38,6 @@ public class Inventory : MonoBehaviour
     public OnItemChanged onItemChangedCallback;
 
     public int space = 19;	// Amount of slots in inventory
-    //public List<Item> items = new List<Item>();
 
     public bool Add(Item item)
     {
@@ -51,7 +50,6 @@ public class Inventory : MonoBehaviour
             }
 
             data.items.Add(item);
-            //items.Add(item);
 
             // Trigger callback
             if (onItemChangedCallback != null)
@@ -64,7 +62,6 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item)
     {
         data.items.Remove(item);
-        //items.Remove(item);
 
         // Trigger callback
         if (onItemChangedCallback != null)

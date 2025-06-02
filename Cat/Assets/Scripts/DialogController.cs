@@ -96,22 +96,15 @@ public class DialogController : MonoBehaviour
 
         if (IsWon)
         {
-            //sceneManager.GotoFruitNinjaGameScene();
             UIManager.Instance.ShowWinPanel();
             return;
         }
-
-        // if (!story.canContinue)
-        // {
-        //     OnNextScene?.Invoke();
-        //     return;
-        // }
 
         currentText = story.Continue();
 
         if (IsGaming)
         {
-            OnStartGame?.Invoke();
+            OnStartGame?.Invoke(); // Trigger the start of the game
         }
 
         if (story.currentChoices.Count == 0)

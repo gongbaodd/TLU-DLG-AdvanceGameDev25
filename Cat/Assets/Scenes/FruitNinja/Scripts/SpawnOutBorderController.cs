@@ -38,7 +38,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
                 }
 
                 var pos = fruit.currentObj.transform.position;
-                BorderType? outBorder = null;
+                BorderType? outBorder = null; // Initialize outBorder as null to check if the fruit is out of any border
                 if (pos.x < LeftBorder)
                 {
                     outBorder = BorderType.Left;
@@ -62,6 +62,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
             }
         }
 
+        // Initializes the out-of-boundary mark at the specified position based on the border type.
         private void InitOutBoundaryMark(BorderType border, Vector3 position)
         {
             Vector3 pos = position;
@@ -77,7 +78,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
                     pos = new Vector3(position.x, BottomBorder + 4f, 0);
                     break;
             }
-            Instantiate(dropOutMark, pos, Quaternion.identity);
+            Instantiate(dropOutMark, pos, Quaternion.identity); // Instantiate the drop-out mark at the calculated position
         }
 
         void Awake()
