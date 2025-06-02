@@ -9,7 +9,7 @@ public class SceneManagerController : MonoBehaviour
     public static SceneManagerController Instance { get; private set; }
     [SerializeField] GameObject loading;
     void ToggleLoading(bool value) => loading.SetActive(value); // Show or hide the loading screen
-    AsyncOperationHandle previousHander; // Store the previous scene handle to release it later
+    AsyncOperationHandle previousHandler; // Store the previous scene handle to release it later
     async Task LoadScene(AssetReference scene)
     {
         ToggleLoading(true);
@@ -21,12 +21,12 @@ public class SceneManagerController : MonoBehaviour
 
         ToggleLoading(false);
 
-        if (previousHander.IsValid())
+        if (previousHandler.IsValid())
         {
-            Addressables.Release(previousHander);
+            Addressables.Release(previousHandler);
         }
 
-        previousHander = handler;
+        previousHandler = handler;
     }
     [SerializeField] AssetReference DebugScene;
     public void GotoDebugScene()
@@ -48,11 +48,21 @@ public class SceneManagerController : MonoBehaviour
     {
         _ = LoadScene(DiabloGameScene);
     }
-    [SerializeField] AssetReference MainMenuScene;
-    public void GotoMainMenuScene()
-    {
-        _ = LoadScene(MainMenuScene);
-    }
+    //[SerializeField] AssetReference MainMenuScene;
+    // public async void GotoMainMenuScene()
+    // {
+    //     try
+    //     {
+    //         await LoadScene(MainMenuScene);
+    //     }
+    //     catch (System.Exception ex)
+    //     {
+    //         Debug.LogError($"Failed to load MainMenuScene: {ex.Message}");
+    //     }
+    // }
+    // {
+    //     _ = LoadScene(MainMenuScene);
+    // }
 
     public void GotoNextLevel()
     {
