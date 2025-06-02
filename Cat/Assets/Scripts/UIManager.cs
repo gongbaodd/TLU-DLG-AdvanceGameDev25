@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        //GameManager.Instance.Inventory.SetActive(true); // Ensure the inventory is not active at the start
         pauseButton.onClick.AddListener(PauseGame);
         controlsButton.onClick.AddListener(OpenControlsMenu);
         backButton.onClick.AddListener(CloseControlsMenu);
@@ -74,19 +75,20 @@ public class UIManager : MonoBehaviour
         controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }
-    // public void BackToMenu()
-    // {
-    //     StartCoroutine(BackToMenuAfterDelay(2f)); // Call the coroutine to go back to the main menu after a delay
-    // }
+    public void BackToMenu()
+    {
+        SceneManagerController.Instance.GotoMainMenuScene(); // Assuming you have a SceneManagerController to handle scene transitions
+        //StartCoroutine(BackToMenuAfterDelay(2f)); // Call the coroutine to go back to the main menu after a delay
+    }
 
-    // public IEnumerator BackToMenuAfterDelay(float delay)
-    // {
-    //     yield return new WaitForSeconds(delay);
-    //     // Replace with your main menu scene name
-    //     string mainMenuSceneName = "Main";
-    //     Time.timeScale = 1f; // Ensure the game is resumed when going back to the menu
-    //     SceneManager.LoadScene(mainMenuSceneName);
-    // }
+    public IEnumerator BackToMenuAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        // Replace with your main menu scene name
+        string mainMenuSceneName = "Main";
+        Time.timeScale = 1f; // Ensure the game is resumed when going back to the menu
+        SceneManager.LoadScene(mainMenuSceneName);
+    }
 
     public void ShowWinPanel()
     {

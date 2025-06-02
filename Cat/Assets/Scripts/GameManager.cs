@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     // This is a singleton pattern to ensure only one instance of GameManager exists.
+
+    //public GameObject Inventory;
     private static string playerTag = "Player";
     private void Awake()
     {
