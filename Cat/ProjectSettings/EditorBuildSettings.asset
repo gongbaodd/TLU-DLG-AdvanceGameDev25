@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 2ecac9627e41aca47b9da52970d8c8f7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestStarter/TestStarter.unity
     guid: 9cc1bfbac30d4cc448f92f418bc8a1e1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FruitNinja/FruitNinja.unity
     guid: e07d84aa68f1b014782fd29ed1b93218
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Garden/Garden-design.unity
     guid: 4d909b5421c9cd34bb21ef3f64b7c956
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Diablo/Diablo.unity
     guid: af18fe91a2a2d044ca9b7e94a6587874
   m_configObjects:

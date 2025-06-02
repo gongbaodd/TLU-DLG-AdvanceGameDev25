@@ -10,7 +10,8 @@ public class SceneManagerController : MonoBehaviour
     [SerializeField] GameObject loading;
     void ToggleLoading(bool value) => loading.SetActive(value);
     AsyncOperationHandle previousHander;
-    async Task LoadScene(AssetReference scene) {
+    async Task LoadScene(AssetReference scene)
+    {
         ToggleLoading(true);
         var downloadHandler = Addressables.DownloadDependenciesAsync(scene);
         await downloadHandler.Task;
@@ -20,7 +21,8 @@ public class SceneManagerController : MonoBehaviour
 
         ToggleLoading(false);
 
-        if (previousHander.IsValid()) {
+        if (previousHander.IsValid())
+        {
             Addressables.Release(previousHander);
         }
 
@@ -37,7 +39,7 @@ public class SceneManagerController : MonoBehaviour
         _ = LoadScene(GardenScene);
     }
     [SerializeField] AssetReference FruitNinjaGameScene;
-    public void GotoFruitNinjaGameScene() 
+    public void GotoFruitNinjaGameScene()
     {
         _ = LoadScene(FruitNinjaGameScene);
     }
@@ -45,6 +47,11 @@ public class SceneManagerController : MonoBehaviour
     public void GotoDiabloGameScene()
     {
         _ = LoadScene(DiabloGameScene);
+    }
+    [SerializeField] AssetReference MainMenuScene;
+    public void GotoMainMenuScene()
+    {
+        _ = LoadScene(MainMenuScene);
     }
 
     public void GotoNextLevel()
@@ -54,12 +61,12 @@ public class SceneManagerController : MonoBehaviour
         var hasDiablo = items.Exists(x => x.name == "Diablo Memory");
         var hasFruitNinja = items.Exists(x => x.name == "Fruit Memory");
 
-        if (!hasFruitNinja) 
+        if (!hasFruitNinja)
         {
             GotoFruitNinjaGameScene();
             return;
         }
-        if (!hasDiablo) 
+        if (!hasDiablo)
         {
             GotoDiabloGameScene();
             return;

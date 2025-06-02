@@ -77,8 +77,7 @@ MonoBehaviour:
   - m_GUID: e07d84aa68f1b014782fd29ed1b93218
     m_Address: Assets/Scenes/FruitNinja/FruitNinja.unity
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - FruitNinja
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ecf629e73c15808408948496fc48676c
     m_Address: Assets/Scenes/FruitNinja/Prefabs/Foods/Soda bottle Glass A.prefab

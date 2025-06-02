@@ -72,8 +72,7 @@ MonoBehaviour:
   - m_GUID: af18fe91a2a2d044ca9b7e94a6587874
     m_Address: Assets/Scenes/Diablo/Diablo.unity
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Diablo
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bb3906f32244b374cb7d88b149c9c430
     m_Address: Assets/Scenes/Diablo/Prefabs/Level/Bedroom03.prefab
