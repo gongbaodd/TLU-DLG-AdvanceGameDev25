@@ -40,7 +40,14 @@ public class DialogController : MonoBehaviour
             return isGaming;
         }
     }
-
+    bool IsGotoDiablo
+    {
+        get => story.variablesState["is_goto_diablo"] as bool? ?? false;
+    }
+    bool IsGotoGarden
+    {
+        get => story.variablesState["is_goto_garden"] as bool? ?? false;
+    }
 
     void SetupCat()
     {
@@ -67,11 +74,25 @@ public class DialogController : MonoBehaviour
     [SerializeField] UnityEvent OnStartGame;
     void RenderStory()
     {
-        if (!story.canContinue)
+        var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
+
+        // Check if we need to go to the Fruit Ninja game scene
+        if (IsGotoDiablo)
         {
-            OnNextScene?.Invoke();
+            sceneManager.GotoDiabloGameScene();
             return;
         }
+        if (IsGotoGarden)
+        {
+            sceneManager.GotoGardenScene();
+            return;
+        }
+
+        // if (!story.canContinue)
+        // {
+        //     OnNextScene?.Invoke();
+        //     return;
+        // }
 
         currentText = story.Continue();
 
@@ -130,7 +151,8 @@ public class DialogController : MonoBehaviour
         };
     }
 
-    void InitUI() {
+    void InitUI()
+    {
         ui = dialog.GetComponent<UIDocument>();
         var root = ui.rootVisualElement;
 
