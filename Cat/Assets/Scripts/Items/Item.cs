@@ -14,8 +14,7 @@ public class Item : ScriptableObject
     public virtual void Use()
     {
         // Use the item
-        // Something might happen
-
+        UIManager.Instance.ShowNotificationPanel("Using memory piece"); // Show the notification panel if it's open
         Debug.Log("Using " + name);
     }
 
