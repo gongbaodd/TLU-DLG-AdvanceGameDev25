@@ -18,10 +18,12 @@ namespace Assets.Scenes.Diablo.Scripts
         [SerializeField] Item memoryItem;        
         LevelStateController stateManager;
         [SerializeField] DialogController dialog;
+        bool finished = false;
         public void Win()
         {
             IEnumerator WinRoutine()
             {
+                finished = true;
                 var inventory = Inventory.instance;
                 inventory.Add(memoryItem);
 
@@ -30,13 +32,14 @@ namespace Assets.Scenes.Diablo.Scripts
 
                 yield return new WaitForSeconds(vfxTime);
 
-                
+
                 dialog.Win();
                 stateManager.StartStory();
             }
-
-            StartCoroutine(WinRoutine());
-
+            if (finished == false)
+            {
+                StartCoroutine(WinRoutine());
+            }
         }
 
         public void Lose()
@@ -44,6 +47,8 @@ namespace Assets.Scenes.Diablo.Scripts
 
             IEnumerator LoseRoutine()
             {
+                finished = true;
+
                 GetComponent<AudioManager>().PlayLoseSound();
 
                 yield return new WaitForSeconds(vfxTime);
@@ -52,7 +57,11 @@ namespace Assets.Scenes.Diablo.Scripts
                 stateManager.StartStory();
             }
 
-            StartCoroutine(LoseRoutine());
+            if (finished == false)
+            {
+                StartCoroutine(LoseRoutine());
+            }
+
         }
 
         public void NextScene()
