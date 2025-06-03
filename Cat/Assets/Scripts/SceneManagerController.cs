@@ -23,21 +23,10 @@ public class SceneManagerController : MonoBehaviour
             await Addressables.UnloadSceneAsync(previousHandler, true).Task;
         }
 
-        // if (scene.OperationHandle.IsValid() && scene.OperationHandle.Status == AsyncOperationStatus.Succeeded)
-        // {
-        //     Debug.LogWarning("Scene is already loaded.");
-        //     ToggleLoading(false);
-        //     return;
-        // }
         var handler = scene.LoadSceneAsync(LoadSceneMode.Single);
         await handler.Task;
 
         ToggleLoading(false);
-
-        // if (previousHandler.IsValid())
-        // {
-        //     Addressables.Release(previousHandler);
-        // }
 
         previousHandler = handler;
         currentSceneReference = scene;

@@ -76,7 +76,7 @@ public class DialogController : MonoBehaviour
     {
         var sceneManager = SceneManagerController.Instance.GetComponent<SceneManagerController>();
 
-        // Check if we need to go to the Fruit Ninja game scene
+        // Check if we need to go to the Diablo game scene
         if (IsGotoDiablo)
         {
             sceneManager.GotoDiabloGameScene();
@@ -87,17 +87,7 @@ public class DialogController : MonoBehaviour
         {
             OnNextScene?.Invoke();
             return;
-            // if (!IsFruitNinjaDone)
-            // {
-            //     OnNextScene?.Invoke();
-            //     return;
-            // }
-            // else
-            // {
-            //     sceneManager.GotoDiabloGameScene();
-            //     return;
 
-            // }
         }
 
         currentText = story.Continue();

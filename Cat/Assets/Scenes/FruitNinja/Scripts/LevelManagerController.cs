@@ -55,7 +55,7 @@ namespace Assets.Scenes.FruitNinja.Scripts
 
         public void FinishTutorial()
         {
-            SceneManagerController.Instance.GotoFruitNinjaGameScene();
+
         }
 
         void Awake()

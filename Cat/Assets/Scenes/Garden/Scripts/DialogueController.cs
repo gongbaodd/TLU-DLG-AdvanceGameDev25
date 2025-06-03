@@ -64,6 +64,7 @@ namespace Assets.Scenes.Garden.Scripts
             // Check if we need to go to the Fruit Ninja game scene
             if (IsGotoFruitNinja)
             {
+
                 sceneManager.GotoFruitNinjaGameScene();
                 return;
             }
