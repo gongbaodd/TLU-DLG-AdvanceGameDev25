@@ -1,6 +1,7 @@
 VAR speaker = "god"
 VAR isGaming = false
 VAR isWon = false
+VAR is_fruit_ninja_done = false
 VAR is_goto_diablo = false
 VAR is_goto_garden = false
 
@@ -57,6 +58,7 @@ RAT SHADE: Hah! Is that all? Maybe your owner deserves to be forgotten.
 ~ isGaming = false
 ~ speaker = "boss"
 ~ isWon = true
+~ is_fruit_ninja_done = true
 ~ is_goto_diablo = true
 RAT SHADE: No—! I’ll be dust before the Host returns. Take your cursed piece!
 

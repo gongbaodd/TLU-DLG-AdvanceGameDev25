@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DiabloMemory
   m_EditorClassIdentifier: 
   name: Diablo Memory
-  icon: {fileID: 645411862609229670, guid: fc6a4cf79ce3ce447b1b7865eecfc942, type: 3}
+  icon: {fileID: -6316392241553622110, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
   isDefaultItem: 0

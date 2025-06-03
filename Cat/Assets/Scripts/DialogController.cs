@@ -44,9 +44,9 @@ public class DialogController : MonoBehaviour
     {
         get => story.variablesState["is_goto_diablo"] as bool? ?? false;
     }
-    bool IsGotoGarden
+    bool IsFruitNinjaDone
     {
-        get => story.variablesState["is_goto_garden"] as bool? ?? false;
+        get => story.variablesState["is_fruit_ninja_done"] as bool? ?? false;
     }
 
     void SetupCat()
@@ -82,17 +82,23 @@ public class DialogController : MonoBehaviour
             sceneManager.GotoDiabloGameScene();
             return;
         }
-        if (IsGotoGarden)
-        {
-            sceneManager.GotoGardenScene();
-            return;
-        }
 
-        // if (!story.canContinue)
-        // {
-        //     OnNextScene?.Invoke();
-        //     return;
-        // }
+        if (!story.canContinue)
+        {
+            OnNextScene?.Invoke();
+            return;
+            // if (!IsFruitNinjaDone)
+            // {
+            //     OnNextScene?.Invoke();
+            //     return;
+            // }
+            // else
+            // {
+            //     sceneManager.GotoDiabloGameScene();
+            //     return;
+
+            // }
+        }
 
         currentText = story.Continue();
 

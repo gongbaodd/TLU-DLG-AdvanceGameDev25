@@ -1,6 +1,7 @@
 VAR speaker = "god"
 VAR name_given = 0
 VAR is_goto_fruit_ninja = false
+VAR is_tutorial_done = false
 
 (You, a small but determined cat, awaken in your home's backyard.)
 
@@ -8,6 +9,7 @@ VAR is_goto_fruit_ninja = false
 
 === START ===
 ~ speaker = "god"
+{is_tutorial_done: ->ending}
 ???: So... you’ve come after me.
 
 * [Say nothing.] -> SILENT
@@ -71,5 +73,6 @@ GHOST KING: You want your owner back? Then chase after me. But you’ll have to 
 
 === GOTO_FRUIT_NINJA ===
 ~ is_goto_fruit_ninja = true
+~ is_tutorial_done = true
 -> END
 
