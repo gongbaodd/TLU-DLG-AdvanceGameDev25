@@ -53,11 +53,6 @@ namespace Assets.Scenes.FruitNinja.Scripts
             SceneManagerController.Instance.GotoNextLevel();
         }
 
-        public void FinishTutorial()
-        {
-
-        }
-
         void Awake()
         {
             Instance = this;

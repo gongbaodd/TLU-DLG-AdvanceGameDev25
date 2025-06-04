@@ -68,11 +68,6 @@ namespace Assets.Scenes.Garden.Scripts
                 sceneManager.GotoFruitNinjaGameScene();
                 return;
             }
-            // if (IsTutorialDone)
-            // {
-            //     sceneManager.GotoGardenScene();
-            //     return;
-            // }
 
             currentText = story.Continue(); // Get the next line of text from the story
 

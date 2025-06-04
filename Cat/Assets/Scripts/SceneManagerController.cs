@@ -51,21 +51,6 @@ public class SceneManagerController : MonoBehaviour
     {
         _ = LoadScene(DiabloGameScene);
     }
-    //[SerializeField] AssetReference MainMenuScene;
-    // public async void GotoMainMenuScene()
-    // {
-    //     try
-    //     {
-    //         await LoadScene(MainMenuScene);
-    //     }
-    //     catch (System.Exception ex)
-    //     {
-    //         Debug.LogError($"Failed to load MainMenuScene: {ex.Message}");
-    //     }
-    // }
-    // {
-    //     _ = LoadScene(MainMenuScene);
-    // }
 
     public void GotoNextLevel()
     {
