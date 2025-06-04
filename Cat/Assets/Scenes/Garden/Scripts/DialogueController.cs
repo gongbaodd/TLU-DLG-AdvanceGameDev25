@@ -42,6 +42,10 @@ namespace Assets.Scenes.Garden.Scripts
         {
             get => story.variablesState["is_goto_fruit_ninja"] as bool? ?? false;
         }
+        bool IsTutorialDone
+        {
+            get => story.variablesState["is_tutorial_done"] as bool? ?? false;
+        }
 
         void Awake()
         {
@@ -60,9 +64,15 @@ namespace Assets.Scenes.Garden.Scripts
             // Check if we need to go to the Fruit Ninja game scene
             if (IsGotoFruitNinja)
             {
+
                 sceneManager.GotoFruitNinjaGameScene();
                 return;
             }
+            // if (IsTutorialDone)
+            // {
+            //     sceneManager.GotoGardenScene();
+            //     return;
+            // }
 
             currentText = story.Continue(); // Get the next line of text from the story
 

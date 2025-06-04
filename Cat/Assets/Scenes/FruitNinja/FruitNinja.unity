@@ -1053,6 +1053,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
+      propertyPath: OnCurrentScene.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
       propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -1073,6 +1078,16 @@ PrefabInstance:
       objectReference: {fileID: 1703314334}
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
+      propertyPath: OnCurrentScene.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: OnCurrentScene.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1703314334}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
       propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
       objectReference: {fileID: 0}
@@ -1084,12 +1099,22 @@ PrefabInstance:
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
       propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PreviousScene
+      value: NextScene
       objectReference: {fileID: 0}
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
       propertyPath: OnStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: OnCurrentScene.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: OnCurrentScene.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextScene
       objectReference: {fileID: 0}
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
@@ -1103,12 +1128,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
+      propertyPath: OnCurrentScene.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scenes.FruitNinja.Scripts.LevelManagerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
       propertyPath: OnNextScene.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
         type: 3}
       propertyPath: OnStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107295496884614780, guid: f6f3462abad46314ca81b5349d210b77,
+        type: 3}
+      propertyPath: OnCurrentScene.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2759,7 +2794,7 @@ GameObject:
   - component: {fileID: 1703314337}
   - component: {fileID: 1703314341}
   m_Layer: 0
-  m_Name: LevelManger
+  m_Name: LevelManager
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

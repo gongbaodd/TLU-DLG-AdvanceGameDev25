@@ -8,25 +8,28 @@ public class SceneManagerController : MonoBehaviour
 {
     public static SceneManagerController Instance { get; private set; }
     [SerializeField] GameObject loading;
-    void ToggleLoading(bool value) => loading.SetActive(value); // Show or hide the loading screen
-    AsyncOperationHandle previousHandler; // Store the previous scene handle to release it later
+    AssetReference currentSceneReference;
+    void ToggleLoading(bool value) => loading.SetActive(value);
+    AsyncOperationHandle previousHandler;
     async Task LoadScene(AssetReference scene)
     {
         ToggleLoading(true);
-        var downloadHandler = Addressables.DownloadDependenciesAsync(scene); // Download the scene dependencies
-        await downloadHandler.Task; // Wait for the dependencies to be downloaded
+        var downloadHandler = Addressables.DownloadDependenciesAsync(scene);
+        await downloadHandler.Task;
+
+        // Only unload if there is more than one scene loaded
+        if (previousHandler.IsValid() && SceneManager.sceneCount > 1)
+        {
+            await Addressables.UnloadSceneAsync(previousHandler, true).Task;
+        }
 
         var handler = scene.LoadSceneAsync(LoadSceneMode.Single);
         await handler.Task;
 
         ToggleLoading(false);
 
-        if (previousHandler.IsValid())
-        {
-            Addressables.Release(previousHandler);
-        }
-
         previousHandler = handler;
+        currentSceneReference = scene;
     }
     [SerializeField] AssetReference DebugScene;
     public void GotoDebugScene()
@@ -73,7 +76,7 @@ public class SceneManagerController : MonoBehaviour
 
         if (!hasFruitNinja)
         {
-            GotoFruitNinjaGameScene();
+            GotoGardenScene();
             return;
         }
         if (!hasDiablo)
