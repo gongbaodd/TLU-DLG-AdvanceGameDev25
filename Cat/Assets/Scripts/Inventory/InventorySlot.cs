@@ -38,6 +38,7 @@ public class InventorySlot : MonoBehaviour
         if (item != null) // If there is an item in this slot
         {
             item.Use(); // Use the item
+            OnRemoveButton(); // Remove the item from the inventory
         }
     }
 
